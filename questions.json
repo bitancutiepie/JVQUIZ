@@ -1,0 +1,42 @@
+[
+    {
+        "question": "what is the capital of france?",
+        "choices": ["berlin", "madrid", "paris", "rome"],
+        "answer": "paris"
+    },
+    {
+        "question": "which planet is known as the red planet?",
+        "choices": ["venus", "mars", "jupiter", "saturn"],
+        "answer": "mars"
+    },
+    {
+        "question": "what is the largest ocean on earth?",
+        "choices": ["atlantic", "indian", "arctic", "pacific"],
+        "answer": "pacific"
+    },
+    {
+        "question": "who painted the mona lisa?",
+        "choices": ["van gogh", "da vinci", "picasso", "monet"],
+        "answer": "da vinci"
+    },
+    {
+        "question": "what is the chemical symbol for water?",
+        "choices": ["co2", "h2o", "nacl", "o2"],
+        "answer": "h2o"
+    },
+    {
+        "question": "which language has the most native speakers?",
+        "choices": ["english", "spanish", "mandarin", "hindi"],
+        "answer": "mandarin"
+    },
+    {
+        "question": "what year did the titanic sink?",
+        "choices": ["1905", "1912", "1920", "1898"],
+        "answer": "1912"
+    },
+    {
+        "question": "what is the smallest prime number?",
+        "choices": ["0", "1", "2", "3"],
+        "answer": "2"
+    }
+]

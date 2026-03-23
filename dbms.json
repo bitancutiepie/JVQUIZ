@@ -1,0 +1,556 @@
+{
+    "title": "Database Performance Tuning & Distributed DBMS - Multiple Choice Exam",
+    "total_items": 50,
+    "questions": [
+        {
+            "id": 1,
+            "question": "What is the main mantra of database performance?",
+            "choices": [
+                "A. Normalize data first",
+                "B. Good database performance starts with good database design",
+                "C. Use more hardware",
+                "D. Avoid indexing"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 2,
+            "question": "Database performance tuning primarily aims to:",
+            "choices": [
+                "A. Increase storage size",
+                "B. Reduce response time",
+                "C. Encrypt data",
+                "D. Backup databases"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 3,
+            "question": "Which of the following is the first step in the query sequence?",
+            "choices": [
+                "A. DBMS execution",
+                "B. Data fetching",
+                "C. End-user application generates a query",
+                "D. Index creation"
+            ],
+            "answer": "C"
+        },
+        {
+            "id": 4,
+            "question": "Which component executes the query in the DBMS?",
+            "choices": [
+                "A. Listener",
+                "B. Optimizer",
+                "C. DBMS",
+                "D. Scheduler"
+            ],
+            "answer": "C"
+        },
+        {
+            "id": 5,
+            "question": "Table space refers to:",
+            "choices": [
+                "A. A physical CPU",
+                "B. A logical grouping of data files",
+                "C. A query optimizer",
+                "D. A network protocol"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 6,
+            "question": "Data cache is used to:",
+            "choices": [
+                "A. Store SQL queries",
+                "B. Store recently accessed data blocks",
+                "C. Store logs only",
+                "D. Encrypt data"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 7,
+            "question": "SQL cache stores:",
+            "choices": [
+                "A. Tables",
+                "B. Indexes",
+                "C. Recently executed SQL statements",
+                "D. Network packets"
+            ],
+            "answer": "C"
+        },
+        {
+            "id": 8,
+            "question": "Which DBMS process listens for client requests?",
+            "choices": [
+                "A. Scheduler",
+                "B. Listener",
+                "C. Optimizer",
+                "D. Lock Manager"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 9,
+            "question": "Which DBMS component manages locks?",
+            "choices": [
+                "A. Scheduler",
+                "B. Listener",
+                "C. Lock Manager",
+                "D. User process"
+            ],
+            "answer": "C"
+        },
+        {
+            "id": 10,
+            "question": "The optimizer's role is to:",
+            "choices": [
+                "A. Store data",
+                "B. Analyze queries for efficiency",
+                "C. Manage users",
+                "D. Backup database"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 11,
+            "question": "Parsing phase involves:",
+            "choices": [
+                "A. Data deletion",
+                "B. Syntax checking and access rights validation",
+                "C. Data backup",
+                "D. Index creation"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 12,
+            "question": "Execution phase involves:",
+            "choices": [
+                "A. Query writing",
+                "B. I/O operations and data retrieval",
+                "C. Index design",
+                "D. Schema creation"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 13,
+            "question": "Fetching phase is responsible for:",
+            "choices": [
+                "A. Compiling SQL",
+                "B. Returning rows to client",
+                "C. Creating tables",
+                "D. Deleting records"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 14,
+            "question": "Automatic query optimization means:",
+            "choices": [
+                "A. User manually optimizes queries",
+                "B. DBMS finds execution path automatically",
+                "C. No optimization occurs",
+                "D. Queries are ignored"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 15,
+            "question": "Static optimization occurs at:",
+            "choices": [
+                "A. Runtime",
+                "B. Compilation time",
+                "C. Network time",
+                "D. Execution time"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 16,
+            "question": "Dynamic optimization is determined at:",
+            "choices": [
+                "A. Compile time",
+                "B. Design time",
+                "C. Run time",
+                "D. Storage time"
+            ],
+            "answer": "C"
+        },
+        {
+            "id": 17,
+            "question": "Cost-based optimizer relies on:",
+            "choices": [
+                "A. Random selection",
+                "B. Statistics",
+                "C. User input only",
+                "D. File size"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 18,
+            "question": "Rule-based optimizer uses:",
+            "choices": [
+                "A. Machine learning",
+                "B. Preset rules",
+                "C. Random heuristics",
+                "D. Network data"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 19,
+            "question": "SQL tuning focuses on:",
+            "choices": [
+                "A. Hardware upgrades",
+                "B. Query writing efficiency",
+                "C. Disk formatting",
+                "D. User access"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 20,
+            "question": "Server-side tuning involves:",
+            "choices": [
+                "A. Writing queries",
+                "B. Configuring DBMS environment",
+                "C. Designing UI",
+                "D. Coding applications"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 21,
+            "question": "Indexes help improve:",
+            "choices": [
+                "A. Storage size",
+                "B. Query performance",
+                "C. Network speed",
+                "D. UI design"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 22,
+            "question": "Which index type uses key-value pairs?",
+            "choices": [
+                "A. Bitmap",
+                "B. Hash index",
+                "C. B-tree",
+                "D. Sequential"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 23,
+            "question": "B-tree indexes are best for:",
+            "choices": [
+                "A. Exact matches only",
+                "B. Range queries",
+                "C. Image storage",
+                "D. Audio processing"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 24,
+            "question": "Bitmap indexes are efficient for:",
+            "choices": [
+                "A. High cardinality columns",
+                "B. Low cardinality columns",
+                "C. Large text files",
+                "D. Networks"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 25,
+            "question": "Data sparsity refers to:",
+            "choices": [
+                "A. Number of tables",
+                "B. Number of distinct values in a column",
+                "C. Storage capacity",
+                "D. CPU usage"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 26,
+            "question": "A common bottleneck is:",
+            "choices": [
+                "A. Keyboard",
+                "B. CPU",
+                "C. Mouse",
+                "D. Printer"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 27,
+            "question": "In-memory databases store data in:",
+            "choices": [
+                "A. Disk only",
+                "B. RAM",
+                "C. Tape storage",
+                "D. Cloud only"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 28,
+            "question": "Distributed DBMS manages data across:",
+            "choices": [
+                "A. One computer",
+                "B. Multiple interconnected systems",
+                "C. Offline storage",
+                "D. Single table"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 29,
+            "question": "Distributed processing means:",
+            "choices": [
+                "A. Centralized execution",
+                "B. Processing shared across multiple sites",
+                "C. Single CPU processing",
+                "D. No processing"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 30,
+            "question": "A distributed database is:",
+            "choices": [
+                "A. Stored in one location",
+                "B. Stored across multiple sites",
+                "C. Stored in memory only",
+                "D. Not structured"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 31,
+            "question": "Data fragments are:",
+            "choices": [
+                "A. Full database copies",
+                "B. Subsets of a distributed database",
+                "C. Indexes",
+                "D. Logs"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 32,
+            "question": "An advantage of DDBMS is:",
+            "choices": [
+                "A. Single point of failure",
+                "B. Reduced costs",
+                "C. Increased latency only",
+                "D. Limited access"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 33,
+            "question": "A disadvantage of DDBMS is:",
+            "choices": [
+                "A. Simplicity",
+                "B. Complexity of management",
+                "C. Faster queries",
+                "D. Lower storage"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 34,
+            "question": "Transaction Processor (TP) is also called:",
+            "choices": [
+                "A. Data Manager",
+                "B. Application Processor",
+                "C. Query Engine",
+                "D. Storage Manager"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 35,
+            "question": "Data Processor (DP) is responsible for:",
+            "choices": [
+                "A. UI design",
+                "B. Data storage and retrieval",
+                "C. Networking",
+                "D. Compilation"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 36,
+            "question": "SPSD stands for:",
+            "choices": [
+                "A. Single process single data",
+                "B. Single-site processing single-site data",
+                "C. Shared processing shared data",
+                "D. System processing data"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 37,
+            "question": "MPSD involves:",
+            "choices": [
+                "A. One site processing and data",
+                "B. Multiple processes sharing one data source",
+                "C. Multiple databases disconnected",
+                "D. No processing"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 38,
+            "question": "MPMD refers to:",
+            "choices": [
+                "A. Single site system",
+                "B. Fully distributed DBMS",
+                "C. Centralized DBMS",
+                "D. Backup system"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 39,
+            "question": "Fragmentation transparency hides:",
+            "choices": [
+                "A. Data type",
+                "B. Database partitioning",
+                "C. Queries",
+                "D. Indexes"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 40,
+            "question": "Location transparency allows users to:",
+            "choices": [
+                "A. Know exact storage location",
+                "B. Ignore fragment locations",
+                "C. Modify hardware",
+                "D. Delete data"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 41,
+            "question": "Failure transparency ensures:",
+            "choices": [
+                "A. No failures occur",
+                "B. System continues operation despite failures",
+                "C. Data is deleted",
+                "D. Queries stop"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 42,
+            "question": "A remote request involves:",
+            "choices": [
+                "A. Multiple sites",
+                "B. One SQL statement to one remote site",
+                "C. No network",
+                "D. Local processing only"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 43,
+            "question": "A distributed transaction:",
+            "choices": [
+                "A. Uses one site",
+                "B. Accesses multiple remote sites",
+                "C. No queries",
+                "D. Local execution"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 44,
+            "question": "Two-phase commit ensures:",
+            "choices": [
+                "A. Faster queries",
+                "B. Consistency across sites",
+                "C. Data deletion",
+                "D. Index creation"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 45,
+            "question": "Two phases of commit are:",
+            "choices": [
+                "A. Start and end",
+                "B. Preparation and commit",
+                "C. Read and write",
+                "D. Parse and execute"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 46,
+            "question": "Horizontal fragmentation divides:",
+            "choices": [
+                "A. Columns",
+                "B. Rows",
+                "C. Tables",
+                "D. Databases"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 47,
+            "question": "Vertical fragmentation divides:",
+            "choices": [
+                "A. Rows",
+                "B. Columns",
+                "C. Indexes",
+                "D. Queries"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 48,
+            "question": "Replication involves:",
+            "choices": [
+                "A. Deleting data",
+                "B. Storing copies at multiple sites",
+                "C. Compressing files",
+                "D. Indexing data"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 49,
+            "question": "CAP Theorem's 'C' stands for:",
+            "choices": [
+                "A. Capacity",
+                "B. Consistency",
+                "C. Computation",
+                "D. Cache"
+            ],
+            "answer": "B"
+        },
+        {
+            "id": 50,
+            "question": "Partition tolerance means:",
+            "choices": [
+                "A. System fails when network splits",
+                "B. System continues despite node/network failures",
+                "C. Data is duplicated",
+                "D. Queries stop"
+            ],
+            "answer": "B"
+        }
+    ]
+}
