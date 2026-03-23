@@ -4,41 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎀 Burricat Battle 🐤</title>
+    <title>burricat</title>
     <!-- Pixel Font -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Cohesive Marie & Tweety Palette */
-            --bg-color: #fffaf0;
-            /* Warm floral white / cream */
+            --bg-color: #eaddf8;
+            /* Soft lilac/purple */
             --surface-color: #ffffff;
-            /* Clean white for cards */
             --border-color: #5d4037;
-            /* Warm dark brown for pixel borders */
             --text-main: #4e342e;
-            /* Dark espresso brown */
             --text-light: #8d6e63;
-            /* Soft taupe brown */
 
             --btn-bg: #ffe0b2;
-            /* Soft peachy yellow */
             --btn-hover: #ffcc80;
-            /* Warmer peach */
             --btn-active: #ffb74d;
-            /* Orange-peach */
 
             --primary-glow: rgba(255, 141, 161, 0.4);
 
             --p1-color: #ff8da1;
-            /* Soft carnation pink (Marie) */
+            /* Marie Pink */
             --p2-color: #ffca28;
-            /* Warm marigold yellow (Tweety) */
+            /* Tweety Yellow */
 
             --correct-color: #aed581;
-            /* Soft pastel green */
             --wrong-color: #ef9a9a;
-            /* Soft pastel red */
 
             --pixel-shadow: 6px 6px 0px var(--border-color);
             --pixel-shadow-sm: 4px 4px 0px var(--border-color);
@@ -60,88 +51,126 @@
             align-items: center;
             justify-content: center;
             overflow-x: hidden;
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(255, 141, 161, 0.15) 15px, transparent 16px),
-                radial-gradient(circle at 80% 60%, rgba(255, 202, 40, 0.15) 15px, transparent 16px),
-                radial-gradient(circle at 50% 90%, rgba(255, 141, 161, 0.1) 15px, transparent 16px),
-                radial-gradient(circle at 10% 80%, rgba(255, 202, 40, 0.1) 15px, transparent 16px);
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         /* Animated Stickers */
         .sticker {
             position: absolute;
-            width: 120px;
-            height: auto;
             z-index: 10;
-            pointer-events: none;
-            animation: float 4s infinite ease-in-out;
+            pointer-events: auto;
+            cursor: pointer;
             filter: drop-shadow(4px 4px 0px var(--border-color));
         }
 
         .st1 {
             top: 5%;
             left: 5%;
-            animation-delay: 0s;
+            animation: wander-left 8s infinite ease-in-out;
             width: 140px;
         }
 
         .st2 {
             top: 10%;
             right: 5%;
-            animation-delay: 0.5s;
+            animation: wander-right 9s infinite ease-in-out;
             width: 130px;
         }
 
         .st3 {
             bottom: 10%;
-            left: 10%;
-            animation-delay: 1s;
+            left: 8%;
+            animation: wander-left 10s infinite ease-in-out;
+            width: 120px;
         }
 
         .st4 {
             bottom: 15%;
-            right: 10%;
-            animation-delay: 1.5s;
+            right: 8%;
+            animation: wander-right 11s infinite ease-in-out;
             width: 110px;
         }
 
         .st5 {
             top: 40%;
-            left: 2%;
-            animation-delay: 2s;
+            left: 4%;
+            animation: wander-left 12s infinite ease-in-out;
             width: 100px;
         }
 
         .st6 {
             top: 50%;
-            right: 2%;
-            animation-delay: 2.5s;
+            right: 4%;
+            animation: wander-right 13s infinite ease-in-out;
             width: 150px;
         }
 
         .st7 {
-            bottom: 0%;
-            left: 45%;
-            animation-delay: 3s;
+            bottom: 35%;
+            left: 12%;
+            animation: wander-left 14s infinite ease-in-out;
             width: 120px;
         }
 
         .st8 {
-            top: 2%;
-            left: 40%;
-            animation-delay: 3.5s;
+            top: 25%;
+            right: 12%;
+            animation: wander-right 15s infinite ease-in-out;
             width: 130px;
         }
 
-        @keyframes float {
+        @keyframes wander-left {
 
             0%,
             100% {
-                transform: translateY(0) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg);
             }
 
-            50% {
-                transform: translateY(-15px) rotate(3deg);
+            33% {
+                transform: translate(20px, -30px) rotate(5deg);
+            }
+
+            66% {
+                transform: translate(-10px, -15px) rotate(-3deg);
+            }
+        }
+
+        @keyframes wander-right {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(-20px, -30px) rotate(-5deg);
+            }
+
+            66% {
+                transform: translate(10px, -15px) rotate(3deg);
+            }
+        }
+
+        .flower-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 3rem;
+            z-index: 1000;
+            animation: popFlower 1s forwards ease-out;
+        }
+
+        @keyframes popFlower {
+            0% {
+                transform: scale(0) translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5) translate(var(--tx), var(--ty)) rotate(var(--rot));
+                opacity: 0;
             }
         }
 
@@ -151,7 +180,6 @@
             padding: 20px;
             position: relative;
             z-index: 20;
-            /* Above background stickers */
         }
 
         .screen {
@@ -179,7 +207,6 @@
             }
         }
 
-        /* Pixel Card */
         .pixel-card {
             background: var(--surface-color);
             border: 4px solid var(--border-color);
@@ -193,7 +220,7 @@
         h1 {
             font-size: 4rem;
             font-weight: normal;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             color: var(--p1-color);
             text-shadow: 4px 4px 0px var(--border-color);
             letter-spacing: 2px;
@@ -208,11 +235,39 @@
 
         p {
             color: var(--text-light);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 1.6rem;
         }
 
-        /* Buttons */
+        /* Character Select UI */
+        .character-select {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .character-select label {
+            margin: 0 10px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .character-select span {
+            padding: 10px 15px;
+            border: 4px solid transparent;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .character-select input {
+            display: none;
+        }
+
+        .character-select input:checked+span {
+            border: 4px solid var(--border-color);
+            background: #fffafa;
+            box-shadow: var(--pixel-shadow-hover);
+        }
+
         .btn {
             background: var(--btn-bg);
             color: var(--border-color);
@@ -271,7 +326,6 @@
             background: #ffb300;
         }
 
-        /* Inputs */
         input[type="text"] {
             width: 100%;
             max-width: 320px;
@@ -291,7 +345,6 @@
             background: #fffaff;
         }
 
-        /* Drop Zone */
         .drop-zone {
             border: 4px dashed var(--border-color);
             background: #fffafa;
@@ -324,7 +377,6 @@
             display: inline-block;
         }
 
-        /* Battle Arena */
         .header-stats {
             display: flex;
             justify-content: space-between;
@@ -352,11 +404,11 @@
             height: 10px;
         }
 
-        #stat-p1::before {
+        .theme-marie::before {
             background: var(--p1-color);
         }
 
-        #stat-p2::before {
+        .theme-tweety::before {
             background: var(--p2-color);
         }
 
@@ -417,8 +469,6 @@
             .sticker {
                 display: none;
             }
-
-            /* hide stickers on mobile so they don't block UI */
         }
 
         .choice-btn {
@@ -437,7 +487,7 @@
         }
 
         .choice-btn::before {
-            content: '🎀';
+            content: '⭐';
             margin-right: 15px;
             opacity: 0.2;
             transition: opacity 0.2s;
@@ -627,6 +677,120 @@
             padding: 10px 20px;
             font-size: 1.6rem;
         }
+
+        /* Cassette Player BGM */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #fff;
+            border: 4px solid var(--border-color);
+            padding: 10px 15px;
+            z-index: 100;
+            box-shadow: var(--pixel-shadow-sm);
+            width: 260px;
+            background-image: repeating-linear-gradient(0deg, #fafafa, #fafafa 4px, #fff 4px, #fff 8px);
+        }
+
+        .cassette-label {
+            background: #ffe0b2;
+            border: 3px solid var(--border-color);
+            padding: 8px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .cassette-title {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cassette-reels {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 15px 0 10px 0;
+            border: 3px solid var(--border-color);
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .reel {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #4e342e;
+            border: 4px dashed var(--border-color);
+            display: inline-block;
+        }
+
+        .playing .reel {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            margin-top: 5px;
+        }
+
+        .volume-control input[type=range] {
+            flex: 1;
+            accent-color: var(--p1-color);
+            cursor: pointer;
+        }
+
+        /* Kyla Custom Sticker */
+        .st-kyla {
+            top: 20%;
+            left: 20%;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            object-fit: cover;
+            animation: wander-right 12s infinite ease-in-out;
+            box-shadow: var(--pixel-shadow-sm);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s steps(4, end);
+        }
+
+        .kyla-modal-content {
+            max-width: 500px;
+            padding: 40px;
+            margin: 20px;
+            cursor: default;
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -643,6 +807,22 @@
     <img src="stick6.png" class="sticker st6" alt="">
     <img src="stick7.png" class="sticker st7" alt="">
     <img src="stick8.png" class="sticker st8" alt="">
+    <img src="kylala.jpg" id="st-kyla" class="sticker st-kyla" alt="Kyla" title="Kyla">
+
+    <!-- Kyla Modal -->
+    <div id="kyla-modal" class="modal-overlay">
+        <div class="pixel-card kyla-modal-content">
+            <h1 style="color: var(--p1-color); margin-bottom: 20px;">🎀 OMGGG 🎀</h1>
+            <p style="color: var(--text-main); font-size: 2.2rem; line-height: 1.4; text-transform: lowercase;">"why did
+                u click ur pretty face, napakastandout mo kasi noooh talagang-talaga like legit you da real gorjas kyla
+                marieee?
+                .....
+                Don't be pressured by the paces of others, just be yourself and you'll be fine. Take a rest whenever you
+                can kylalalala! "</p>
+            <button class="btn btn-primary" id="btn-close-kyla" style="margin-top: 20px; max-width: 200px;">I knurrr
+                ✨</button>
+        </div>
+    </div>
 
     <div id="app">
 
@@ -651,16 +831,27 @@
             <div class="pixel-card">
                 <h1>BURRICAT</h1>
 
-
-                <!-- Name Input Field -->
                 <input type="text" id="player-name-input" placeholder="Enter Your Name" maxlength="12">
 
-                <button class="btn btn-primary" id="btn-create-room">
-                    <span>🎀 Host Game</span>
-                </button>
-                <button class="btn btn-secondary" id="btn-join-room">
-                    <span>🐤 Join Game</span>
-                </button>
+                <div class="character-select">
+                    <label>
+                        <input type="radio" name="char" value="marie" checked>
+                        <span>🎀 Marie</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="char" value="tweety">
+                        <span>🐤 Tweety</span>
+                    </label>
+                </div>
+
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn btn-primary" id="btn-create-room" style="margin-bottom:0px;">
+                        Host Match
+                    </button>
+                    <button class="btn btn-secondary" id="btn-join-room" style="margin-bottom:0px;">
+                        Join Match
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -704,13 +895,13 @@
         <!-- State: Battle Arena -->
         <div id="state-battle" class="screen">
             <div class="header-stats">
-                <div class="player-stat" id="stat-p1">
-                    <div class="player-avatar">🎀</div>
+                <div class="player-stat theme-marie" id="stat-p1">
+                    <div class="player-avatar" id="avatar-p1">🎀</div>
                     <div class="player-name p1-color-text" id="name-p1">Player 1</div>
                     <div class="player-score">⭐ <span id="score-p1">0</span></div>
                 </div>
-                <div class="player-stat" id="stat-p2">
-                    <div class="player-avatar">🐤</div>
+                <div class="player-stat theme-tweety" id="stat-p2">
+                    <div class="player-avatar" id="avatar-p2">🐤</div>
                     <div class="player-name p2-color-text" id="name-p2">Player 2</div>
                     <div class="player-score">⭐ <span id="score-p2">0</span></div>
                 </div>
@@ -768,10 +959,102 @@
 
     </div>
 
+    <!-- Cassette Music Player -->
+    <div class="music-player" id="music-player">
+        <div class="cassette-label">
+            <div class="cassette-title">kylalala</div>
+            <select id="bgm-select"
+                style="width: 100%; font-size: 1.4rem; outline: none; border: 2px solid var(--border-color); background: #fffaf0; cursor: pointer; color: var(--text-main); font-family: 'VT323', monospace;">
+                <option value="">( Silence )</option>
+                <option value="music_choice/Akoy Sa'yo.mp3">🎵 Akoy Sa'yo</option>
+                <option value="music_choice/Apocalypse - Cigarettes After Sex.mp3">🎵 Apocalypse - CAS</option>
+                <option value="music_choice/Beabadoobee - Apple Cider.mp3">🎵 Beabadoobee - Apple Cider</option>
+                <option value="music_choice/Beabadoobee - Ripples (Lyrics).mp3">🎵 Beabadoobee - Ripples</option>
+                <option value="music_choice/Clairo - Second Nature.mp3">🎵 Clairo - Second Nature</option>
+                <option value="music_choice/Goo Goo Dolls  Iris [Official Music Video] [4K Remaster].mp3">🎵 Goo Goo
+                    Dolls - Iris</option>
+                <option value="music_choice/IV OF SPADES -  Paru-Paro (Official Lyric Video).mp3">🎵 IV OF SPADES -
+                    Paru-Paro</option>
+                <option value="music_choice/Kind Of.mp3">🎵 Kind Of</option>
+                <option value="music_choice/SUGARCANE - Gunita (Official Lyric Video).mp3">🎵 SUGARCANE - Gunita
+                </option>
+                <option value="music_choice/She & Him - I Thought I Saw Your Face Today (Official Lyric Video).mp3">🎵
+                    She & Him - I Thought I Saw Your Face Today</option>
+                <option value="music_choice/Sixpence None The Richer - Kiss Me (Official Music Video).mp3">🎵 Sixpence
+                    None The Richer - Kiss Me</option>
+                <option value="music_choice/Taylor Swift - Everything Has Changed.mp3">🎵 Taylor Swift - Everything Has
+                    Changed</option>
+                <option value="music_choice/Thinking About You.mp3">🎵 Thinking About You</option>
+                <option value="music_choice/ang balikat at baywang.mp3">🎵 Ang balikat at baywang</option>
+                <option value="music_choice/beabadoobee - Beaches (Official Video).mp3">🎵 beabadoobee - Beaches
+                </option>
+                <option value="music_choice/beabadoobee - See You Soon (Official Video).mp3">🎵 beabadoobee - See You
+                    Soon</option>
+                <option value="music_choice/beabadoobee - the perfect pair (Official Audio).mp3">🎵 beabadoobee - the
+                    perfect pair</option>
+            </select>
+        </div>
+        <div class="cassette-reels">
+            <span class="reel"></span>
+            <span class="reel"></span>
+        </div>
+        <div class="volume-control">
+            <span>🔉</span>
+            <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.5">
+            <span>🔊</span>
+        </div>
+    </div>
+
     <script>
-        /**
-         * Marie & Tweety Quiz Battle Logic
-         */
+        // Global button click sound
+        const clickSound = new Audio('sound.wav');
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('.choice-btn') || e.target.closest('.btn')) {
+                clickSound.currentTime = 0;
+                // catch is needed because browsers block audio before user interaction
+                clickSound.play().catch(err => console.log("Audio prevented before interaction:", err));
+            }
+        });
+
+        // Background Music
+        const bgmSelect = document.getElementById('bgm-select');
+        const bgmVolume = document.getElementById('bgm-volume');
+        const musicPlayerUI = document.getElementById('music-player');
+
+        const bgmAudio = new Audio();
+        bgmAudio.loop = true;
+        bgmAudio.volume = bgmVolume.value;
+
+        bgmVolume.addEventListener('input', (e) => {
+            bgmAudio.volume = e.target.value;
+        });
+
+        bgmSelect.addEventListener('change', (e) => {
+            const track = e.target.value;
+            playBGM(track);
+            if (conn && conn.open) conn.send({ type: 'CHANGE_BGM', track: track });
+        });
+
+        function playBGM(trackPath) {
+            const cassetteTitle = document.querySelector('.cassette-title');
+            if (!trackPath) {
+                bgmAudio.pause();
+                bgmSelect.value = '';
+                musicPlayerUI.classList.remove('playing');
+                if (cassetteTitle) cassetteTitle.textContent = 'kylalala';
+            } else {
+                bgmAudio.src = trackPath;
+                // Browsers may require user interaction before playing audio
+                bgmAudio.play().catch(err => console.log('BGM Error:', err));
+                bgmSelect.value = trackPath;
+                musicPlayerUI.classList.add('playing');
+
+                if (cassetteTitle && bgmSelect.selectedIndex >= 0) {
+                    const selectedText = bgmSelect.options[bgmSelect.selectedIndex].text;
+                    cassetteTitle.textContent = selectedText.replace('🎵 ', '');
+                }
+            }
+        }
 
         const screens = document.querySelectorAll('.screen');
         const btnCreateRoom = document.getElementById('btn-create-room');
@@ -789,8 +1072,13 @@
         const btnConnect = document.getElementById('btn-connect');
         const joinStatus = document.getElementById('join-status');
 
+        const statP1 = document.getElementById('stat-p1');
+        const statP2 = document.getElementById('stat-p2');
         const nameP1 = document.getElementById('name-p1');
         const nameP2 = document.getElementById('name-p2');
+        const avatarP1 = document.getElementById('avatar-p1');
+        const avatarP2 = document.getElementById('avatar-p2');
+
         const scoreP1 = document.getElementById('score-p1');
         const scoreP2 = document.getElementById('score-p2');
         const questionText = document.getElementById('question-text');
@@ -816,6 +1104,9 @@
         let myName = '';
         let opponentName = '';
 
+        let myChar = 'marie';
+        let opponentChar = 'tweety';
+
         let questions = [];
         let currentQIndex = 0;
         let p1Score = 0;
@@ -825,7 +1116,6 @@
         let p2Answer = null;
         let isRevealed = false;
 
-
         function showScreen(id) {
             screens.forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
@@ -834,7 +1124,6 @@
         function generateShortId() {
             return Math.random().toString(36).substring(2, 8).toUpperCase();
         }
-
 
         function parseContent(raw) {
             const trimmed = raw.trim();
@@ -847,7 +1136,6 @@
                 } else if (Array.isArray(parsed)) {
                     qArray = parsed;
                 }
-
                 return qArray
                     .filter(q => q.question && q.answer)
                     .map(q => ({
@@ -861,16 +1149,29 @@
             return [];
         }
 
+        function getSelectedChar() {
+            const rads = document.getElementsByName('char');
+            for (let r of rads) {
+                if (r.checked) return r.value;
+            }
+            return 'marie';
+        }
 
         btnCreateRoom.addEventListener('click', () => {
-            myName = playerNameInput.value.trim() || 'Marie';
+            myChar = getSelectedChar();
+            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            myName = playerNameInput.value.trim() || defName;
+
             isHost = true;
             showScreen('state-host-lobby');
             initHostPeer();
         });
 
         btnJoinRoomBtn.addEventListener('click', () => {
-            myName = playerNameInput.value.trim() || 'Tweety';
+            myChar = getSelectedChar();
+            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            myName = playerNameInput.value.trim() || defName;
+
             isHost = false;
             showScreen('state-join-lobby');
         });
@@ -887,8 +1188,6 @@
             if (peer) { peer.destroy(); peer = null; }
             showScreen('state-start');
         });
-
-
 
         fileDropZone.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => {
@@ -920,7 +1219,6 @@
             reader.readAsText(file);
         }
 
-
         function initHostPeer() {
             const shortId = generateShortId();
             hostRoomCode.textContent = '...';
@@ -935,7 +1233,6 @@
                 if (conn) { c.close(); return; }
                 conn = c;
                 setupConnection();
-                // UI updated when JOIN_INFO arrives
                 checkHostReady();
             });
 
@@ -979,8 +1276,8 @@
         function setupConnection() {
             conn.on('open', () => {
                 if (!isHost) {
-                    joinStatus.innerHTML = `Connected! Waiting for ${opponentName ? opponentName : 'host'}... ✨`;
-                    conn.send({ type: 'JOIN_INFO', name: myName });
+                    joinStatus.innerHTML = `Connected! Waiting for host... ✨`;
+                    conn.send({ type: 'JOIN_INFO', name: myName, char: myChar });
                 } else {
                     checkHostReady();
                 }
@@ -996,19 +1293,35 @@
             });
         }
 
+        function applyPlayerUI(statEl, nameEl, avatarEl, pName, pChar) {
+            nameEl.textContent = pName;
+
+            if (pChar === 'marie') {
+                avatarEl.textContent = '🎀';
+                nameEl.className = 'player-name p1-color-text';
+                statEl.className = 'player-stat theme-marie';
+            } else {
+                avatarEl.textContent = '🐤';
+                nameEl.className = 'player-name p2-color-text';
+                statEl.className = 'player-stat theme-tweety';
+            }
+        }
 
         function handleNetworkData(data) {
             if (data.type === 'JOIN_INFO') {
                 opponentName = data.name;
-                hostStatus.innerHTML = `${opponentName} joined! 🎀`;
+                opponentChar = data.char;
+                let icon = opponentChar === 'marie' ? '🎀' : '🐤';
+                hostStatus.innerHTML = `${opponentName} joined! ${icon}`;
                 hostStatus.classList.remove('loading-dots');
             }
             else if (data.type === 'START') {
                 questions = data.questions;
                 opponentName = data.hostName;
+                opponentChar = data.hostChar;
 
-                nameP1.textContent = opponentName;
-                nameP2.textContent = myName;
+                applyPlayerUI(statP1, nameP1, avatarP1, opponentName, opponentChar);
+                applyPlayerUI(statP2, nameP2, avatarP2, myName, myChar);
 
                 p1Score = 0; p2Score = 0;
                 currentQIndex = 0;
@@ -1038,16 +1351,18 @@
                 showResults();
             }
             else if (data.type === 'CHAT') {
-                appendChat(opponentName, data.text, false);
+                appendChat(opponentName, data.text, opponentChar);
+            }
+            else if (data.type === 'CHANGE_BGM') {
+                playBGM(data.track);
             }
         }
 
-
         btnStartGame.addEventListener('click', () => {
-            conn.send({ type: 'START', questions, hostName: myName });
+            conn.send({ type: 'START', questions, hostName: myName, hostChar: myChar });
 
-            nameP1.textContent = myName;
-            nameP2.textContent = opponentName || 'Tweety';
+            applyPlayerUI(statP1, nameP1, avatarP1, myName, myChar);
+            applyPlayerUI(statP2, nameP2, avatarP2, opponentName, opponentChar);
 
             showScreen('state-battle');
             p1Score = 0; p2Score = 0;
@@ -1085,7 +1400,6 @@
             }
         }
 
-
         btnNextQ.addEventListener('click', () => {
             currentQIndex++;
             if (currentQIndex >= questions.length) {
@@ -1096,7 +1410,6 @@
                 sendNextQuestion();
             }
         });
-
 
         function renderScore() {
             scoreP1.textContent = p1Score;
@@ -1157,6 +1470,9 @@
             const qObj = questions[currentQIndex];
             renderScore();
 
+            const p1CharIcon = isHost ? (myChar === 'marie' ? '🎀' : '🐤') : (opponentChar === 'marie' ? '🎀' : '🐤');
+            const p2CharIcon = isHost ? (opponentChar === 'marie' ? '🎀' : '🐤') : (myChar === 'marie' ? '🎀' : '🐤');
+
             Array.from(choicesGrid.children).forEach(btn => {
                 const cText = btn.firstChild.textContent;
                 const isCorrectChoice = cText.startsWith(correctAnswerStr) || cText === correctAnswerStr;
@@ -1164,8 +1480,8 @@
                 btn.classList.remove('selected');
 
                 let indicator = '';
-                if (cText === p1Answer) indicator += ' 🎀';
-                if (cText === p2Answer) indicator += ' 🐤';
+                if (cText === p1Answer) indicator += ` ${p1CharIcon}`;
+                if (cText === p2Answer) indicator += ` ${p2CharIcon}`;
 
                 btn.querySelector('.choice-indicator').textContent = indicator;
 
@@ -1207,24 +1523,28 @@
             finalNameP1.textContent = n1;
             finalNameP2.textContent = n2;
 
+            const p1Icon = isHost ? (myChar === 'marie' ? '🎀' : '🐤') : (opponentChar === 'marie' ? '🎀' : '🐤');
+            const p2Icon = isHost ? (opponentChar === 'marie' ? '🎀' : '🐤') : (myChar === 'marie' ? '🎀' : '🐤');
+
+            const p1Class = isHost ? (myChar === 'marie' ? 'p1-color-text' : 'p2-color-text') : (opponentChar === 'marie' ? 'p1-color-text' : 'p2-color-text');
+            const p2Class = isHost ? (opponentChar === 'marie' ? 'p1-color-text' : 'p2-color-text') : (myChar === 'marie' ? 'p1-color-text' : 'p2-color-text');
+
             if (p1Score > p2Score) {
-                winnerText.innerHTML = `${n1} Wins! 👑🎀`;
-                winnerText.className = "p1-color-text";
+                winnerText.innerHTML = `${n1} Wins! 👑${p1Icon}`;
+                winnerText.className = p1Class;
             } else if (p2Score > p1Score) {
-                winnerText.innerHTML = `${n2} Wins! 👑🐤`;
-                winnerText.className = "p2-color-text";
+                winnerText.innerHTML = `${n2} Wins! 👑${p2Icon}`;
+                winnerText.className = p2Class;
             } else {
                 winnerText.innerHTML = "It's a Tie! ✨✨";
                 winnerText.className = "";
             }
         }
 
-        function appendChat(name, text, isMe) {
+        function appendChat(name, text, senderChar) {
             const div = document.createElement('div');
             div.className = 'chat-msg';
-            const colorClass = (name === myName && isHost) ? 'p1-color-text' :
-                (name === myName && !isHost) ? 'p2-color-text' :
-                    (isHost) ? 'p2-color-text' : 'p1-color-text';
+            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
             div.innerHTML = `<span class="${colorClass}">[${name}]</span> ${text}`;
             chatLog.appendChild(div);
             chatLog.scrollTop = chatLog.scrollHeight;
@@ -1233,8 +1553,8 @@
         function sendChat() {
             const txt = chatInput.value.trim();
             if (!txt) return;
-            appendChat(myName, txt, true);
-            if (conn && conn.open) conn.send({ type: 'CHAT', text: txt });
+            appendChat(myName, txt, myChar);
+            if (conn && conn.open) conn.send({ type: 'CHAT', text: txt, senderChar: myChar });
             chatInput.value = '';
         }
 
@@ -1242,6 +1562,46 @@
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendChat();
         });
+
+        const stickers = document.querySelectorAll('.sticker');
+        stickers.forEach(st => {
+            st.addEventListener('click', (e) => {
+                for (let i = 0; i < 5; i++) {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower-particle';
+                    flower.textContent = '🌺';
+                    flower.style.filter = 'hue-rotate(240deg)'; // Adjust standard red/pink to purple
+
+                    flower.style.left = e.clientX + 'px';
+                    flower.style.top = e.clientY + 'px';
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = Math.random() * 80 + 40;
+                    flower.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                    flower.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                    flower.style.setProperty('--rot', (Math.random() * 180 - 90) + 'deg');
+
+                    document.body.appendChild(flower);
+                    setTimeout(() => flower.remove(), 1000);
+                }
+            });
+        });
+
+        const kylaSticker = document.getElementById('st-kyla');
+        const kylaModal = document.getElementById('kyla-modal');
+        const btnCloseKyla = document.getElementById('btn-close-kyla');
+
+        if (kylaSticker) {
+            kylaSticker.addEventListener('click', () => {
+                kylaModal.classList.add('active');
+            });
+        }
+
+        if (btnCloseKyla) {
+            btnCloseKyla.addEventListener('click', () => {
+                kylaModal.classList.remove('active');
+            });
+        }
 
         (function autoScan() {
             fetch('quizzes.json')
