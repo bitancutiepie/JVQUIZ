@@ -576,6 +576,57 @@
             color: var(--p2-color);
             text-shadow: 2px 2px 0px var(--border-color);
         }
+
+        /* Chat Box */
+        .chat-container {
+            width: 100%;
+            background: #fff;
+            border: 4px solid var(--border-color);
+            margin-top: 20px;
+            box-shadow: var(--pixel-shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-log {
+            height: 150px;
+            overflow-y: auto;
+            padding: 15px;
+            font-size: 1.6rem;
+            text-align: left;
+            border-bottom: 4px solid var(--border-color);
+            background: #fffaf0;
+        }
+
+        .chat-msg {
+            margin-bottom: 5px;
+        }
+
+        .chat-msg span {
+            font-weight: bold;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            background: #fff;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            margin-bottom: 0;
+            padding: 10px;
+            font-size: 1.6rem;
+        }
+
+        .chat-send-btn {
+            width: auto;
+            max-width: none;
+            margin-bottom: 0;
+            padding: 10px 20px;
+            font-size: 1.6rem;
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -680,6 +731,18 @@
                         Question</button>
                 </div>
             </div>
+
+            <!-- Chat Window -->
+            <div class="chat-container">
+                <div class="chat-log" id="chat-log">
+                    <div><em>Say hi to your opponent! ✨</em></div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Say something..." autocomplete="off">
+                    <button class="btn btn-primary chat-send-btn" id="btn-send-chat">Send</button>
+                </div>
+            </div>
+
         </div>
 
         <!-- State: Results -->
@@ -741,6 +804,10 @@
         const finalP1 = document.getElementById('final-p1');
         const finalP2 = document.getElementById('final-p2');
         const btnHome = document.getElementById('btn-home');
+
+        const chatLog = document.getElementById('chat-log');
+        const chatInput = document.getElementById('chat-input');
+        const btnSendChat = document.getElementById('btn-send-chat');
 
         let peer = null;
         let conn = null;
@@ -970,6 +1037,9 @@
             else if (data.type === 'END') {
                 showResults();
             }
+            else if (data.type === 'CHAT') {
+                appendChat(opponentName, data.text, false);
+            }
         }
 
 
@@ -1148,6 +1218,30 @@
                 winnerText.className = "";
             }
         }
+
+        function appendChat(name, text, isMe) {
+            const div = document.createElement('div');
+            div.className = 'chat-msg';
+            const colorClass = (name === myName && isHost) ? 'p1-color-text' :
+                (name === myName && !isHost) ? 'p2-color-text' :
+                    (isHost) ? 'p2-color-text' : 'p1-color-text';
+            div.innerHTML = `<span class="${colorClass}">[${name}]</span> ${text}`;
+            chatLog.appendChild(div);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function sendChat() {
+            const txt = chatInput.value.trim();
+            if (!txt) return;
+            appendChat(myName, txt, true);
+            if (conn && conn.open) conn.send({ type: 'CHAT', text: txt });
+            chatInput.value = '';
+        }
+
+        btnSendChat.addEventListener('click', sendChat);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChat();
+        });
 
         (function autoScan() {
             fetch('quizzes.json')
