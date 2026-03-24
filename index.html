@@ -110,6 +110,29 @@
             box-shadow: 4px 4px 0px #333;
         }
 
+        @media (max-width: 600px) {
+            .theme-toggle-btn {
+                position: fixed;
+                top: auto;
+                bottom: 90px;
+                right: 20px;
+                left: auto;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                font-size: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .theme-toggle-btn::before {
+                content: '🎨';
+                font-size: 1.8rem;
+            }
+        }
+
         /* Title Change in Plain Theme */
         body.plain-theme #main-title {
             visibility: hidden;
@@ -572,14 +595,49 @@
             }
 
             .header-stats {
-                flex-direction: column;
-                gap: 15px;
-                margin-bottom: 20px;
+                flex-direction: row;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .player-stat {
+                padding: 10px;
+                min-width: 100px;
+            }
+
+            .player-avatar {
+                font-size: 2rem;
+            }
+
+            .player-score {
+                font-size: 2rem;
+            }
+
+            .player-name {
+                font-size: 1rem;
+                margin-bottom: 2px;
             }
 
             .question-box {
-                font-size: 1.6rem;
-                padding: 20px;
+                font-size: 1.4rem;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            .choices-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .choice-btn {
+                padding: 12px;
+                font-size: 1.3rem;
+            }
+
+            .battle-status {
+                margin-top: 5px;
+                font-size: 1.2rem;
             }
 
             .sticker {
