@@ -945,6 +945,49 @@
             color: var(--text-main);
             font-size: 1.4rem;
         }
+
+        /* GIF Pop Extra */
+        .gif-popup-extra {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 3000;
+            max-width: 80vw;
+            max-height: 80vh;
+            border: 8px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(255, 141, 161, 0.8), 10px 10px 0px var(--border-color);
+            pointer-events: none;
+            animation: gifPopFade 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes gifPopFade {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+
+            15% {
+                transform: translate(-50%, -50%) scale(1.2) rotate(5deg);
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            70% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.5) rotate(10deg);
+                opacity: 0;
+            }
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -1761,6 +1804,13 @@
             const img = div.querySelector('img');
             img.onload = () => { chatLog.scrollTop = chatLog.scrollHeight; };
             chatLog.scrollTop = chatLog.scrollHeight;
+
+            // Extra flair: Pop it in the middle and fade out!
+            const popup = document.createElement('img');
+            popup.src = url;
+            popup.className = 'gif-popup-extra';
+            document.body.appendChild(popup);
+            setTimeout(() => popup.remove(), 4000);
         }
 
         const btnOpenGifs = document.getElementById('btn-open-gifs');
