@@ -187,7 +187,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s steps(4, end);
+            animation: fadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             width: 100%;
         }
 
@@ -198,12 +198,24 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(8px);
+                transform: scale(0.95) translateY(10px);
             }
 
             to {
                 opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
                 transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
             }
         }
 
@@ -215,6 +227,7 @@
             text-align: center;
             box-shadow: var(--pixel-shadow);
             position: relative;
+            animation: floatCard 4s ease-in-out infinite;
         }
 
         h1 {
@@ -275,7 +288,7 @@
             padding: 15px 30px;
             font-size: 1.8rem;
             cursor: pointer;
-            transition: all 0.1s steps(2, end);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
             width: 100%;
             max-width: 320px;
             margin-bottom: 20px;
@@ -283,20 +296,20 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            box-shadow: var(--pixel-shadow-sm);
+            box-shadow: 4px 4px 0px rgba(93, 64, 55, 0.2);
             text-transform: uppercase;
         }
 
         .btn:hover:not(:disabled) {
             background: var(--btn-hover);
-            transform: translate(2px, 2px);
-            box-shadow: var(--pixel-shadow-hover);
+            transform: translateY(-3px);
+            box-shadow: 4px 7px 0px rgba(93, 64, 55, 0.3);
         }
 
         .btn:active:not(:disabled) {
             background: var(--btn-active);
-            transform: translate(4px, 4px);
-            box-shadow: none;
+            transform: translateY(2px);
+            box-shadow: 4px 2px 0px rgba(93, 64, 55, 0.4);
         }
 
         .btn:disabled {
@@ -678,26 +691,56 @@
             font-size: 1.6rem;
         }
 
-        /* Cassette Player BGM */
+        /* Cute Retro Boombox Music Player */
         .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #fff;
+            background: #ffb6c1;
             border: 4px solid var(--border-color);
-            padding: 10px 15px;
+            border-radius: 12px;
+            padding: 15px 20px;
             z-index: 100;
-            box-shadow: var(--pixel-shadow-sm);
-            width: 260px;
-            background-image: repeating-linear-gradient(0deg, #fafafa, #fafafa 4px, #fff 4px, #fff 8px);
+            box-shadow: 6px 6px 0px rgba(93, 64, 55, 0.15), inset -4px -4px 0px rgba(0, 0, 0, 0.05);
+            width: 280px;
+            animation: gentleBob 5s ease-in-out infinite reverse;
+        }
+
+        .music-player::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 12px;
+            border: 4px solid var(--border-color);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            background: #ffb6c1;
+            z-index: -1;
+        }
+
+        @keyframes gentleBob {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
         }
 
         .cassette-label {
-            background: #ffe0b2;
-            border: 3px solid var(--border-color);
-            padding: 8px;
+            background: #fffafa;
+            border: 3px dashed var(--border-color);
+            padding: 6px;
             text-align: center;
-            border-radius: 4px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-shadow: inset 0px 4px 0px #ffe0b2;
         }
 
         .cassette-title {
@@ -706,27 +749,44 @@
             text-transform: uppercase;
             font-weight: bold;
             margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .cassette-reels {
             display: flex;
             justify-content: center;
             gap: 50px;
-            margin: 15px 0 10px 0;
-            border: 3px solid var(--border-color);
-            background: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            border: none;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
         }
 
         .reel {
-            width: 30px;
-            height: 30px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: #4e342e;
-            border: 4px dashed var(--border-color);
+            background: #f8cdd4;
+            border: 4px solid var(--border-color);
             display: inline-block;
+            box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .reel::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid var(--border-color);
         }
 
         .playing .reel {
@@ -742,9 +802,14 @@
         .volume-control {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            background: #fffafa;
+            border: 3px solid var(--border-color);
+            border-radius: 20px;
+            padding: 5px 10px;
             gap: 10px;
-            font-size: 1.6rem;
-            margin-top: 5px;
+            font-size: 1.4rem;
+            margin-top: 10px;
         }
 
         .volume-control input[type=range] {
@@ -790,6 +855,95 @@
             padding: 40px;
             margin: 20px;
             cursor: default;
+        }
+
+        /* Heart Rain */
+        .heart-rain {
+            position: fixed;
+            top: -5vh;
+            color: #ffb6c1;
+            font-size: 1.5rem;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        /* Heart Trail */
+        .heart-trail {
+            position: fixed;
+            color: #dda0dd;
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: fadeOut 1s ease-out forwards;
+        }
+
+        /* Heart Burst */
+        .heart-burst {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 9999;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5) translateY(-20px);
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Themed Voice Player */
+        .chat-voice-msg {
+            display: inline-flex;
+            align-items: center;
+            background: #fffafa;
+            border: 3px dashed var(--border-color);
+            padding: 5px 10px;
+            margin-top: 5px;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            gap: 10px;
+        }
+
+        .voice-play-btn {
+            border: 2px solid var(--border-color);
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.2rem;
+            padding: 2px 8px;
+            outline: none;
+            box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        .voice-play-btn:active {
+            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        .voice-wave {
+            color: var(--text-main);
+            font-size: 1.4rem;
         }
     </style>
     <!-- PeerJS -->
@@ -928,8 +1082,25 @@
                 <div class="chat-log" id="chat-log">
                     <div><em>Say hi to your opponent! ✨</em></div>
                 </div>
+                <div class="gif-picker-container" style="position:relative;">
+                    <div id="gif-picker" class="gif-picker"
+                        style="display:none; position:absolute; bottom:calc(100% + 10px); left:10px; background:#fffafa; border:4px solid var(--border-color); padding:10px; box-shadow:var(--pixel-shadow-sm); z-index:500; width:280px; border-radius:8px;">
+                        <div style="text-align:center; font-size:1.6rem; color:var(--text-main); margin-bottom:10px;">
+                            GIF Library ✨</div>
+                        <input type="text" id="gif-search-picker" placeholder="Search GIFs..." autocomplete="off"
+                            style="width:100%; font-size:1.4rem; padding:8px; margin-bottom:10px; border:4px solid var(--border-color); outline:none; font-family:inherit; box-shadow:inset 2px 2px 0px rgba(0,0,0,0.05);">
+                        <div id="gif-grid"
+                            style="display:grid; grid-template-columns:1fr 1fr; gap:10px; max-height: 200px; overflow-y:auto; padding-right:5px;">
+                            <!-- gifs load here -->
+                        </div>
+                    </div>
+                </div>
                 <div class="chat-input-area">
+                    <button class="btn chat-send-btn" id="btn-open-gifs" style="background:#ffe0b2; padding:10px;"
+                        title="Send a Cat">🐱</button>
                     <input type="text" id="chat-input" placeholder="Say something..." autocomplete="off">
+                    <button class="btn chat-send-btn" id="btn-record-voice" style="background:#ffb6c1;"
+                        title="Hold to record">🎙</button>
                     <button class="btn btn-primary chat-send-btn" id="btn-send-chat">Send</button>
                 </div>
             </div>
@@ -971,10 +1142,17 @@
                 <option value="music_choice/Beabadoobee - Apple Cider.mp3">🎵 Beabadoobee - Apple Cider</option>
                 <option value="music_choice/Beabadoobee - Ripples (Lyrics).mp3">🎵 Beabadoobee - Ripples</option>
                 <option value="music_choice/Clairo - Second Nature.mp3">🎵 Clairo - Second Nature</option>
+                <option value="music_choice/Germany & Rome.mp3">🎵 Germany & Rome</option>
                 <option value="music_choice/Goo Goo Dolls  Iris [Official Music Video] [4K Remaster].mp3">🎵 Goo Goo
                     Dolls - Iris</option>
                 <option value="music_choice/IV OF SPADES -  Paru-Paro (Official Lyric Video).mp3">🎵 IV OF SPADES -
                     Paru-Paro</option>
+                <option value="music_choice/IV OF SPADES - Kabisado (Official Lyric Video) (1).mp3">🎵 IV OF SPADES -
+                    Kabisado</option>
+                <option value="music_choice/IV OF SPADES - Suliranin (Official Music Video).mp3">🎵 IV OF SPADES -
+                    Suliranin</option>
+                <option value="music_choice/Johnoy Danao - Ikaw at Ako (official music video).mp3">🎵 Johnoy Danao -
+                    Ikaw at Ako</option>
                 <option value="music_choice/Kind Of.mp3">🎵 Kind Of</option>
                 <option value="music_choice/SUGARCANE - Gunita (Official Lyric Video).mp3">🎵 SUGARCANE - Gunita
                 </option>
@@ -1353,6 +1531,12 @@
             else if (data.type === 'CHAT') {
                 appendChat(opponentName, data.text, opponentChar);
             }
+            else if (data.type === 'VOICE') {
+                appendVoice(opponentName, data.data, opponentChar);
+            }
+            else if (data.type === 'GIF') {
+                appendGif(opponentName, data.url, opponentChar);
+            }
             else if (data.type === 'CHANGE_BGM') {
                 playBGM(data.track);
             }
@@ -1499,7 +1683,10 @@
             const n1 = isHost ? myName : opponentName;
             const n2 = isHost ? opponentName : myName;
 
-            if (p1c && p2c) msg = "Both got stars! ⭐⭐";
+            if (p1c && p2c) {
+                msg = "Both got stars! ⭐⭐";
+                if (typeof triggerHeartBurst === 'function') triggerHeartBurst();
+            }
             else if (p1c) msg = `${n1} got a star! ⭐`;
             else if (p2c) msg = `${n2} got a star! ⭐`;
             else msg = "No stars! 🙀";
@@ -1563,6 +1750,176 @@
             if (e.key === 'Enter') sendChat();
         });
 
+        function appendGif(name, url, senderChar) {
+            const div = document.createElement('div');
+            div.className = 'chat-msg';
+            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
+            div.innerHTML = `<span class="${colorClass}">[${name}]</span> <br>
+                <img src="${url}" alt="Cat GIF" style="max-width:200px; max-height:200px; border:3px solid var(--border-color); border-radius:4px; margin-top:5px; box-shadow: 2px 2px 0px rgba(0,0,0,0.1);">`;
+            chatLog.appendChild(div);
+
+            const img = div.querySelector('img');
+            img.onload = () => { chatLog.scrollTop = chatLog.scrollHeight; };
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        const btnOpenGifs = document.getElementById('btn-open-gifs');
+        const gifPicker = document.getElementById('gif-picker');
+        const gifGrid = document.getElementById('gif-grid');
+        const gifSearch = document.getElementById('gif-search-picker');
+        let gifsLoaded = false;
+
+        let gifTimeout = null;
+        if (gifSearch) {
+            gifSearch.addEventListener('input', (e) => {
+                clearTimeout(gifTimeout);
+                const query = e.target.value.trim();
+                gifTimeout = setTimeout(() => {
+                    if (query) fetchGifs(`https://g.tenor.com/v1/search?key=LIVDSRZULELA&q=${encodeURIComponent(query)}&limit=8`);
+                    else fetchGifs(`https://g.tenor.com/v1/trending?key=LIVDSRZULELA&limit=8`);
+                }, 500);
+            });
+            gifSearch.addEventListener('click', e => e.stopPropagation());
+        }
+
+        function fetchGifs(url) {
+            gifGrid.innerHTML = '<em>Loading... ✨</em>';
+            fetch(url).then(res => res.json()).then(json => {
+                gifGrid.innerHTML = '';
+                const data = json.results || [];
+                if (data.length === 0) {
+                    gifGrid.innerHTML = '<em>No GIFs found!</em>';
+                    return;
+                }
+                data.forEach(item => {
+                    const imgUrl = item.media[0].tinygif.url;
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.style.width = '100%';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    img.style.cursor = 'pointer';
+                    img.style.border = '2px solid var(--border-color)';
+                    img.style.borderRadius = '4px';
+                    img.onclick = () => {
+                        appendGif(myName, imgUrl, myChar);
+                        if (conn && conn.open) conn.send({ type: 'GIF', url: imgUrl, senderChar: myChar });
+                        gifPicker.style.display = 'none';
+                        gifSearch.value = ''; // reset search
+                    };
+                    gifGrid.appendChild(img);
+                });
+                gifsLoaded = true;
+            }).catch(() => {
+                gifGrid.innerHTML = '<em>Failed to load GIFs 😿</em>';
+            });
+        }
+
+        btnOpenGifs?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (gifPicker.style.display === 'none') {
+                gifPicker.style.display = 'block';
+                // Always load trending on initial open or if empty
+                if (!gifsLoaded || gifSearch.value.trim() === '') {
+                    fetchGifs(`https://g.tenor.com/v1/trending?key=LIVDSRZULELA&limit=8`);
+                }
+            } else {
+                gifPicker.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (gifPicker && !gifPicker.contains(e.target) && e.target !== btnOpenGifs) {
+                gifPicker.style.display = 'none';
+            }
+        });
+
+        function appendVoice(name, base64data, senderChar) {
+            const div = document.createElement('div');
+            div.className = 'chat-msg';
+            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
+            const btnColor = (senderChar === 'marie') ? 'var(--p1-color)' : 'var(--p2-color)';
+
+            div.innerHTML = `<span class="${colorClass}">[${name}]</span> <br>
+                <div class="chat-voice-msg">
+                    <button class="voice-play-btn" style="background: ${btnColor}">▶</button>
+                    <div class="voice-wave">🔊 Voice Memo</div>
+                    <audio src="data:audio/webm;base64,${base64data}" style="display:none;"></audio>
+                </div>`;
+
+            const playBtn = div.querySelector('.voice-play-btn');
+            const audioEl = div.querySelector('audio');
+            const wave = div.querySelector('.voice-wave');
+
+            playBtn.addEventListener('click', () => {
+                if (audioEl.paused) {
+                    audioEl.play().catch(e => console.log("Audio play err:", e));
+                    playBtn.textContent = '⏸';
+                    wave.textContent = '🔊 Playing...';
+                } else {
+                    audioEl.pause();
+                    playBtn.textContent = '▶';
+                    wave.textContent = '🔊 Voice Memo';
+                }
+            });
+
+            audioEl.addEventListener('ended', () => {
+                playBtn.textContent = '▶';
+                wave.textContent = '🔊 Voice Memo';
+            });
+
+            chatLog.appendChild(div);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        const btnRecordVoice = document.getElementById('btn-record-voice');
+        let mediaRecorder = null;
+        let voiceChunks = [];
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                voiceChunks = [];
+                mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) voiceChunks.push(e.data);
+                };
+                mediaRecorder.onstop = () => {
+                    if (voiceChunks.length === 0) return;
+                    const blob = new Blob(voiceChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        const base64str = reader.result.split(',')[1];
+                        appendVoice(myName, base64str, myChar);
+                        if (conn && conn.open) {
+                            conn.send({ type: 'VOICE', data: base64str, senderChar: myChar });
+                        }
+                    };
+                    reader.readAsDataURL(blob);
+                    stream.getTracks().forEach(t => t.stop());
+                };
+                mediaRecorder.start();
+                btnRecordVoice.style.background = '#dda0dd'; // switch to lilac on hold
+            } catch (err) {
+                appendChat('System', '🎙 Mic permission denied or unavailable.', 'tweety');
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+                btnRecordVoice.style.background = '#ffb6c1'; // back to pink
+            }
+        }
+
+        if (btnRecordVoice) {
+            btnRecordVoice.addEventListener('mousedown', startRecording);
+            btnRecordVoice.addEventListener('mouseup', stopRecording);
+            btnRecordVoice.addEventListener('mouseleave', stopRecording);
+            btnRecordVoice.addEventListener('touchstart', (e) => { e.preventDefault(); startRecording(); });
+            btnRecordVoice.addEventListener('touchend', (e) => { e.preventDefault(); stopRecording(); });
+        }
+
         const stickers = document.querySelectorAll('.sticker');
         stickers.forEach(st => {
             st.addEventListener('click', (e) => {
@@ -1611,6 +1968,62 @@
                     }
                 }).catch(() => { });
         })();
+
+        // Heart Rain Logic
+        function createHeartRain() {
+            const h = document.createElement('div');
+            const hearts = ['💖', '💜', '💗'];
+            h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            h.className = 'heart-rain';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            h.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            document.body.appendChild(h);
+
+            h.addEventListener('animationend', () => {
+                h.remove();
+            });
+        }
+        setInterval(createHeartRain, 400);
+
+        // Heart Cursor Trail
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.7) {
+                const h = document.createElement('div');
+                const hearts = ['💖', '💜', '💗', '🤍'];
+                h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                h.className = 'heart-trail';
+                h.style.left = e.clientX + 'px';
+                h.style.top = e.clientY + 'px';
+                document.body.appendChild(h);
+
+                setTimeout(() => h.remove(), 1000);
+            }
+        });
+
+        // Heart Burst on Tie-Correct
+        function triggerHeartBurst() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            for (let i = 0; i < 40; i++) {
+                const h = document.createElement('div');
+                const hearts = ['💖', '💜', '💗', '💥', '✨'];
+                h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                h.className = 'heart-burst';
+                h.style.left = centerX + 'px';
+                h.style.top = centerY + 'px';
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 200 + 100;
+                h.style.setProperty('--tx', `calc(-50% + ${Math.cos(angle) * dist}px)`);
+                h.style.setProperty('--ty', `calc(-50% + ${Math.sin(angle) * dist}px)`);
+
+                document.body.appendChild(h);
+
+                setTimeout(() => h.remove(), 1000);
+            }
+        }
 
     </script>
 </body>
