@@ -442,6 +442,30 @@
             border-style: solid;
         }
 
+        .paste-area {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border: 4px solid var(--border-color);
+            background: #fff;
+            color: var(--text-main);
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            outline: none;
+            resize: none;
+            display: none;
+        }
+
+        .toggle-paste-btn {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: block;
+        }
+
         .drop-icon {
             font-size: 4rem;
             margin-bottom: 15px;
@@ -1441,6 +1465,9 @@
                 </div>
                 <input type="file" id="file-input" accept=".json,.txt" style="display:none">
 
+                <span class="toggle-paste-btn" onclick="togglePaste('host')">Or paste text instead? ✨</span>
+                <textarea id="host-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
+
                 <div id="host-status" class="battle-status">Waiting for player 2<span class="loading-dots"></span></div>
 
                 <button class="btn btn-primary" id="btn-start-game" style="display:none;">Start Game!</button>
@@ -1475,6 +1502,9 @@
                     <div id="solo-drop-label">Drop Quiz JSON Here<br>or Click</div>
                 </div>
                 <input type="file" id="solo-file-input" accept=".json,.txt" style="display:none">
+
+                <span class="toggle-paste-btn" onclick="togglePaste('solo')">Or paste text instead? ✨</span>
+                <textarea id="solo-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
 
                 <div id="solo-status" class="battle-status">Ready to study...</div>
 
@@ -1897,6 +1927,41 @@
             };
             reader.readAsText(file);
         }
+
+        function togglePaste(mode) {
+            const box = document.getElementById(mode + '-paste-box');
+            const drop = mode === 'host' ? fileDropZone : soloFileDropZone;
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+                drop.style.display = 'block';
+            } else {
+                box.style.display = 'block';
+                drop.style.display = 'none';
+                box.focus();
+            }
+        }
+
+        document.getElementById('host-paste-box').addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            if (!val) return;
+            const parsed = parseContent(val);
+            if (parsed.length > 0) {
+                questions = parsed;
+                hostStatus.innerHTML = `${parsed.length} questions loaded from text! ✨`;
+                checkHostReady();
+            }
+        });
+
+        document.getElementById('solo-paste-box').addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            if (!val) return;
+            const parsed = parseContent(val);
+            if (parsed.length > 0) {
+                questions = parsed;
+                soloStatus.innerHTML = `${parsed.length} questions loaded from text! ✨`;
+                btnStartSolo.style.display = 'inline-flex';
+            }
+        });
 
         function initHostPeer() {
             const shortId = generateShortId();
