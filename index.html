@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>burricat</title>
-    <!-- Pixel Font -->
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=VT323&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             /* Cohesive Marie & Tweety Palette */
@@ -831,6 +832,87 @@
             box-shadow: var(--pixel-shadow-sm);
         }
 
+        /* Mail Letter Box */
+        .floating-mail {
+            position: absolute;
+            z-index: 15;
+            top: 60%;
+            right: 15%;
+            animation: wander-left 10s infinite ease-in-out;
+            cursor: pointer;
+            filter: drop-shadow(4px 4px 0px var(--border-color));
+            transition: transform 0.2s;
+        }
+
+        .floating-mail:hover {
+            transform: scale(1.1) rotate(5deg) !important;
+            filter: drop-shadow(6px 6px 0px var(--border-color));
+        }
+
+        /* Lined Paper Letter */
+        .paper-letter {
+            background-color: #fffdf8;
+            background-image: linear-gradient(#ccc 1px, transparent 1px);
+            background-size: 100% 36px;
+            background-position: 0 40px;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 40px 30px 40px 60px;
+            margin: 20px;
+            position: relative;
+            box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #d3c4b1;
+            transform: rotate(-1.5deg);
+            border-radius: 4px;
+            cursor: default;
+        }
+
+        .paper-letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40px;
+            width: 2px;
+            background-color: rgba(255, 100, 100, 0.4);
+        }
+
+        .paper-letter::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .paper-letter::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .paper-letter::-webkit-scrollbar-thumb {
+            background: #d3c4b1;
+            border-radius: 4px;
+        }
+
+        .paper-letter h1 {
+            font-family: 'Caveat', cursive !important;
+            color: #d32f2f;
+            font-size: 44px;
+            line-height: 36px;
+            margin-bottom: 36px;
+            margin-top: 10px;
+            text-shadow: none;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .paper-letter p {
+            font-family: 'Caveat', cursive !important;
+            font-size: 28px;
+            line-height: 36px;
+            color: #1a237e;
+            margin-bottom: 36px;
+            text-shadow: none;
+        }
+
         /* Modal Overlay */
         .modal-overlay {
             position: fixed;
@@ -1005,6 +1087,60 @@
     <img src="stick7.png" class="sticker st7" alt="">
     <img src="stick8.png" class="sticker st8" alt="">
     <img src="kylala.jpg" id="st-kyla" class="sticker st-kyla" alt="Kyla" title="Kyla">
+
+    <!-- Mail Letter Box -->
+    <div id="st-mail" class="floating-mail" title="You have mail!">
+        <svg viewBox="0 0 100 80" width="80" height="80" style="display:block;">
+            <!-- Envelope back -->
+            <rect x="5" y="10" width="90" height="60" fill="#ffb6c1" rx="5" />
+            <!-- Letter sticking out -->
+            <rect x="15" y="5" width="70" height="30" fill="#fffafa" rx="2" />
+            <!-- Letter lines -->
+            <line x1="25" y1="12" x2="75" y2="12" stroke="#f0e6d2" stroke-width="2" />
+            <line x1="25" y1="20" x2="65" y2="20" stroke="#f0e6d2" stroke-width="2" />
+            <line x1="25" y1="28" x2="70" y2="28" stroke="#f0e6d2" stroke-width="2" />
+            <!-- Envelope front flaps -->
+            <polygon points="5,10 50,45 5,70" fill="#ff99a8" />
+            <polygon points="95,10 50,45 95,70" fill="#ff99a8" />
+            <polygon points="5,70 50,45 95,70" fill="#ff8da1" />
+            <!-- Heart Seal -->
+            <path
+                d="M50 48 A 6 6 0 0 0 44 42 A 6 6 0 0 0 38 48 Q 38 54 50 62 Q 62 54 62 48 A 6 6 0 0 0 56 42 A 6 6 0 0 0 50 48 Z"
+                fill="#ff1493" />
+        </svg>
+    </div>
+
+    <!-- Mail Modal -->
+    <div id="mail-modal" class="modal-overlay">
+        <div class="paper-letter">
+            <h1>Dear kylalalalamarie,</h1>
+            <p>just a random appreciation letter for a girl as exceptional as u <br><br>
+                I hope u know how much I am thankful for always having the chance to talk with u, to listen abt any
+                randomness that I could ever read or hear, to hear your voice when you are singing, to the sound that
+                your guitar makes, to seeeee a lot of cute cat pics throughouttt anytimeeeee, to seeeee and to crave
+                fooods that I'm always soo jealoussss, to listen to the music/artist of the one that you
+                loveeeee.<br><br>
+                If only you know how much I'm grateful that there is a personnn na nakakaalam ng mga bagay na gusto ko
+                from the small things to the biggest from the least important to the most important I hope you know na
+                kung kabag ang inabot mo kagabi or data fragmentation man yan well ang inaabot ko when it comes to this
+                type of things is na para bang nag select * ako from 1 million dataaasss, na para bang hindi na sapat
+                ang kamatis sa pag dedescribe ng pagkapula sa facial expression q pwede na ano e maging bulkan o
+                daliring naipit sa pintuan AHHAHAHAHAHAHAHAH, AAAAAA basta there are a lot of things I am grateful and
+                yung nandito is only someee of the things that always put a smile on my faceee tipong pag napangiti ako
+                di q madisable-disable yung ngiti ko pag ako talaga nagkaganong ability talagang-talaga. Taena masilayan
+                ko palang lagi mukha mo kung sa soc media nga ay mauutas na aq at di ko macontain ang expressions ko
+                kung alam mo lang kung pano pa sa personal AHAHAHAH ACT FOOL NALANG TALAGAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAA.<br><br>
+                thank u kylalalalamarie <br>
+                goodluck on this midtermssss and sana is walang mag bigay ng reason sau para umiyak<br>
+                hehehehehe <br><br>
+                - meowi, puti, lulu, mingming, mingmong</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" id="btn-close-mail"
+                    style="font-family: 'VT323', monospace !important; transform: rotate(1deg);">Fold & Close ✨</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Kyla Modal -->
     <div id="kyla-modal" class="modal-overlay">
@@ -2008,6 +2144,43 @@
         if (btnCloseKyla) {
             btnCloseKyla.addEventListener('click', () => {
                 kylaModal.classList.remove('active');
+            });
+        }
+
+        const mailSticker = document.getElementById('st-mail');
+        const mailModal = document.getElementById('mail-modal');
+        const btnCloseMail = document.getElementById('btn-close-mail');
+
+        if (mailSticker) {
+            mailSticker.addEventListener('click', (e) => {
+                // Pop flowers!
+                for (let i = 0; i < 30; i++) {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower-particle';
+                    const flowersArr = ['🌺', '🌸', '🌼', '🌷', '🌹', '🌻', '💐'];
+                    flower.textContent = flowersArr[Math.floor(Math.random() * flowersArr.length)];
+
+                    flower.style.left = e.clientX + 'px';
+                    flower.style.top = e.clientY + 'px';
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = Math.random() * 200 + 50;
+                    flower.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                    flower.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                    flower.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+
+                    document.body.appendChild(flower);
+                    setTimeout(() => flower.remove(), 1000);
+                }
+
+                // Show modal
+                mailModal.classList.add('active');
+            });
+        }
+
+        if (btnCloseMail) {
+            btnCloseMail.addEventListener('click', () => {
+                mailModal.classList.remove('active');
             });
         }
 
