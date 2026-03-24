@@ -465,6 +465,16 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                background-attachment: scroll;
+                /* fixes background lag on iOS/Android */
+            }
+
+            #app {
+                padding-bottom: 120px;
+                /* space for music player */
+            }
+
             .choices-grid {
                 grid-template-columns: 1fr;
             }
@@ -482,6 +492,160 @@
 
             .sticker {
                 display: none;
+            }
+
+            .st-kyla {
+                display: block !important;
+                width: 80px;
+                height: 80px;
+                top: 5%;
+                left: 5%;
+                animation: gentleBob 4s infinite ease-in-out;
+            }
+
+            .floating-mail {
+                top: 80%;
+                right: 5%;
+                filter: none !important;
+                animation: gentleBob 4s ease-in-out infinite;
+                transform: scale(0.8);
+            }
+
+            .paper-letter {
+                padding: 20px 15px 20px 30px;
+                max-width: 90vw;
+            }
+
+            .paper-letter::before {
+                left: 15px;
+            }
+
+            .paper-letter h1 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+            .paper-letter p {
+                font-size: 20px;
+                line-height: normal;
+            }
+
+            .kyla-modal-content {
+                padding: 20px;
+            }
+
+            .music-player {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                width: 60px;
+                height: 60px;
+                background: #ffb6c1;
+                border: 4px solid var(--border-color);
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                overflow: hidden;
+                box-shadow: 4px 4px 0px var(--border-color);
+                animation: gentleBob 4s infinite ease-in-out;
+            }
+
+            .music-player.expanded {
+                width: calc(100% - 40px);
+                height: auto;
+                border-radius: 12px;
+                padding: 15px;
+                flex-direction: column;
+                animation: none;
+            }
+
+            .music-player::before {
+                display: none;
+            }
+
+            .music-player-toggle {
+                display: flex !important;
+                font-size: 2rem;
+                pointer-events: none;
+            }
+
+            .music-player.expanded .music-player-toggle {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                pointer-events: auto;
+                font-size: 1.5rem;
+            }
+
+            .music-player .player-content {
+                display: none;
+                width: 100%;
+            }
+
+            .music-player.expanded .player-content {
+                display: block;
+            }
+
+            .cassette-label {
+                margin: 0 0 10px 0;
+                border: 3px dashed var(--border-color);
+                background: #fffafa;
+                padding: 6px;
+            }
+
+            .cassette-title {
+                display: block;
+                font-size: 1.2rem;
+            }
+
+            #bgm-select {
+                font-size: 1.4rem !important;
+                padding: 5px;
+            }
+
+            .cassette-reels {
+                display: none !important;
+            }
+
+            .volume-control {
+                margin-top: 5px;
+                padding: 5px 10px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 20px;
+                border: 2px solid var(--border-color);
+            }
+
+            .chat-input-area {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            #gif-picker {
+                left: 0 !important;
+                max-width: calc(100vw - 40px) !important;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                font-size: 1.4rem;
+                padding: 10px 20px;
+            }
+
+            input[type="text"] {
+                font-size: 1.6rem;
             }
         }
 
@@ -1177,12 +1341,18 @@
                     </label>
                 </div>
 
-                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-                    <button class="btn btn-primary" id="btn-create-room" style="margin-bottom:0px;">
-                        Host Match
-                    </button>
-                    <button class="btn btn-secondary" id="btn-join-room" style="margin-bottom:0px;">
-                        Join Match
+                <div style="display:flex; flex-direction:column; gap:10px; align-items:center;">
+                    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                        <button class="btn btn-primary" id="btn-create-room" style="margin-bottom:0px;">
+                            Host Match
+                        </button>
+                        <button class="btn btn-secondary" id="btn-join-room" style="margin-bottom:0px;">
+                            Join Match
+                        </button>
+                    </div>
+                    <button class="btn" id="btn-solo-mode"
+                        style="background:#e1bee7; border-color:#7b1fa2; color:#4a148c; width:100%; max-width:320px;">
+                        ✨ Alone Time ✨
                     </button>
                 </div>
             </div>
@@ -1222,6 +1392,26 @@
 
                 <button class="btn btn-secondary" id="btn-connect">Connect</button>
                 <button class="btn" id="btn-join-back" style="margin-top:10px;">Back</button>
+            </div>
+        </div>
+
+        <!-- State: Solo Lobby -->
+        <div id="state-solo-lobby" class="screen">
+            <div class="pixel-card">
+                <h2>Solo Adventure</h2>
+                <p>Prepare for your "Alone Time" ✨</p>
+
+                <div class="drop-zone" id="solo-file-drop-zone">
+                    <div class="drop-icon">📚</div>
+                    <div id="solo-drop-label">Drop Quiz JSON Here<br>or Click</div>
+                </div>
+                <input type="file" id="solo-file-input" accept=".json,.txt" style="display:none">
+
+                <div id="solo-status" class="battle-status">Ready to study...</div>
+
+                <button class="btn btn-primary" id="btn-start-solo" style="display:none; background:#ba68c8;">Start Solo
+                    Session!</button>
+                <button class="btn" id="btn-solo-back" style="margin-top:10px;">Back</button>
             </div>
         </div>
 
@@ -1311,55 +1501,64 @@
 
     <!-- Cassette Music Player -->
     <div class="music-player" id="music-player">
-        <div class="cassette-label">
-            <div class="cassette-title">kylalala</div>
-            <select id="bgm-select"
-                style="width: 100%; font-size: 1.4rem; outline: none; border: 2px solid var(--border-color); background: #fffaf0; cursor: pointer; color: var(--text-main); font-family: 'VT323', monospace;">
-                <option value="">( Silence )</option>
-                <option value="music_choice/Akoy Sa'yo.mp3">🎵 Akoy Sa'yo</option>
-                <option value="music_choice/Apocalypse - Cigarettes After Sex.mp3">🎵 Apocalypse - CAS</option>
-                <option value="music_choice/Beabadoobee - Apple Cider.mp3">🎵 Beabadoobee - Apple Cider</option>
-                <option value="music_choice/Beabadoobee - Ripples (Lyrics).mp3">🎵 Beabadoobee - Ripples</option>
-                <option value="music_choice/Clairo - Second Nature.mp3">🎵 Clairo - Second Nature</option>
-                <option value="music_choice/Germany & Rome.mp3">🎵 Germany & Rome</option>
-                <option value="music_choice/Goo Goo Dolls  Iris [Official Music Video] [4K Remaster].mp3">🎵 Goo Goo
-                    Dolls - Iris</option>
-                <option value="music_choice/IV OF SPADES -  Paru-Paro (Official Lyric Video).mp3">🎵 IV OF SPADES -
-                    Paru-Paro</option>
-                <option value="music_choice/IV OF SPADES - Kabisado (Official Lyric Video) (1).mp3">🎵 IV OF SPADES -
-                    Kabisado</option>
-                <option value="music_choice/IV OF SPADES - Suliranin (Official Music Video).mp3">🎵 IV OF SPADES -
-                    Suliranin</option>
-                <option value="music_choice/Johnoy Danao - Ikaw at Ako (official music video).mp3">🎵 Johnoy Danao -
-                    Ikaw at Ako</option>
-                <option value="music_choice/Kind Of.mp3">🎵 Kind Of</option>
-                <option value="music_choice/SUGARCANE - Gunita (Official Lyric Video).mp3">🎵 SUGARCANE - Gunita
-                </option>
-                <option value="music_choice/She & Him - I Thought I Saw Your Face Today (Official Lyric Video).mp3">🎵
-                    She & Him - I Thought I Saw Your Face Today</option>
-                <option value="music_choice/Sixpence None The Richer - Kiss Me (Official Music Video).mp3">🎵 Sixpence
-                    None The Richer - Kiss Me</option>
-                <option value="music_choice/Taylor Swift - Everything Has Changed.mp3">🎵 Taylor Swift - Everything Has
-                    Changed</option>
-                <option value="music_choice/The One You Love.mp3">🎵 The One You Love</option>
-                <option value="music_choice/Thinking About You.mp3">🎵 Thinking About You</option>
-                <option value="music_choice/ang balikat at baywang.mp3">🎵 Ang balikat at baywang</option>
-                <option value="music_choice/beabadoobee - Beaches (Official Video).mp3">🎵 beabadoobee - Beaches
-                </option>
-                <option value="music_choice/beabadoobee - See You Soon (Official Video).mp3">🎵 beabadoobee - See You
-                    Soon</option>
-                <option value="music_choice/beabadoobee - the perfect pair (Official Audio).mp3">🎵 beabadoobee - the
-                    perfect pair</option>
-            </select>
-        </div>
-        <div class="cassette-reels">
-            <span class="reel"></span>
-            <span class="reel"></span>
-        </div>
-        <div class="volume-control">
-            <span>🔉</span>
-            <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.5">
-            <span>🔊</span>
+        <div class="music-player-toggle" id="music-player-toggle" style="display:none;">🎵</div>
+        <div class="player-content" style="width:100%;">
+            <div class="cassette-label">
+                <div class="cassette-title">kylalala</div>
+                <select id="bgm-select"
+                    style="width: 100%; font-size: 1.4rem; outline: none; border: 2px solid var(--border-color); background: #fffaf0; cursor: pointer; color: var(--text-main); font-family: 'VT323', monospace;">
+                    <option value="">( Silence )</option>
+                    <option value="music_choice/Akoy Sa'yo.mp3">🎵 Akoy Sa'yo</option>
+                    <option value="music_choice/Apocalypse - Cigarettes After Sex.mp3">🎵 Apocalypse - CAS</option>
+                    <option value="music_choice/Beabadoobee - Apple Cider.mp3">🎵 Beabadoobee - Apple Cider</option>
+                    <option value="music_choice/Beabadoobee - Ripples (Lyrics).mp3">🎵 Beabadoobee - Ripples</option>
+                    <option value="music_choice/Clairo - Second Nature.mp3">🎵 Clairo - Second Nature</option>
+                    <option value="music_choice/Germany & Rome.mp3">🎵 Germany & Rome</option>
+                    <option value="music_choice/Goo Goo Dolls  Iris [Official Music Video] [4K Remaster].mp3">🎵 Goo Goo
+                        Dolls - Iris</option>
+                    <option value="music_choice/IV OF SPADES -  Paru-Paro (Official Lyric Video).mp3">🎵 IV OF SPADES -
+                        Paru-Paro</option>
+                    <option value="music_choice/IV OF SPADES - Kabisado (Official Lyric Video) (1).mp3">🎵 IV OF SPADES
+                        -
+                        Kabisado</option>
+                    <option value="music_choice/IV OF SPADES - Suliranin (Official Music Video).mp3">🎵 IV OF SPADES -
+                        Suliranin</option>
+                    <option value="music_choice/Johnoy Danao - Ikaw at Ako (official music video).mp3">🎵 Johnoy Danao -
+                        Ikaw at Ako</option>
+                    <option value="music_choice/Kind Of.mp3">🎵 Kind Of</option>
+                    <option value="music_choice/SUGARCANE - Gunita (Official Lyric Video).mp3">🎵 SUGARCANE - Gunita
+                    </option>
+                    <option value="music_choice/She & Him - I Thought I Saw Your Face Today (Official Lyric Video).mp3">
+                        🎵
+                        She & Him - I Thought I Saw Your Face Today</option>
+                    <option value="music_choice/Sixpence None The Richer - Kiss Me (Official Music Video).mp3">🎵
+                        Sixpence
+                        None The Richer - Kiss Me</option>
+                    <option value="music_choice/Taylor Swift - Everything Has Changed.mp3">🎵 Taylor Swift - Everything
+                        Has
+                        Changed</option>
+                    <option value="music_choice/The One You Love.mp3">🎵 The One You Love</option>
+                    <option value="music_choice/Thinking About You.mp3">🎵 Thinking About You</option>
+                    <option value="music_choice/ang balikat at baywang.mp3">🎵 Ang balikat at baywang</option>
+                    <option value="music_choice/beabadoobee - Beaches (Official Video).mp3">🎵 beabadoobee - Beaches
+                    </option>
+                    <option value="music_choice/beabadoobee - See You Soon (Official Video).mp3">🎵 beabadoobee - See
+                        You
+                        Soon</option>
+                    <option value="music_choice/beabadoobee - the perfect pair (Official Audio).mp3">🎵 beabadoobee -
+                        the
+                        perfect pair</option>
+                </select>
+            </div>
+            <div class="cassette-reels">
+                <span class="reel"></span>
+                <span class="reel"></span>
+            </div>
+            <div class="volume-control">
+                <span>🔉</span>
+                <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.5">
+                <span>🔊</span>
+            </div>
         </div>
     </div>
 
@@ -1385,6 +1584,16 @@
 
         bgmVolume.addEventListener('input', (e) => {
             bgmAudio.volume = e.target.value;
+        });
+
+        // Mobile Music Player Toggle
+        musicPlayerUI.addEventListener('click', (e) => {
+            if (window.innerWidth <= 600) {
+                if (e.target.id === 'bgm-select' || e.target.id === 'bgm-volume') return;
+                musicPlayerUI.classList.toggle('expanded');
+                const toggle = document.getElementById('music-player-toggle');
+                toggle.textContent = musicPlayerUI.classList.contains('expanded') ? '✕' : '🎵';
+            }
         });
 
         bgmSelect.addEventListener('change', (e) => {
@@ -1473,6 +1682,7 @@
         let p1Answer = null;
         let p2Answer = null;
         let isRevealed = false;
+        let isSolo = false;
 
         function showScreen(id) {
             screens.forEach(s => s.classList.remove('active'));
@@ -1531,7 +1741,19 @@
             myName = playerNameInput.value.trim() || defName;
 
             isHost = false;
+            isSolo = false;
             showScreen('state-join-lobby');
+        });
+
+        const btnSoloMode = document.getElementById('btn-solo-mode');
+        btnSoloMode.addEventListener('click', () => {
+            myChar = getSelectedChar();
+            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            myName = playerNameInput.value.trim() || defName;
+
+            isHost = false;
+            isSolo = true;
+            showScreen('state-solo-lobby');
         });
 
         document.getElementById('btn-host-back').addEventListener('click', () => {
@@ -1540,6 +1762,9 @@
         });
         document.getElementById('btn-join-back').addEventListener('click', () => {
             if (peer) { peer.destroy(); peer = null; }
+            showScreen('state-start');
+        });
+        document.getElementById('btn-solo-back').addEventListener('click', () => {
             showScreen('state-start');
         });
         btnHome.addEventListener('click', () => {
@@ -1559,19 +1784,46 @@
         fileDropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             fileDropZone.classList.remove('dragover');
-            if (e.dataTransfer.files.length > 0) processFile(e.dataTransfer.files[0]);
+            if (e.dataTransfer.files.length > 0) processFile(e.dataTransfer.files[0], false);
         });
 
-        function processFile(file) {
+        const soloFileDropZone = document.getElementById('solo-file-drop-zone');
+        const soloFileInput = document.getElementById('solo-file-input');
+        const soloDropLabel = document.getElementById('solo-drop-label');
+        const btnStartSolo = document.getElementById('btn-start-solo');
+
+        soloFileDropZone.addEventListener('click', () => soloFileInput.click());
+        soloFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) processFile(e.target.files[0], true);
+        });
+        soloFileDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            soloFileDropZone.classList.add('dragover');
+        });
+        soloFileDropZone.addEventListener('dragleave', () => soloFileDropZone.classList.remove('dragover'));
+        soloFileDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            soloFileDropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) processFile(e.dataTransfer.files[0], true);
+        });
+
+        function processFile(file, forSolo) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const parsed = parseContent(e.target.result);
                 if (parsed.length > 0) {
                     questions = parsed;
-                    dropLabel.innerHTML = `Loaded: ${file.name}<br>${parsed.length} questions ready! ✨`;
-                    checkHostReady();
+                    if (forSolo) {
+                        soloDropLabel.innerHTML = `Loaded: ${file.name}<br>${parsed.length} questions ready! ✨`;
+                        btnStartSolo.style.display = 'inline-flex';
+                    } else {
+                        dropLabel.innerHTML = `Loaded: ${file.name}<br>${parsed.length} questions ready! ✨`;
+                        checkHostReady();
+                    }
                 } else {
-                    dropLabel.innerHTML = `<span style="color:var(--wrong-color)">Oops, bad file!</span><br>Try again ✨`;
+                    const errorMsg = `<span style="color:var(--wrong-color)">Oops, bad file!</span><br>Try again ✨`;
+                    if (forSolo) soloDropLabel.innerHTML = errorMsg;
+                    else dropLabel.innerHTML = errorMsg;
                 }
             };
             reader.readAsText(file);
@@ -1738,7 +1990,7 @@
         function sendNextQuestion() {
             p1Answer = null; p2Answer = null; isRevealed = false;
             let payload = { type: 'QUESTION', index: currentQIndex };
-            conn.send(payload);
+            if (conn && conn.open) conn.send(payload);
             renderQuestion(questions[currentQIndex]);
         }
 
@@ -1767,7 +2019,7 @@
         btnNextQ.addEventListener('click', () => {
             currentQIndex++;
             if (currentQIndex >= questions.length) {
-                conn.send({ type: 'END' });
+                if (conn && conn.open) conn.send({ type: 'END' });
                 showResults();
             } else {
                 btnNextQ.style.display = 'none';
@@ -1807,6 +2059,26 @@
 
         function selectAnswer(choiceStr) {
             if (isRevealed) return;
+
+            if (isSolo) {
+                if (p1Answer !== null) return;
+                p1Answer = choiceStr;
+
+                Array.from(choicesGrid.children).forEach(btn => {
+                    if (btn.firstChild.textContent === choiceStr) {
+                        btn.classList.add('selected');
+                    } else {
+                        btn.disabled = true;
+                    }
+                });
+
+                isRevealed = true;
+                const correct = String(questions[currentQIndex].answer);
+                if (p1Answer.startsWith(correct) || p1Answer === correct) p1Score++;
+
+                revealAnswers(correct);
+                return;
+            }
 
             const pAnswerState = (isHost) ? p1Answer : p2Answer;
             if (pAnswerState !== null) return;
@@ -1874,7 +2146,7 @@
             battleMsg.innerHTML = msg;
             battleMsg.className = 'battle-status highlight';
 
-            if (isHost) {
+            if (isHost || isSolo) {
                 btnNextQ.style.display = 'block';
             }
         }
@@ -1903,10 +2175,29 @@
                 winnerText.innerHTML = `${n2} Wins! 👑${p2Icon}`;
                 winnerText.className = p2Class;
             } else {
-                winnerText.innerHTML = "It's a Tie! ✨✨";
+                if (isSolo) {
+                    winnerText.innerHTML = `Session Complete! ✨`;
+                } else {
+                    winnerText.innerHTML = "It's a Tie! ✨✨";
+                }
                 winnerText.className = "";
             }
         }
+
+        btnStartSolo.addEventListener('click', () => {
+            statP2.style.display = 'none'; // Hide opponent
+            document.querySelector('.chat-container').style.display = 'none'; // Hide chat
+
+            applyPlayerUI(statP1, nameP1, avatarP1, myName, myChar);
+
+            showScreen('state-battle');
+            p1Score = 0; p2Score = 0;
+            currentQIndex = 0;
+            renderScore();
+
+            p1Answer = null; p2Answer = null; isRevealed = false;
+            renderQuestion(questions[currentQIndex]);
+        });
 
         function appendChat(name, text, senderChar) {
             const div = document.createElement('div');
@@ -2195,6 +2486,7 @@
 
         // Heart Rain Logic
         function createHeartRain() {
+            if (window.innerWidth <= 600) return; // Disable on mobile to prevent lag
             const h = document.createElement('div');
             const hearts = ['💖', '💜', '💗'];
             h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
@@ -2211,8 +2503,14 @@
         setInterval(createHeartRain, 400);
 
         // Heart Cursor Trail
+        let lastTrailTime = 0;
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.7) {
+            if (window.innerWidth <= 600) return; // Prevent lag on mobile devices
+            const now = Date.now();
+            if (now - lastTrailTime < 30) return; // Throttle events to lessen lag
+            lastTrailTime = now;
+
+            if (Math.random() > 0.6) {
                 const h = document.createElement('div');
                 const hearts = ['💖', '💜', '💗', '🤍'];
                 h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
