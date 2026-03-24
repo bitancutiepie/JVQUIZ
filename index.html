@@ -1467,6 +1467,9 @@
 
                 <span class="toggle-paste-btn" onclick="togglePaste('host')">Or paste text instead? ✨</span>
                 <textarea id="host-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
+                <button class="btn btn-secondary" id="btn-confirm-host-paste"
+                    style="display:none; margin-bottom:15px; font-size:1.2rem; padding:8px 15px;">Confirm & Load Content
+                    ✨</button>
 
                 <div id="host-status" class="battle-status">Waiting for player 2<span class="loading-dots"></span></div>
 
@@ -1505,6 +1508,9 @@
 
                 <span class="toggle-paste-btn" onclick="togglePaste('solo')">Or paste text instead? ✨</span>
                 <textarea id="solo-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
+                <button class="btn btn-secondary" id="btn-confirm-solo-paste"
+                    style="display:none; margin-bottom:15px; font-size:1.2rem; padding:8px 15px;">Confirm & Load Content
+                    ✨</button>
 
                 <div id="solo-status" class="battle-status">Ready to study...</div>
 
@@ -1732,6 +1738,7 @@
         const fileInput = document.getElementById('file-input');
         const dropLabel = document.getElementById('drop-label');
         const hostStatus = document.getElementById('host-status');
+        const soloStatus = document.getElementById('solo-status');
         const btnStartGame = document.getElementById('btn-start-game');
 
         const joinRoomInput = document.getElementById('join-room-input');
@@ -1930,36 +1937,49 @@
 
         function togglePaste(mode) {
             const box = document.getElementById(mode + '-paste-box');
+            const confirmBtn = document.getElementById('btn-confirm-' + mode + '-paste');
             const drop = mode === 'host' ? fileDropZone : soloFileDropZone;
             if (box.style.display === 'block') {
                 box.style.display = 'none';
+                confirmBtn.style.display = 'none';
                 drop.style.display = 'block';
             } else {
                 box.style.display = 'block';
+                confirmBtn.style.display = 'inline-flex';
                 drop.style.display = 'none';
                 box.focus();
             }
         }
 
-        document.getElementById('host-paste-box').addEventListener('input', (e) => {
-            const val = e.target.value.trim();
-            if (!val) return;
+        document.getElementById('btn-confirm-host-paste').addEventListener('click', () => {
+            const val = document.getElementById('host-paste-box').value.trim();
+            if (!val) {
+                hostStatus.innerHTML = `<span style="color:var(--wrong-color)">Paste something first! ✨</span>`;
+                return;
+            }
             const parsed = parseContent(val);
             if (parsed.length > 0) {
                 questions = parsed;
                 hostStatus.innerHTML = `${parsed.length} questions loaded from text! ✨`;
                 checkHostReady();
+            } else {
+                hostStatus.innerHTML = `<span style="color:var(--wrong-color)">Invalid JSON format! ✨</span>`;
             }
         });
 
-        document.getElementById('solo-paste-box').addEventListener('input', (e) => {
-            const val = e.target.value.trim();
-            if (!val) return;
+        document.getElementById('btn-confirm-solo-paste').addEventListener('click', () => {
+            const val = document.getElementById('solo-paste-box').value.trim();
+            if (!val) {
+                soloStatus.innerHTML = `<span style="color:var(--wrong-color)">Paste something first! ✨</span>`;
+                return;
+            }
             const parsed = parseContent(val);
             if (parsed.length > 0) {
                 questions = parsed;
                 soloStatus.innerHTML = `${parsed.length} questions loaded from text! ✨`;
                 btnStartSolo.style.display = 'inline-flex';
+            } else {
+                soloStatus.innerHTML = `<span style="color:var(--wrong-color)">Invalid JSON format! ✨</span>`;
             }
         });
 
