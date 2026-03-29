@@ -2405,6 +2405,8 @@
         }
 
         function checkAnswers() {
+            if (isSolo) return; // Solo has its own logic in selectAnswer
+
             if (p1Answer !== null && p2Answer !== null && !isRevealed) {
                 isRevealed = true;
                 const correct = String(questions[currentQIndex].answer);
@@ -2415,12 +2417,14 @@
                 if (isP1Correct) p1Score++;
                 if (isP2Correct) p2Score++;
 
-                conn.send({
-                    type: 'RESULT',
-                    p1Score, p2Score,
-                    p1Ans: p1Answer, p2Ans: p2Answer,
-                    correct: correct
-                });
+                if (isHost && conn && conn.open) {
+                    conn.send({
+                        type: 'RESULT',
+                        p1Score, p2Score,
+                        p1Ans: p1Answer, p2Ans: p2Answer,
+                        correct: correct
+                    });
+                }
 
                 revealAnswers(correct);
             }
@@ -2593,9 +2597,16 @@
         }
 
         function handleNextQ() {
+            // Safety: in multiplayer, make sure both answered before proceeding
+            if (!isSolo && (p1Answer === null || p2Answer === null)) {
+                console.warn("Wait! Both players must answer first. ✨");
+                battleMsg.innerHTML = `<span style="color:var(--wrong-color)">Waiting for answers... ✨</span>`;
+                return;
+            }
+
             currentQIndex++;
             if (currentQIndex >= questions.length) {
-                if (conn && conn.open) conn.send({ type: 'END' });
+                if (isHost && conn && conn.open) conn.send({ type: 'END' });
                 showResults();
             } else {
                 btnNextQ.style.display = 'none';
