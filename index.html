@@ -1468,6 +1468,50 @@
                 opacity: 0;
             }
         }
+
+        /* Loading Challenge Screen */
+        #state-challenge {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #state-challenge.active {
+            display: flex;
+        }
+
+        .challenge-container {
+            max-width: 500px !important;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .loading-text-anim {
+            font-size: 2.2rem;
+            color: var(--p1-color);
+            margin-bottom: 20px;
+        }
+
+        .reply-text {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-top: 15px;
+            font-style: italic;
+            min-height: 2rem;
+            line-height: 1.4;
+        }
+
+        #challenge-input {
+            margin-top: 15px;
+            border-color: var(--p1-color);
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -1556,10 +1600,24 @@
         </div>
     </div>
 
+    <div id="state-challenge" class="screen active">
+        <div class="pixel-card challenge-container">
+            <div style="font-size: 4rem; margin-bottom: 15px;">⏳</div>
+            <h2 class="loading-text-anim">WAIT MUNA, LOADING... ✨</h2>
+            <p style="font-size: 1.8rem; color: var(--text-main);">But first, what is the Tagalog of <strong
+                    style="color:var(--p1-color)">DEAD</strong>?</p>
+
+            <input type="text" id="challenge-input" placeholder="Your answer here..." autocomplete="off"
+                spellcheck="false" autofocus>
+
+            <div id="challenge-reply" class="reply-text"></div>
+        </div>
+    </div>
+
     <div id="app">
 
         <!-- State: Start / Select Mode -->
-        <div id="state-start" class="screen active">
+        <div id="state-start" class="screen">
             <div class="pixel-card">
                 <h1 id="main-title">BURRICAT</h1>
 
@@ -1947,10 +2005,38 @@
 
         function showScreen(id) {
             screens.forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
+
+            // Special case for challenge screen hidden state
+            const chall = document.getElementById('state-challenge');
+            if (chall && id !== 'state-challenge') {
+                chall.classList.remove('active');
+            }
+
             if (id === 'state-start') {
                 resetSoloUI();
             }
+        }
+
+        // Challenge Logic
+        const challengeInput = document.getElementById('challenge-input');
+        const challengeReply = document.getElementById('challenge-reply');
+
+        if (challengeInput) {
+            challengeInput.addEventListener('input', (e) => {
+                const val = e.target.value.trim().toLowerCase();
+                if (val === 'patay') {
+                    challengeReply.textContent = "aq din lods pataay na patay na patay sau... stop the war pls";
+                    challengeReply.style.color = "var(--p1-color)";
+                    challengeInput.style.borderColor = "var(--correct-color)";
+                    challengeInput.disabled = true;
+
+                    setTimeout(() => {
+                        showScreen('state-start');
+                    }, 3500);
+                }
+            });
         }
 
         function generateShortId() {
