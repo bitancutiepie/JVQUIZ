@@ -1699,6 +1699,23 @@
                 height: auto;
             }
         }
+
+        .judge-btn {
+            background: #fff;
+            border: 2px solid var(--border-color);
+            padding: 2px 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 10px;
+            font-family: 'VT323', monospace;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .judge-btn:hover {
+            background: var(--correct-color);
+            color: white;
+            border-color: #006400;
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -2673,6 +2690,27 @@
                 p2Answer = data.p2Ans;
                 revealAnswers(data.correct);
             }
+            else if (data.type === 'JUDGE_OVERRIDE') {
+                p1Score = data.p1Score;
+                p2Score = data.p2Score;
+                renderScore();
+                // Update text in identification reveal
+                const btns = document.querySelectorAll('.judge-btn');
+                btns.forEach(b => {
+                    const onclickStr = b.getAttribute('onclick') || "";
+                    if (onclickStr.includes(`(${data.pIdx})`)) {
+                        const parent = b.parentElement;
+                        if (parent) {
+                            parent.innerHTML = parent.innerHTML.replace(b.outerHTML, '⭐ (Judged Correct by Host)');
+                        }
+                    }
+                });
+                // Remove mistake if it was for me (Joiner is pIdx 2)
+                if (data.pIdx === 2) {
+                    myMistakes = myMistakes.filter(m => m.question !== questions[currentQIndex].question);
+                    renderMistakes();
+                }
+            }
             else if (data.type === 'END') {
                 showResults();
             }
@@ -2910,9 +2948,20 @@
                     const p1Text = p1Answer || '(No answer)';
                     const p2Text = p2Answer || '(No answer)';
 
+                    const p1IsCorrect = p1Answer && (p1Answer.toLowerCase().startsWith(correctAnswerStr.toLowerCase()) || p1Answer.toLowerCase() === correctAnswerStr.toLowerCase());
+                    const p2IsCorrect = p2Answer && (p2Answer.toLowerCase().startsWith(correctAnswerStr.toLowerCase()) || p2Answer.toLowerCase() === correctAnswerStr.toLowerCase());
+
                     playersReveal.innerHTML = `
-                        <div class="${isHost ? 'p1-color-text' : 'p2-color-text'}">[You]: ${isHost ? p1Text : p2Text}</div>
-                        ${!isSolo ? `<div class="${!isHost ? 'p1-color-text' : 'p2-color-text'}">[Opponent]: ${!isHost ? p1Text : p2Text}</div>` : ''}
+                        <div class="${isHost ? 'p1-color-text' : 'p2-color-text'}" style="margin-bottom:5px;">
+                            [You]: ${isHost ? p1Text : p2Text}
+                            ${(isHost ? p1IsCorrect : p2IsCorrect) ? '⭐' : ((isHost || isSolo) ? `<button class="judge-btn" onclick="overrideJudge(${isHost ? 1 : 2})">Mark Correct</button>` : '')}
+                        </div>
+                        ${!isSolo ? `
+                            <div class="${!isHost ? 'p1-color-text' : 'p2-color-text'}">
+                                [Opponent]: ${!isHost ? p1Text : p2Text}
+                                ${(isHost ? p2IsCorrect : p1IsCorrect) ? '⭐' : (isHost ? `<button class="judge-btn" onclick="overrideJudge(${isHost ? 2 : 1})">Mark Correct</button>` : '')}
+                            </div>
+                        ` : ''}
                     `;
                     choicesGrid.appendChild(playersReveal);
                     return;
@@ -2960,9 +3009,11 @@
 
             if (isHost || isSolo) {
                 btnNextQ.style.display = 'block';
-                btnNextQ.innerHTML = isSolo ? 'Next in 3s... ✨' : 'Next Question';
+                // Only auto-next in solo if it's NOT an identification question (which needs time for judging)
+                const isAutoNext = isSolo && qObj.type !== 'identification';
+                btnNextQ.innerHTML = isAutoNext ? 'Next in 3s... ✨' : 'Next Question';
 
-                if (isSolo) {
+                if (isAutoNext) {
                     if (nextTimer) clearInterval(nextTimer);
                     let timeLeft = 3;
                     btnNextQ.innerHTML = `Next in ${timeLeft}s... ✨`;
@@ -3006,6 +3057,59 @@
                 btnNextQ.style.display = 'none';
                 sendNextQuestion();
             }
+        }
+
+        function overrideJudge(pIdx) {
+            const correctStr = String(questions[currentQIndex].answer);
+
+            if (pIdx === 1) p1Score++;
+            else p2Score++;
+
+            // If it was me (pIdx 1 for host, pIdx 1 for solo, pIdx 2 for joiner)
+            const isActuallyMe = (isSolo && pIdx === 1) || (isHost && pIdx === 1) || (!isHost && pIdx === 2);
+            if (isActuallyMe) {
+                myMistakes = myMistakes.filter(m => m.question !== questions[currentQIndex].question);
+                renderMistakes();
+            }
+
+            // Sync to peer
+            if (!isSolo && isHost && conn && conn.open) {
+                conn.send({ type: 'JUDGE_OVERRIDE', pIdx: pIdx, p1Score, p2Score });
+            }
+
+            renderScore();
+
+            // Update UI text locally
+            const btns = document.querySelectorAll('.judge-btn');
+            btns.forEach(b => {
+                const onclickStr = b.getAttribute('onclick') || "";
+                if (onclickStr.includes(`(${pIdx})`)) {
+                    const parent = b.parentElement;
+                    if (parent) {
+                        parent.innerHTML = parent.innerHTML.replace(b.outerHTML, isSolo ? '⭐ (Judged Correct)' : '⭐ (Judged Correct by Host)');
+                    }
+                }
+            });
+
+            // Update battle message too
+            const n1 = isHost ? myName : opponentName;
+            const n2 = isHost ? opponentName : myName;
+
+            // Re-eval current states
+            const p1c_raw = (p1Answer && (p1Answer.toLowerCase().startsWith(correctStr.toLowerCase())));
+            const p2c_raw = (p2Answer && (p2Answer.toLowerCase().startsWith(correctStr.toLowerCase())));
+
+            // Note: Since we called overrideJudge, one of these is now effectively true for the message display
+            const p1c = (pIdx === 1) ? true : p1c_raw;
+            const p2c = (pIdx === 2) ? true : p2c_raw;
+
+            let msg = "";
+            if (p1c && p2c) msg = "Both got stars! ⭐⭐";
+            else if (p1c) msg = `${n1} got a star! ⭐`;
+            else if (p2c) msg = `${n2} got a star! ⭐`;
+            else msg = "No stars! 🙀";
+
+            battleMsg.innerHTML = msg;
         }
 
         function showResults() {
