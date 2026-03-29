@@ -2951,15 +2951,25 @@
                     const p1IsCorrect = p1Answer && (p1Answer.toLowerCase().startsWith(correctAnswerStr.toLowerCase()) || p1Answer.toLowerCase() === correctAnswerStr.toLowerCase());
                     const p2IsCorrect = p2Answer && (p2Answer.toLowerCase().startsWith(correctAnswerStr.toLowerCase()) || p2Answer.toLowerCase() === correctAnswerStr.toLowerCase());
 
+                    // Current user logic
+                    const isMeP1 = (isSolo || isHost);
+                    const myText = isMeP1 ? p1Text : p2Text;
+                    const myCorrect = isMeP1 ? p1IsCorrect : p2IsCorrect;
+                    const myIdx = isMeP1 ? 1 : 2;
+
+                    const oppText = isMeP1 ? p2Text : p1Text;
+                    const oppCorrect = isMeP1 ? p2IsCorrect : p1IsCorrect;
+                    const oppIdx = isMeP1 ? 2 : 1;
+
                     playersReveal.innerHTML = `
-                        <div class="${isHost ? 'p1-color-text' : 'p2-color-text'}" style="margin-bottom:5px;">
-                            [You]: ${isHost ? p1Text : p2Text}
-                            ${(isHost ? p1IsCorrect : p2IsCorrect) ? '⭐' : ((isHost || isSolo) ? `<button class="judge-btn" onclick="overrideJudge(${isHost ? 1 : 2})">Mark Correct</button>` : '')}
+                        <div class="${isMeP1 ? 'p1-color-text' : 'p2-color-text'}" style="margin-bottom:5px;">
+                            [You]: ${myText}
+                            ${myCorrect ? '⭐' : ((isHost || isSolo) ? `<button class="judge-btn" onclick="overrideJudge(${myIdx})">Mark Correct</button>` : '')}
                         </div>
                         ${!isSolo ? `
-                            <div class="${!isHost ? 'p1-color-text' : 'p2-color-text'}">
-                                [Opponent]: ${!isHost ? p1Text : p2Text}
-                                ${(isHost ? p2IsCorrect : p1IsCorrect) ? '⭐' : (isHost ? `<button class="judge-btn" onclick="overrideJudge(${isHost ? 2 : 1})">Mark Correct</button>` : '')}
+                            <div class="${!isMeP1 ? 'p1-color-text' : 'p2-color-text'}">
+                                [Opponent]: ${oppText}
+                                ${oppCorrect ? '⭐' : (isHost ? `<button class="judge-btn" onclick="overrideJudge(${oppIdx})">Mark Correct</button>` : '')}
                             </div>
                         ` : ''}
                     `;
