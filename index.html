@@ -1512,6 +1512,193 @@
             margin-top: 15px;
             border-color: var(--p1-color);
         }
+
+        /* Mistakes Box - Fluid Grid Version */
+        .mistakes-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 450px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 4px solid var(--border-color);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .mistakes-panel.active {
+            display: flex;
+            animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .mistakes-panel.minimized {
+            height: 48px;
+            width: 180px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .mistakes-panel.minimized:hover {
+            transform: scale(1.05);
+            background: #fffafa;
+        }
+
+        .mistakes-panel.minimized .mistakes-grid,
+        .mistakes-panel.minimized .mistake-detail-area {
+            display: none;
+        }
+
+        .mistakes-panel.minimized .mistakes-title {
+            margin-bottom: 0;
+            border-bottom: none;
+            font-size: 1.4rem;
+            width: 100%;
+            padding-bottom: 0;
+        }
+
+        .mistakes-title {
+            font-size: 1.8rem;
+            color: var(--wrong-color);
+            border-bottom: 3px double var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-mistakes-btn {
+            background: #fffafa;
+            border: 2px solid var(--border-color);
+            padding: 2px 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            font-family: 'VT323', monospace;
+        }
+
+        .toggle-mistakes-btn:hover {
+            background: #ffe4e1;
+        }
+
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+            max-height: 100px;
+            overflow-y: auto;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 8px;
+        }
+
+        .mistake-badge {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #fff;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'VT323', monospace;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            padding: 0;
+        }
+
+        .mistake-badge:hover {
+            transform: translateY(-2px);
+            background: #fdf2f2;
+        }
+
+        .mistake-badge.active {
+            background: var(--wrong-color);
+            color: white;
+            border-color: #8b0000;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .mistake-detail-area {
+            flex-grow: 1;
+            overflow-y: auto;
+            min-height: 80px;
+            font-size: 1.2rem;
+            background: #fffafa;
+            border: 2px solid #eee;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .mistake-item {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .mistake-q {
+            color: var(--text-main);
+            margin-bottom: 6px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .mistake-wrong {
+            color: var(--wrong-color);
+            text-decoration: line-through;
+        }
+
+        .mistake-arrow {
+            margin: 0 4px;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .mistake-correct {
+            color: var(--correct-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 1400px) {
+            .mistakes-panel {
+                width: 250px;
+                right: 10px;
+                top: 10px;
+                max-height: 350px;
+            }
+
+            .mistakes-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .mistakes-panel {
+                position: static;
+                width: 100%;
+                max-width: 800px;
+                margin: 20px auto;
+                max-height: none;
+                box-shadow: var(--pixel-shadow-sm);
+            }
+
+            .mistakes-panel.minimized {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
     <!-- PeerJS -->
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
@@ -1519,6 +1706,19 @@
 
 <body>
     <button class="theme-toggle-btn" id="theme-toggle">🌙 Switch to Plain</button>
+
+    <!-- Mistakes Panel -->
+    <div id="mistakes-panel" class="mistakes-panel" onclick="handleMistakePanelClick(event)">
+        <h3 class="mistakes-title">
+            <span>Recap 🙀<small id="mistakes-count-badge"></small></span>
+            <button class="toggle-mistakes-btn" onclick="toggleMistakesMinimize(event)">_</button>
+        </h3>
+        <div id="mistakes-grid" class="mistakes-grid"></div>
+        <div id="mistake-detail-area" class="mistake-detail-area">
+            <div style="text-align:center; color:var(--text-light); font-size:1.1rem; margin-top:10px;">Click a number
+                to see recap</div>
+        </div>
+    </div>
 
     <!-- Floating Stickers in Background -->
     <img src="stick1.png" class="sticker st1" alt="">
@@ -1602,15 +1802,14 @@
 
     <div id="state-challenge" class="screen active">
         <div class="pixel-card challenge-container">
-            <div style="font-size: 4rem; margin-bottom: 15px;">⏳</div>
-            <h2 class="loading-text-anim">WAIT MUNA, LOADING... ✨</h2>
-            <p style="font-size: 1.8rem; color: var(--text-main);">But first, what is the Tagalog of <strong
-                    style="color:var(--p1-color)">DEAD</strong>?</p>
-
-            <input type="text" id="challenge-input" placeholder="Your answer here..." autocomplete="off"
-                spellcheck="false" autofocus>
-
-            <div id="challenge-reply" class="reply-text"></div>
+            <div style="font-size: 4rem; margin-bottom: 15px;">🎀</div>
+            <h2 class="loading-text-anim" style="font-size: 2.22rem; line-height: 1.4; margin-bottom: 25px;">
+                Advance Congratsssss at nakaraosss sa Midterm youuuu did well kylalalaaaa <33! </h2>
+                    <div class="loading-dots" style="font-size: 1.8rem; color: var(--p1-color); margin-bottom: 20px;">
+                        Setting up your workspace
+                    </div>
+                    <button class="btn btn-primary" id="btn-challenge-proceed" style="max-width: 250px;">PROCEED
+                        ✨</button>
         </div>
     </div>
 
@@ -2002,6 +2201,7 @@
         let streak = 0;
         let highestStreak = 0;
         let nextTimer = null;
+        let myMistakes = [];
 
         function showScreen(id) {
             screens.forEach(s => s.classList.remove('active'));
@@ -2017,26 +2217,113 @@
             if (id === 'state-start') {
                 resetSoloUI();
             }
+
+            // Sync mistakes panel visibility
+            const mPanel = document.getElementById('mistakes-panel');
+            if (mPanel) {
+                if (id === 'state-battle' || id === 'state-results') {
+                    mPanel.classList.add('active');
+                } else {
+                    mPanel.classList.remove('active');
+                }
+            }
         }
 
-        // Challenge Logic
-        const challengeInput = document.getElementById('challenge-input');
-        const challengeReply = document.getElementById('challenge-reply');
+        function addMistake(qObj, userAns) {
+            if (!qObj) return;
+            // Prevent duplicate entries for same question
+            if (myMistakes.some(m => m.question === qObj.question)) return;
 
-        if (challengeInput) {
-            challengeInput.addEventListener('input', (e) => {
-                const val = e.target.value.trim().toLowerCase();
-                if (val === 'patay') {
-                    challengeReply.textContent = "aq din lods pataay na patay na patay sau... stop the war pls";
-                    challengeReply.style.color = "var(--p1-color)";
-                    challengeInput.style.borderColor = "var(--correct-color)";
-                    challengeInput.disabled = true;
+            myMistakes.push({
+                qNumber: currentQIndex + 1,
+                question: qObj.question,
+                wrong: userAns || '(No timer/No answer)',
+                correct: qObj.answer
+            });
+            renderMistakes();
+        }
 
-                    setTimeout(() => {
-                        showScreen('state-start');
-                    }, 3500);
+        function renderMistakes() {
+            const grid = document.getElementById('mistakes-grid');
+            const detailArea = document.getElementById('mistake-detail-area');
+            const countBadge = document.getElementById('mistakes-count-badge');
+            if (!grid || !detailArea) return;
+
+            grid.innerHTML = '';
+            if (myMistakes.length === 0) {
+                if (countBadge) countBadge.textContent = '';
+                detailArea.innerHTML = '<div style="text-align:center; color:var(--text-light); font-size:1.1rem; margin-top:10px;">No mistakes yet! Keep it up! ✨</div>';
+                return;
+            }
+
+            if (countBadge) countBadge.textContent = ` (${myMistakes.length})`;
+
+            myMistakes.forEach((m, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'mistake-badge';
+                btn.textContent = m.qNumber;
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.mistake-badge').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    showMistakeDetail(m);
+                };
+                grid.appendChild(btn);
+
+                // For the very latest mistake, auto-click it
+                if (idx === myMistakes.length - 1) {
+                    btn.click();
                 }
             });
+        }
+
+        function toggleMistakesMinimize(event) {
+            if (event) event.stopPropagation();
+            const panel = document.getElementById('mistakes-panel');
+            const btn = document.querySelector('.toggle-mistakes-btn');
+            panel.classList.toggle('minimized');
+            btn.textContent = panel.classList.contains('minimized') ? '+' : '_';
+        }
+
+        function handleMistakePanelClick(e) {
+            const panel = document.getElementById('mistakes-panel');
+            if (panel && panel.classList.contains('minimized')) {
+                toggleMistakesMinimize(e);
+            }
+        }
+
+        function showMistakeDetail(m) {
+            const area = document.getElementById('mistake-detail-area');
+            if (!area) return;
+            // If panel is minimized, expand it when a badge is clicked
+            const panel = document.getElementById('mistakes-panel');
+            if (panel.classList.contains('minimized')) toggleMistakesMinimize();
+
+            area.innerHTML = `
+                <div class="mistake-item">
+                    <div class="mistake-q">#${m.qNumber}: ${m.question}</div>
+                    <div class="mistake-details">
+                        <span class="mistake-wrong">${m.wrong}</span>
+                        <span class="mistake-arrow">➜</span>
+                        <span class="mistake-correct">${m.correct}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Challenge Logic (Now a Congratulatory Message)
+        const btnChallengeProceed = document.getElementById('btn-challenge-proceed');
+        if (btnChallengeProceed) {
+            btnChallengeProceed.addEventListener('click', () => {
+                showScreen('state-start');
+            });
+            // Auto-advance after 7 seconds for a "loading" feel
+            setTimeout(() => {
+                const challScreen = document.getElementById('state-challenge');
+                if (challScreen && challScreen.classList.contains('active')) {
+                    showScreen('state-start');
+                }
+            }, 7000);
         }
 
         function generateShortId() {
@@ -2055,12 +2342,31 @@
                     qArray = parsed;
                 }
                 return qArray
-                    .filter(q => q.question && q.answer)
-                    .map(q => ({
-                        question: String(q.question).trim(),
-                        choices: Array.isArray(q.choices) ? q.choices.map(c => String(c).trim()) : [],
-                        answer: String(q.answer).trim()
-                    }));
+                    .filter(q => (q.question || (q.assertion && q.reason)) && q.answer)
+                    .map(q => {
+                        const type = q.type || 'mcq';
+                        let choices = Array.isArray(q.choices) ? q.choices.map(c => String(c).trim()) : [];
+                        let question = String(q.question || '').trim();
+
+                        if (type === 'assertion-reason') {
+                            question = `Assertion (A): ${q.assertion}\nReason (R): ${q.reason}`;
+                            choices = [
+                                "A: Both A and R are true and R correctly explains A",
+                                "B: Both A and R are true but R does not explain A",
+                                "C: A is true but R is false",
+                                "D: A is false but R is true"
+                            ];
+                        }
+
+                        return {
+                            type,
+                            question,
+                            choices,
+                            answer: String(q.answer).trim(),
+                            assertion: q.assertion,
+                            reason: q.reason
+                        };
+                    });
             } catch (e) {
                 console.error("Parse error", e);
             }
@@ -2393,6 +2699,8 @@
             showScreen('state-battle');
             p1Score = 0; p2Score = 0;
             currentQIndex = 0;
+            myMistakes = [];
+            renderMistakes();
             renderScore();
             sendNextQuestion();
         });
@@ -2411,8 +2719,10 @@
                 isRevealed = true;
                 const correct = String(questions[currentQIndex].answer);
 
-                const isP1Correct = p1Answer.startsWith(correct) || p1Answer === correct;
-                const isP2Correct = p2Answer.startsWith(correct) || p2Answer === correct;
+                const isP1Correct = p1Answer.toLowerCase() === correct.toLowerCase() ||
+                    p1Answer.toLowerCase().startsWith(correct.toLowerCase());
+                const isP2Correct = p2Answer.toLowerCase() === correct.toLowerCase() ||
+                    p2Answer.toLowerCase().startsWith(correct.toLowerCase());
 
                 if (isP1Correct) p1Score++;
                 if (isP2Correct) p2Score++;
@@ -2452,16 +2762,54 @@
         }
 
         function renderQuestion(qObj) {
-            questionText.textContent = qObj.question;
+            questionText.innerHTML = qObj.question.replace(/\n/g, '<br>');
             choicesGrid.innerHTML = '';
 
-            qObj.choices.forEach(choice => {
-                const btn = document.createElement('button');
-                btn.className = 'choice-btn';
-                btn.innerHTML = `<span>${choice}</span><span class="choice-indicator"></span>`;
-                btn.onclick = () => selectAnswer(choice);
-                choicesGrid.appendChild(btn);
-            });
+            if (qObj.type === 'identification') {
+                const container = document.createElement('div');
+                container.style.width = '100%';
+                container.style.textAlign = 'center';
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = 'identification-input';
+                input.placeholder = 'Type your answer... ✨';
+                input.style.maxWidth = '400px';
+                input.style.marginBottom = '15px';
+                input.autocomplete = 'off';
+
+                const subBtn = document.createElement('button');
+                subBtn.className = 'btn btn-primary';
+                subBtn.textContent = 'Submit Answer';
+                subBtn.style.margin = '0 auto';
+                subBtn.onclick = () => {
+                    const ans = input.value.trim();
+                    if (ans) {
+                        input.disabled = true;
+                        subBtn.disabled = true;
+                        selectAnswer(ans);
+                    }
+                };
+
+                // Allow enter key
+                input.onkeypress = (e) => {
+                    if (e.key === 'Enter') subBtn.click();
+                };
+
+                container.appendChild(input);
+                container.appendChild(subBtn);
+                choicesGrid.appendChild(container);
+
+                setTimeout(() => input.focus(), 100);
+            } else {
+                qObj.choices.forEach(choice => {
+                    const btn = document.createElement('button');
+                    btn.className = 'choice-btn';
+                    btn.innerHTML = `<span>${choice}</span><span class="choice-indicator"></span>`;
+                    btn.onclick = () => selectAnswer(choice);
+                    choicesGrid.appendChild(btn);
+                });
+            }
 
             battleMsg.textContent = "Your turn... ✨";
             battleMsg.className = 'battle-status';
@@ -2485,7 +2833,8 @@
 
                 isRevealed = true;
                 const correct = String(questions[currentQIndex].answer);
-                if (p1Answer.startsWith(correct) || p1Answer === correct) {
+                if (p1Answer.toLowerCase() === correct.toLowerCase() ||
+                    p1Answer.toLowerCase().startsWith(correct.toLowerCase())) {
                     p1Score++;
                     streak++;
                     if (streak > highestStreak) highestStreak = streak;
@@ -2524,21 +2873,63 @@
         }
 
         function revealAnswers(correctAnswerStr) {
+            // Guard: in multi mode, don't reveal until both answered
+            if (!isSolo && (p1Answer === null || p2Answer === null)) {
+                console.warn("Reveal attempted before both players answered.");
+                return;
+            }
+
             const qObj = questions[currentQIndex];
             renderScore();
+
+            // Track mistakes for current user
+            // In Solo, we use p1Answer. In Multi: Host uses p1, Joiner uses p2.
+            const myAns = (isSolo || isHost) ? p1Answer : p2Answer;
+            const myCorrect = myAns && (myAns.toLowerCase() === correctAnswerStr.toLowerCase() || myAns.toLowerCase().startsWith(correctAnswerStr.toLowerCase()));
+            if (!myCorrect) {
+                addMistake(qObj, myAns);
+            }
 
             const p1CharIcon = isHost ? (myChar === 'marie' ? '🎀' : '🐤') : (opponentChar === 'marie' ? '🎀' : '🐤');
             const p2CharIcon = isHost ? (opponentChar === 'marie' ? '🎀' : '🐤') : (myChar === 'marie' ? '🎀' : '🐤');
 
-            Array.from(choicesGrid.children).forEach(btn => {
+            Array.from(choicesGrid.children).forEach(child => {
+                if (qObj.type === 'identification') {
+                    // Identification reveal
+                    const inputEl = document.getElementById('identification-input');
+                    if (inputEl) {
+                        inputEl.disabled = true;
+                        inputEl.value = `Correct: ${correctAnswerStr}`;
+                        inputEl.style.color = "var(--correct-color)";
+                    }
+
+                    const playersReveal = document.createElement('div');
+                    playersReveal.style.marginTop = '15px';
+                    playersReveal.style.fontSize = '1.4rem';
+
+                    const p1Text = p1Answer || '(No answer)';
+                    const p2Text = p2Answer || '(No answer)';
+
+                    playersReveal.innerHTML = `
+                        <div class="${isHost ? 'p1-color-text' : 'p2-color-text'}">[You]: ${isHost ? p1Text : p2Text}</div>
+                        ${!isSolo ? `<div class="${!isHost ? 'p1-color-text' : 'p2-color-text'}">[Opponent]: ${!isHost ? p1Text : p2Text}</div>` : ''}
+                    `;
+                    choicesGrid.appendChild(playersReveal);
+                    return;
+                }
+
+                const btn = child;
+                if (!btn.querySelector('.choice-indicator')) return; // skip other children like identification input
+
                 const cText = btn.firstChild.textContent;
-                const isCorrectChoice = cText.startsWith(correctAnswerStr) || cText === correctAnswerStr;
+                const isCorrectChoice = cText.toLowerCase().startsWith(correctAnswerStr.toLowerCase()) ||
+                    cText.toLowerCase() === correctAnswerStr.toLowerCase();
 
                 btn.classList.remove('selected');
 
                 let indicator = '';
-                if (cText === p1Answer) indicator += ` ${p1CharIcon}`;
-                if (cText === p2Answer) indicator += ` ${p2CharIcon}`;
+                if (p1Answer && (cText.toLowerCase() === p1Answer.toLowerCase() || cText.toLowerCase().startsWith(p1Answer.toLowerCase()))) indicator += ` ${p1CharIcon}`;
+                if (p2Answer && (cText.toLowerCase() === p2Answer.toLowerCase() || cText.toLowerCase().startsWith(p2Answer.toLowerCase()))) indicator += ` ${p2CharIcon}`;
 
                 btn.querySelector('.choice-indicator').textContent = indicator;
 
@@ -2597,11 +2988,14 @@
         }
 
         function handleNextQ() {
-            // Safety: in multiplayer, make sure both answered before proceeding
-            if (!isSolo && (p1Answer === null || p2Answer === null)) {
-                console.warn("Wait! Both players must answer first. ✨");
-                battleMsg.innerHTML = `<span style="color:var(--wrong-color)">Waiting for answers... ✨</span>`;
-                return;
+            // Safety: in multiplayer, make sure both answered AND revealed before proceeding
+            if (!isSolo) {
+                if (!isHost) return; // Only host can trigger next question
+                if (!isRevealed || p1Answer === null || p2Answer === null) {
+                    console.warn("Wait! Both players must answer first. ✨");
+                    battleMsg.innerHTML = `<span style="color:var(--wrong-color); font-weight:bold;">Wait! Both players must answer! ✨</span>`;
+                    return;
+                }
             }
 
             currentQIndex++;
@@ -2674,6 +3068,8 @@
             currentQIndex = 0;
             streak = 0;
             highestStreak = 0;
+            myMistakes = [];
+            renderMistakes();
             updateStreakUI();
             updateProgressBar();
             renderScore();
@@ -3094,6 +3490,20 @@
                 setTimeout(() => h.remove(), 1000);
             }
         }
+        // QOL: Allow Enter key to proceed to next question
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const nextBtn = document.getElementById('btn-next-q');
+                const chatInp = document.getElementById('chat-input');
+
+                // If focus is on chat, let chat handle it
+                if (document.activeElement === chatInp) return;
+
+                if (nextBtn && nextBtn.style.display === 'block') {
+                    nextBtn.click();
+                }
+            }
+        });
 
     </script>
 </body>

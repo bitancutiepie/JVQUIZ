@@ -1,0 +1,23 @@
+[
+    {
+        "type": "mcq",
+        "question": "Standard Multiple Choice Question",
+        "choices": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+        ],
+        "answer": "Option 1"
+    },
+    {
+        "type": "assertion-reason",
+        "assertion": "The Earth is round.",
+        "reason": "Gravity pulls everything towards the center.",
+        "answer": "A"
+    },
+    {
+        "type": "identification",
+        "question": "What is the Tagalog of the word 'Dead'?",
+        "answer": "Patay"
+    }
+]
