@@ -15,24 +15,24 @@
         rel="stylesheet">
     <style>
         :root {
-            /* Cohesive Marie & Tweety Palette */
-            --bg-color: #eaddf8;
-            /* Soft lilac/purple */
+            /* Cohesive Lady Bug & Cat Noir Palette */
+            --bg-color: #fdf2f4;
+            /* Soft pink/grey */
             --surface-color: #ffffff;
-            --border-color: #5d4037;
-            --text-main: #4e342e;
-            --text-light: #8d6e63;
+            --border-color: #2d3436;
+            --text-main: #2d3436;
+            --text-light: #636e72;
 
-            --btn-bg: #ffe0b2;
-            --btn-hover: #ffcc80;
-            --btn-active: #ffb74d;
+            --btn-bg: #ffeaa7;
+            --btn-hover: #fdcb6e;
+            --btn-active: #e17055;
 
-            --primary-glow: rgba(255, 141, 161, 0.4);
+            --primary-glow: rgba(233, 30, 99, 0.4);
 
-            --p1-color: #ff8da1;
-            /* Marie Pink */
-            --p2-color: #ffca28;
-            /* Tweety Yellow */
+            --p1-color: #e91e63;
+            /* Lady Bug Red */
+            --p2-color: #2ecc71;
+            /* Cat Noir Green */
 
             --correct-color: #aed581;
             --wrong-color: #ef9a9a;
@@ -217,6 +217,55 @@
             right: 12%;
             animation: wander-right 15s infinite ease-in-out;
             width: 130px;
+        }
+
+        .st9 {
+            top: 70%;
+            left: 6%;
+            animation: wander-left 16s infinite ease-in-out;
+            width: 115px;
+        }
+
+        .st10 {
+            top: 80%;
+            right: 10%;
+            animation: wander-right 17s infinite ease-in-out;
+            width: 125px;
+        }
+
+        .st11 {
+            top: 15%;
+            left: 18%;
+            animation: wander-left 18s infinite ease-in-out;
+            width: 110px;
+        }
+
+        .st12 {
+            top: 65%;
+            right: 18%;
+            animation: wander-right 19s infinite ease-in-out;
+            width: 140px;
+        }
+
+        .st13 {
+            bottom: 5%;
+            left: 20%;
+            animation: wander-left 20s infinite ease-in-out;
+            width: 120px;
+        }
+
+        .st14 {
+            bottom: 45%;
+            right: 10%;
+            animation: wander-right 21s infinite ease-in-out;
+            width: 135px;
+        }
+
+        .st15 {
+            top: 35%;
+            left: 15%;
+            animation: wander-left 22s infinite ease-in-out;
+            width: 105px;
         }
 
         @keyframes wander-left {
@@ -538,11 +587,11 @@
             height: 10px;
         }
 
-        .theme-marie::before {
+        .theme-ladybug::before {
             background: var(--p1-color);
         }
 
-        .theme-tweety::before {
+        .theme-catnoir::before {
             background: var(--p2-color);
         }
 
@@ -1236,10 +1285,19 @@
             z-index: 15;
             top: 60%;
             right: 15%;
-            animation: wander-left 10s infinite ease-in-out;
+            animation: wander-left 10s infinite ease-in-out, mail-pulse 2s infinite ease-in-out;
             cursor: pointer;
             filter: drop-shadow(4px 4px 0px var(--border-color));
-            transition: transform 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes mail-pulse {
+            0%, 100% {
+                filter: drop-shadow(4px 4px 0px var(--border-color));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px var(--p1-color)) drop-shadow(4px 4px 0px var(--border-color));
+            }
         }
 
         .floating-mail:hover {
@@ -1746,58 +1804,93 @@
     <img src="stick6.png" class="sticker st6" alt="">
     <img src="stick7.png" class="sticker st7" alt="">
     <img src="stick8.png" class="sticker st8" alt="">
-    <img src="kylala.jpg" id="st-kyla" class="sticker st-kyla" alt="Kyla" title="Kyla">
+    <img src="stick9.png" class="sticker st9" alt="">
+    <img src="stick10.png" class="sticker st10" alt="">
+    <img src="stick11.png" class="sticker st11" alt="">
+    <img src="stick12.png" class="sticker st12" alt="">
+    <img src="stick13.png" class="sticker st13" alt="">
+    <img src="stick14.png" class="sticker st14" alt="">
+    <img src="stick15.png" class="sticker st15" alt="">
+    <img src="kylalanew.png" id="st-kyla" class="sticker st-kyla" alt="Kyla" title="Kyla">
 
     <!-- Mail Letter Box -->
     <div id="st-mail" class="floating-mail" title="You have mail!">
-        <svg viewBox="0 0 100 80" width="80" height="80" style="display:block;">
-            <!-- Envelope back -->
-            <rect x="5" y="10" width="90" height="60" fill="#ffb6c1" rx="5" />
-            <!-- Letter sticking out -->
-            <rect x="15" y="5" width="70" height="30" fill="#fffafa" rx="2" />
-            <!-- Letter lines -->
-            <line x1="25" y1="12" x2="75" y2="12" stroke="#f0e6d2" stroke-width="2" />
-            <line x1="25" y1="20" x2="65" y2="20" stroke="#f0e6d2" stroke-width="2" />
-            <line x1="25" y1="28" x2="70" y2="28" stroke="#f0e6d2" stroke-width="2" />
-            <!-- Envelope front flaps -->
-            <polygon points="5,10 50,45 5,70" fill="#ff99a8" />
-            <polygon points="95,10 50,45 95,70" fill="#ff99a8" />
-            <polygon points="5,70 50,45 95,70" fill="#ff8da1" />
-            <!-- Heart Seal -->
-            <path
-                d="M50 48 A 6 6 0 0 0 44 42 A 6 6 0 0 0 38 48 Q 38 54 50 62 Q 62 54 62 48 A 6 6 0 0 0 56 42 A 6 6 0 0 0 50 48 Z"
-                fill="#ff1493" />
-        </svg>
+        <img src="mail_icon.png" alt="Mail" style="width: 80px; height: auto; display: block;">
     </div>
 
     <!-- Mail Modal -->
     <div id="mail-modal" class="modal-overlay">
         <div class="paper-letter">
-            <h1>Dear kylalalalamarie,</h1>
-            <p>just a random appreciation letter for a girl as exceptional as u <br><br>
-                I hope u know how much I am thankful for always having the chance to talk with u, to listen abt any
-                randomness that I could ever read or hear, to hear your voice when you are singing, to the sound that
-                your guitar makes, to seeeee a lot of cute cat pics throughouttt anytimeeeee, to seeeee and to crave
-                fooods that I'm always soo jealoussss, to listen to the music/artist of the one that you
-                loveeeee.<br><br>
-                If only you know how much I'm grateful that there is a personnn na nakakaalam ng mga bagay na gusto ko
-                from the small things to the biggest from the least important to the most important I hope you know na
-                kung kabag ang inabot mo kagabi or data fragmentation man yan well ang inaabot ko when it comes to this
-                type of things is na para bang nag select * ako from 1 million dataaasss, na para bang hindi na sapat
-                ang kamatis sa pag dedescribe ng pagkapula sa facial expression q pwede na ano e maging bulkan o
-                daliring naipit sa pintuan AHHAHAHAHAHAHAHAH, AAAAAA basta there are a lot of things I am grateful and
-                yung nandito is only someee of the things that always put a smile on my faceee tipong pag napangiti ako
-                di q madisable-disable yung ngiti ko pag ako talaga nagkaganong ability talagang-talaga. Taena masilayan
-                ko palang lagi mukha mo kung sa soc media nga ay mauutas na aq at di ko macontain ang expressions ko
-                kung alam mo lang kung pano pa sa personal AHAHAHAH ACT FOOL NALANG TALAGAAAA
-                AAAAAAAAAAAAAAAAAAAAAAAAA.<br><br>
-                thank u kylalalalamarie <br>
-                goodluck on this midtermssss and sana is walang mag bigay ng reason sau para umiyak<br>
-                hehehehehe <br><br>
-                - meowi, puti, lulu, mingming, mingmong</p>
-            <div style="text-align: center; margin-top: 30px;">
+            <div id="mail-page-1" style="display: none;">
+                <h1>Dear kylalalalamarie,</h1>
+                <p>just a random appreciation letter for a girl as exceptional as u <br><br>
+                    I hope u know how much I am thankful for always having the chance to talk with u, to listen abt any
+                    randomness that I could ever read or hear, to hear your voice when you are singing, to the sound
+                    that
+                    your guitar makes, to seeeee a lot of cute cat pics throughouttt anytimeeeee, to seeeee and to crave
+                    fooods that I'm always soo jealoussss, to listen to the music/artist of the one that you
+                    loveeeee.<br><br>
+                    If only you know how much I'm grateful that there is a personnn na nakakaalam ng mga bagay na gusto
+                    ko
+                    from the small things to the biggest from the least important to the most important I hope you know
+                    na
+                    kung kabag ang inabot mo kagabi or data fragmentation man yan well ang inaabot ko when it comes to
+                    this
+                    type of things is na para bang nag select * ako from 1 million dataaasss, na para bang hindi na
+                    sapat
+                    ang kamatis sa pag dedescribe ng pagkapula sa facial expression q pwede na ano e maging bulkan o
+                    daliring naipit sa pintuan AHHAHAHAHAHAHAHAH, AAAAAA basta there are a lot of things I am grateful
+                    and
+                    yung nandito is only someee of the things that always put a smile on my faceee tipong pag napangiti
+                    ako
+                    di q madisable-disable yung ngiti ko pag ako talaga nagkaganong ability talagang-talaga. Taena
+                    masilayan
+                    ko palang lagi mukha mo kung sa soc media nga ay mauutas na aq at di ko macontain ang expressions ko
+                    kung alam mo lang kung pano pa sa personal AHAHAHAH ACT FOOL NALANG TALAGAAAA
+                    AAAAAAAAAAAAAAAAAAAAAAAAA.<br><br>
+                    thank u kylalalalamarie <br>
+                    goodluck on this finalssss and sana is walang mag bigay ng reason sau para umiyak<br>
+                    hehehehehe <br><br>
+                    - meowi, puti, lulu, mingming, mingmong</p>
+            </div>
+
+            <div id="mail-page-2">
+                <div
+                    style="text-align: right; font-family: 'Caveat', cursive; font-size: 1.5rem; color: #1a237e; margin-bottom: -10px;">
+                    May 1, 2026</div>
+                <h1>Dear kylalalalamarie,</h1>
+                <p>I am writing this letter because why nottttt diz is me and I will never get tired of writing this
+                    kind of messages whenever it is about you.
+                    I just want to ask if you are okay lately? Or is there something that is wrongg deep inside but I
+                    think this is just all the workload na naiistack up satin sa dami bagaaa naman ng gawain
+                    HAHAHAHAHAHA. But if really there is something wrong I hope you can tell me and I want to listen to
+                    you regarding it.<br><br>
+
+                    You are such an entity that I cannot even fathommmmm ewan q baaaa up until now I really don't know
+                    why I'm toooo down bad for you. Even if I keep telling myself that I need to limit myself sometimes
+                    I am going beyonddd thatttt lalo na pag nakikita-kita sa personal there's always the urge for me to
+                    look out for you no matter what na para bang magnet ang atake at palagi kang hinahanap ng aking mga
+                    mata<br><br>
+
+                    And also I am very much thankful to have youuu as my companyyyy. I hope you know how such a warm
+                    feeling it is to have someone like youuuuu! Ikaw ang aking inspirationnnn not just sa mga akda na
+                    ginagawa q na kung ano man but even in real life I don't know ever since we got close by a lot I
+                    always have the urge to improve and improveeee myself even tho my original fuel is ang inggit but
+                    what is inggit if there is a person that can make me such a motivated and a jolly person<br><br>
+
+                    Thank you for everythinggggggggggggg meeee ay alwaysss hereee so plz if there is somethinggg up just
+                    tell me cutiepieeeeee<br><br>
+
+                    - meowi, puti, lulu, mingming, mingmong</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
+                <button class="btn btn-secondary" onclick="toggleMailPage()" id="btn-toggle-mail"
+                    style="font-family: 'VT323', monospace !important; max-width: 150px; font-size: 1.2rem;">Flip Page
+                    📖</button>
                 <button class="btn btn-primary" id="btn-close-mail"
-                    style="font-family: 'VT323', monospace !important; transform: rotate(1deg);">Fold & Close ✨</button>
+                    style="font-family: 'VT323', monospace !important; transform: rotate(1deg); max-width: 150px; font-size: 1.2rem;">Fold
+                    & Close ✨</button>
             </div>
         </div>
     </div>
@@ -1805,13 +1898,20 @@
     <!-- Kyla Modal -->
     <div id="kyla-modal" class="modal-overlay">
         <div class="pixel-card kyla-modal-content">
-            <h1 style="color: var(--p1-color); margin-bottom: 20px;">🎀 OMGGG 🎀</h1>
-            <p style="color: var(--text-main); font-size: 2.2rem; line-height: 1.4; text-transform: lowercase;">"why did
-                u click ur pretty face, napakastandout mo kasi noooh talagang-talaga like legit you da real gorjas kyla
-                marieee?
-                .....
-                Don't be pressured by the paces of others, just be yourself and you'll be fine. Take a rest whenever you
-                can kylalalala! "</p>
+            <h1 style="color: var(--p1-color); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                OMGGG
+                <button id="play-poem-audio" style="background: none; border: none; font-size: 2rem; cursor: pointer; animation: pulse 2s infinite;">🔊</button>
+            </h1>
+            <audio id="poem-audio" src="poemaudio.mp3"></audio>
+            <p style="color: var(--text-main); font-size: 1.4rem; line-height: 1.4; text-transform: none; max-height: 60vh; overflow-y: auto; padding-right: 10px;">HIIII GANDAAAAAA ANOOO PININDOT MO NANAMANN BA ITUU HAHAHAHAHAHAHA di mo talaga matiis sarili mong kagandahan no? <br><br>
+                Tila ako’y hihingi ng paumanhin,<br>
+                Sapagkat di ako magsasawang aminin,<br>
+                Kung gaano ka kaganda sa aking paningin,<br>
+                Na sa bawat titig, ako’y tuluyang nabibihag sa iyong damdamin.<br><br>
+                Diretso sa bawat hakbang,<br>
+                Puso ko’y palaban,<br>
+                Ngunit sa katahimikan ay unti-unting nahuhubog ang dahilan,<br>
+                Ikaw at ikaw ang siyang pinagmamasdan</p>
             <button class="btn btn-primary" id="btn-close-kyla" style="margin-top: 20px; max-width: 200px;">I knurrr
                 ✨</button>
         </div>
@@ -1821,12 +1921,14 @@
         <div class="pixel-card challenge-container">
             <div style="font-size: 4rem; margin-bottom: 15px;">🎀</div>
             <h2 class="loading-text-anim" style="font-size: 2.22rem; line-height: 1.4; margin-bottom: 25px;">
-                Advance Congratsssss at nakaraosss sa Midterm youuuu did well kylalalaaaa <33! </h2>
-                    <div class="loading-dots" style="font-size: 1.8rem; color: var(--p1-color); margin-bottom: 20px;">
-                        Setting up your workspace
-                    </div>
-                    <button class="btn btn-primary" id="btn-challenge-proceed" style="max-width: 250px;">PROCEED
-                        ✨</button>
+                Goodluck To thissss Finalssss! I hope you never lose the drivee para maging mamaw sa kung ano man ang
+                inaaral, keep it slow but still in a way that you are comfortable. Kontii nalanggg makakaraosss na
+                FIGHTINGGGGG CUTIEPIEE! </h2>
+            <div class="loading-dots" style="font-size: 1.8rem; color: var(--p1-color); margin-bottom: 20px;">
+                Preparing for the goal
+            </div>
+            <button class="btn btn-primary" id="btn-challenge-proceed" style="max-width: 250px;">PROCEED
+                ✨</button>
         </div>
     </div>
 
@@ -1841,12 +1943,12 @@
 
                 <div class="character-select">
                     <label>
-                        <input type="radio" name="char" value="marie" checked>
-                        <span>🎀 Marie</span>
+                        <input type="radio" name="char" value="ladybug" checked>
+                        <span>🐞 Lady Bug</span>
                     </label>
                     <label>
-                        <input type="radio" name="char" value="tweety">
-                        <span>🐤 Tweety</span>
+                        <input type="radio" name="char" value="catnoir">
+                        <span>🐈‍⬛ Cat Noir</span>
                     </label>
                 </div>
 
@@ -1939,15 +2041,15 @@
         <!-- State: Battle Arena -->
         <div id="state-battle" class="screen">
             <div class="header-stats">
-                <div class="player-stat theme-marie" id="stat-p1">
-                    <div class="player-avatar" id="avatar-p1">🎀</div>
+                <div class="player-stat theme-ladybug" id="stat-p1">
+                    <div class="player-avatar" id="avatar-p1">🐞</div>
                     <div class="player-name p1-color-text" id="name-p1">Player 1</div>
                     <div class="player-score">⭐ <span id="score-p1">0</span> <span id="solo-streak"
                             style="display:none; font-size:1.2rem; color: #ff8e2b; margin-left: 5px;">🔥 <span
                                 id="streak-val">0</span></span></div>
                 </div>
-                <div class="player-stat theme-tweety" id="stat-p2">
-                    <div class="player-avatar" id="avatar-p2">🐤</div>
+                <div class="player-stat theme-catnoir" id="stat-p2">
+                    <div class="player-avatar" id="avatar-p2">🐈‍⬛</div>
                     <div class="player-name p2-color-text" id="name-p2">Player 2</div>
                     <div class="player-score">⭐ <span id="score-p2">0</span></div>
                 </div>
@@ -2400,7 +2502,7 @@
 
         btnCreateRoom.addEventListener('click', () => {
             myChar = getSelectedChar();
-            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
             myName = playerNameInput.value.trim() || defName;
 
             isHost = true;
@@ -2410,7 +2512,7 @@
 
         btnJoinRoomBtn.addEventListener('click', () => {
             myChar = getSelectedChar();
-            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
             myName = playerNameInput.value.trim() || defName;
 
             isHost = false;
@@ -2421,7 +2523,7 @@
         const btnSoloMode = document.getElementById('btn-solo-mode');
         btnSoloMode.addEventListener('click', () => {
             myChar = getSelectedChar();
-            let defName = myChar === 'marie' ? 'Marie' : 'Tweety';
+            let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
             myName = playerNameInput.value.trim() || defName;
 
             isHost = false;
@@ -3133,11 +3235,11 @@
             finalNameP1.textContent = n1;
             finalNameP2.textContent = n2;
 
-            const p1Icon = isHost ? (myChar === 'marie' ? '🎀' : '🐤') : (opponentChar === 'marie' ? '🎀' : '🐤');
-            const p2Icon = isHost ? (opponentChar === 'marie' ? '🎀' : '🐤') : (myChar === 'marie' ? '🎀' : '🐤');
+            const p1Icon = isHost ? (myChar === 'ladybug' ? '🐞' : '🐈‍⬛') : (opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛');
+            const p2Icon = isHost ? (opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛') : (myChar === 'ladybug' ? '🐞' : '🐈‍⬛');
 
-            const p1Class = isHost ? (myChar === 'marie' ? 'p1-color-text' : 'p2-color-text') : (opponentChar === 'marie' ? 'p1-color-text' : 'p2-color-text');
-            const p2Class = isHost ? (opponentChar === 'marie' ? 'p1-color-text' : 'p2-color-text') : (myChar === 'marie' ? 'p1-color-text' : 'p2-color-text');
+            const p1Class = isHost ? (myChar === 'ladybug' ? 'p1-color-text' : 'p2-color-text') : (opponentChar === 'ladybug' ? 'p1-color-text' : 'p2-color-text');
+            const p2Class = isHost ? (opponentChar === 'ladybug' ? 'p1-color-text' : 'p2-color-text') : (myChar === 'ladybug' ? 'p1-color-text' : 'p2-color-text');
 
             if (p1Score > p2Score) {
                 winnerText.innerHTML = `${n1} Wins! 👑${p1Icon}`;
@@ -3217,7 +3319,7 @@
         function showStreakPop() {
             const pop = document.createElement('div');
             pop.className = 'streak-pop';
-            const charIcon = myChar === 'marie' ? '🎀' : '🐤';
+            const charIcon = myChar === 'ladybug' ? '🐞' : '🐈‍⬛';
             pop.textContent = streak >= 3 ? `${streak} STREAK!!! 🔥 ${charIcon}` : `+1 Star ✨ ${charIcon}`;
             const qBox = document.getElementById('question-text');
             qBox.appendChild(pop);
@@ -3228,7 +3330,7 @@
             for (let i = 0; i < 30; i++) {
                 const c = document.createElement('div');
                 c.className = 'confetti';
-                c.innerHTML = ['✨', '⭐', '🌸', '🎀', '🎉'][Math.floor(Math.random() * 5)];
+                c.innerHTML = ['✨', '⭐', '🌸', '🐞', '🎉'][Math.floor(Math.random() * 5)];
                 c.style.left = Math.random() * 100 + 'vw';
                 c.style.top = '-5vh';
                 c.style.fontSize = (Math.random() * 20 + 10) + 'px';
@@ -3242,7 +3344,7 @@
         function appendChat(name, text, senderChar) {
             const div = document.createElement('div');
             div.className = 'chat-msg';
-            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
+            const colorClass = (senderChar === 'ladybug') ? 'p1-color-text' : 'p2-color-text';
             div.innerHTML = `<span class="${colorClass}">[${name}]</span> ${text}`;
             chatLog.appendChild(div);
             chatLog.scrollTop = chatLog.scrollHeight;
@@ -3264,7 +3366,7 @@
         function appendGif(name, url, senderChar) {
             const div = document.createElement('div');
             div.className = 'chat-msg';
-            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
+            const colorClass = (senderChar === 'ladybug') ? 'p1-color-text' : 'p2-color-text';
             div.innerHTML = `<span class="${colorClass}">[${name}]</span> <br>
                 <img src="${url}" alt="Cat GIF" style="max-width:200px; max-height:200px; border:3px solid var(--border-color); border-radius:4px; margin-top:5px; box-shadow: 2px 2px 0px rgba(0,0,0,0.1);">`;
             chatLog.appendChild(div);
@@ -3355,8 +3457,8 @@
         function appendVoice(name, base64data, senderChar) {
             const div = document.createElement('div');
             div.className = 'chat-msg';
-            const colorClass = (senderChar === 'marie') ? 'p1-color-text' : 'p2-color-text';
-            const btnColor = (senderChar === 'marie') ? 'var(--p1-color)' : 'var(--p2-color)';
+            const colorClass = (senderChar === 'ladybug') ? 'p1-color-text' : 'p2-color-text';
+            const btnColor = (senderChar === 'ladybug') ? 'var(--p1-color)' : 'var(--p2-color)';
 
             div.innerHTML = `<span class="${colorClass}">[${name}]</span> <br>
                 <div class="chat-voice-msg">
@@ -3469,13 +3571,51 @@
         if (kylaSticker) {
             kylaSticker.addEventListener('click', () => {
                 kylaModal.classList.add('active');
+                
+                // Auto-play poem audio
+                const pAudio = document.getElementById('poem-audio');
+                const pBtn = document.getElementById('play-poem-audio');
+                if (pAudio && pAudio.paused) {
+                    pAudio.play().catch(e => console.log("Autoplay prevented:", e));
+                    if (pBtn) {
+                        pBtn.textContent = '⏸️';
+                        pBtn.style.animation = 'none';
+                    }
+                }
             });
         }
 
         if (btnCloseKyla) {
             btnCloseKyla.addEventListener('click', () => {
                 kylaModal.classList.remove('active');
+                const poemAudio = document.getElementById('poem-audio');
+                if (poemAudio) {
+                    poemAudio.pause();
+                    poemAudio.currentTime = 0;
+                }
+                const playBtn = document.getElementById('play-poem-audio');
+                if (playBtn) playBtn.textContent = '🔊';
             });
+        }
+
+        const playPoemBtn = document.getElementById('play-poem-audio');
+        const poemAudio = document.getElementById('poem-audio');
+        if (playPoemBtn && poemAudio) {
+            playPoemBtn.addEventListener('click', () => {
+                if (poemAudio.paused) {
+                    poemAudio.play();
+                    playPoemBtn.textContent = '⏸️';
+                    playPoemBtn.style.animation = 'none';
+                } else {
+                    poemAudio.pause();
+                    playPoemBtn.textContent = '🔊';
+                    playPoemBtn.style.animation = 'pulse 2s infinite';
+                }
+            });
+            poemAudio.onended = () => {
+                playPoemBtn.textContent = '🔊';
+                playPoemBtn.style.animation = 'pulse 2s infinite';
+            };
         }
 
         const mailSticker = document.getElementById('st-mail');
@@ -3506,6 +3646,12 @@
 
                 // Show modal
                 mailModal.classList.add('active');
+
+                // Reset to newest page
+                currentMailPage = 2;
+                document.getElementById('mail-page-1').style.display = 'none';
+                document.getElementById('mail-page-2').style.display = 'block';
+                document.getElementById('btn-toggle-mail').innerHTML = 'Flip Page 📖';
             });
         }
 
@@ -3513,6 +3659,24 @@
             btnCloseMail.addEventListener('click', () => {
                 mailModal.classList.remove('active');
             });
+        }
+
+        let currentMailPage = 2;
+        function toggleMailPage() {
+            const p1 = document.getElementById('mail-page-1');
+            const p2 = document.getElementById('mail-page-2');
+            const btn = document.getElementById('btn-toggle-mail');
+            if (currentMailPage === 1) {
+                p1.style.display = 'none';
+                p2.style.display = 'block';
+                currentMailPage = 2;
+                btn.innerHTML = 'Flip Page 📖';
+            } else {
+                p1.style.display = 'block';
+                p2.style.display = 'none';
+                currentMailPage = 1;
+                btn.innerHTML = 'Go Back 📖';
+            }
         }
 
         (function autoScan() {
