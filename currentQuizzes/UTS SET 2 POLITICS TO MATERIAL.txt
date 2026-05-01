@@ -1,0 +1,277 @@
+[
+  {
+    "type": "mcq",
+    "question": "Which term refers to the exercise and distribution of power within a society?",
+    "choices": ["Governance", "Politics", "Active Citizenship", "Social Identity"],
+    "answer": "Politics"
+  },
+  {
+    "type": "mcq",
+    "question": "The way your personal beliefs, values, and actions relate to governance is called your:",
+    "choices": ["Material Self", "Integrated Self", "Political Self", "Self-Concept"],
+    "answer": "Political Self"
+  },
+  {
+    "type": "mcq",
+    "question": "Active Citizenship is defined as direct participation in civic life through:",
+    "choices": ["Complaining about issues", "Passive awareness", "Voting, advocacy, and community engagement", "Following social media trends"],
+    "answer": "Voting, advocacy, and community engagement"
+  },
+  {
+    "type": "mcq",
+    "question": "The concept 'The Personal is Political' suggests that your daily choices reflect your:",
+    "choices": ["Economic status", "Political values", "Biological traits", "Social popularity"],
+    "answer": "Political values"
+  },
+  {
+    "type": "mcq",
+    "question": "According to the reviewer, engagement is an expression of:",
+    "choices": ["Wealth", "Power", "Conformity", "Legal obligation only"],
+    "answer": "Power"
+  },
+  {
+    "type": "mcq",
+    "question": "Engagement early in life that creates long-term societal shifts is known as:",
+    "choices": ["Youth Impact", "Political Power", "Fluidity", "External Validation"],
+    "answer": "Youth Impact"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following is considered an 'Important Distinction' regarding participation?",
+    "choices": ["Voting alone = Full engagement", "Passive awareness = Active citizenship", "Complaining ≠ Participation", "Identity = Possessions"],
+    "answer": "Complaining ≠ Participation"
+  },
+  {
+    "type": "mcq",
+    "question": "Who suggested that 'We are what we have', implying possessions are an extension of identity?",
+    "choices": ["Sigmund Freud", "Russell Belk", "Giddens", "Viktor Frankl"],
+    "answer": "Russell Belk"
+  },
+  {
+    "type": "mcq",
+    "question": "Using products and brands to express who you are is the definition of:",
+    "choices": ["Consumerism", "Material Self", "Consumer Identity", "Social Identity"],
+    "answer": "Consumer Identity"
+  },
+  {
+    "type": "mcq",
+    "question": "An overemphasis on buying as a means to find happiness or status is called:",
+    "choices": ["Utility", "Consumerism", "Significance", "Active Citizenship"],
+    "answer": "Consumerism"
+  },
+  {
+    "type": "mcq",
+    "question": "In the framework of value, food and shelter are categorized as:",
+    "choices": ["Wants", "Needs", "Significance", "Luxuries"],
+    "answer": "Needs"
+  },
+  {
+    "type": "mcq",
+    "question": "Value based on functional use is called ____, while value based on symbolic meaning is called ____.",
+    "choices": ["Significance; Utility", "Needs; Wants", "Utility; Significance", "Wants; Needs"],
+    "answer": "Utility; Significance"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following is a key reminder from the Material Self section?",
+    "choices": ["Expensive = Necessary", "Identity = Possessions", "Expensive ≠ Necessary", "Identity = Brands"],
+    "answer": "Expensive ≠ Necessary"
+  },
+  {
+    "type": "mcq",
+    "question": "Social Identity Theory suggests that our sense of self is derived from:",
+    "choices": ["Our DNA", "The groups we belong to", "The money we earn", "Our physical appearance"],
+    "answer": "The groups we belong to"
+  },
+  {
+    "type": "mcq",
+    "question": "The internal map of how you see yourself is known as your:",
+    "choices": ["Social Identity", "Self-Concept", "Consumer Identity", "External Validation"],
+    "answer": "Self-Concept"
+  },
+  {
+    "type": "mcq",
+    "question": "What happens when self-worth becomes dependent on the approval of others?",
+    "choices": ["Self-Awareness", "Independence", "External Validation", "Critical Thinking"],
+    "answer": "External Validation"
+  },
+  {
+    "type": "mcq",
+    "question": "Identity is described as 'Fluid' because it:",
+    "choices": ["Is fixed from birth", "Changes based on context and growth", "Is defined only by biology", "Is permanent and unchanging"],
+    "answer": "Changes based on context and growth"
+  },
+  {
+    "type": "mcq",
+    "question": "Group membership is beneficial because it boosts:",
+    "choices": ["Confusion and doubt", "Confidence and security", "Consumerism and status", "External validation only"],
+    "answer": "Confidence and security"
+  },
+  {
+    "type": "mcq",
+    "question": "The risk of overdependence on groups is the loss of:",
+    "choices": ["Security", "Social Status", "Individuality", "Wealth"],
+    "answer": "Individuality"
+  },
+  {
+    "type": "mcq",
+    "question": "An 'Integrated Self' successfully harmonizes which three aspects?",
+    "choices": ["Political, Physical, Material", "Social, Religious, Financial", "Biological, Sexual, Mental", "National, Cultural, Local"],
+    "answer": "Political, Physical, Material"
+  },
+  {
+    "type": "mcq",
+    "question": "An integrated self possesses ____, meaning they understand their own motivations.",
+    "choices": ["Independence", "Self-Awareness", "Critical Thinking", "Fluidity"],
+    "answer": "Self-Awareness"
+  },
+  {
+    "type": "mcq",
+    "question": "The ability to evaluate information rather than following trends blindly is called:",
+    "choices": ["Consumer Identity", "Active Citizenship", "Critical Thinking", "Significance"],
+    "answer": "Critical Thinking"
+  },
+  {
+    "type": "mcq",
+    "question": "Decisions of an integrated self are driven by internal ethics, meaning they are:",
+    "choices": ["Wealth-Based", "Values-Based", "Trend-Based", "Media-Based"],
+    "answer": "Values-Based"
+  },
+  {
+    "type": "mcq",
+    "question": "A person with a confused or unstable identity is known as having a/an:",
+    "choices": ["Fragmented Self", "Integrated Self", "Spiritual Self", "Social Self"],
+    "answer": "Fragmented Self"
+  },
+  {
+    "type": "mcq",
+    "question": "The Fragmented Self is overdependent on which of the following for self-worth?",
+    "choices": ["Internal ethics", "Media, peers, and possessions", "Self-awareness", "Critical thinking"],
+    "answer": "Media, peers, and possessions"
+  },
+  {
+    "type": "identification",
+    "question": "The exercise and distribution of power within a society.",
+    "answer": "Politics"
+  },
+  {
+    "type": "identification",
+    "question": "Direct participation in civic life through voting, advocacy, and community engagement.",
+    "answer": "Active Citizenship"
+  },
+  {
+    "type": "identification",
+    "question": "The concept that your daily choices (like what you buy) reflect your political values.",
+    "answer": "The Personal is Political"
+  },
+  {
+    "type": "identification",
+    "question": "The specific term for engagement in society being an expression of power rather than just a legal obligation.",
+    "answer": "Participation as Power"
+  },
+  {
+    "type": "identification",
+    "question": "Engagement early in life that creates long-term societal shifts.",
+    "answer": "Youth Impact"
+  },
+  {
+    "type": "identification",
+    "question": "The scholar who said 'We are what we have.'",
+    "answer": "Russell Belk"
+  },
+  {
+    "type": "identification",
+    "question": "The idea that possessions are an extension of one's identity.",
+    "answer": "Material Self"
+  },
+  {
+    "type": "identification",
+    "question": "The term for using products and brands to express who you are.",
+    "answer": "Consumer Identity"
+  },
+  {
+    "type": "identification",
+    "question": "An overemphasis on buying as a means to find happiness or status.",
+    "answer": "Consumerism"
+  },
+  {
+    "type": "identification",
+    "question": "Category for survival items like food and shelter.",
+    "answer": "Needs"
+  },
+  {
+    "type": "identification",
+    "question": "Category for luxury or desired items.",
+    "answer": "Wants"
+  },
+  {
+    "type": "identification",
+    "question": "The framework of value based on functional use.",
+    "answer": "Utility"
+  },
+  {
+    "type": "identification",
+    "question": "The framework of value based on symbolic meaning.",
+    "answer": "Significance"
+  },
+  {
+    "type": "identification",
+    "question": "This theory states that our sense of self is derived from the groups we belong to.",
+    "answer": "Social Identity Theory"
+  },
+  {
+    "type": "identification",
+    "question": "The internal map of how you see yourself.",
+    "answer": "Self-Concept"
+  },
+  {
+    "type": "identification",
+    "question": "The term for when self-worth becomes dependent on the approval of others.",
+    "answer": "External Validation"
+  },
+  {
+    "type": "identification",
+    "question": "The characteristic of identity suggesting it is not fixed and changes based on context.",
+    "answer": "Fluidity"
+  },
+  {
+    "type": "identification",
+    "question": "The risk associated with overdependence on groups.",
+    "answer": "Loss of individuality"
+  },
+  {
+    "type": "identification",
+    "question": "A person who has harmonized their political, physical, and material aspects.",
+    "answer": "Integrated Self"
+  },
+  {
+    "type": "identification",
+    "question": "The characteristic of an integrated self that understands their own motivations.",
+    "answer": "Self-Awareness"
+  },
+  {
+    "type": "identification",
+    "question": "The characteristic of making informed decisions despite external pressure.",
+    "answer": "Independence"
+  },
+  {
+    "type": "identification",
+    "question": "The ability to evaluate information rather than following trends blindly.",
+    "answer": "Critical Thinking"
+  },
+  {
+    "type": "identification",
+    "question": "Decisions that are driven by internal ethics rather than material gain.",
+    "answer": "Values-Based"
+  },
+  {
+    "type": "identification",
+    "question": "The opposite of the Integrated Self, characterized by an unstable identity.",
+    "answer": "Fragmented Self"
+  },
+  {
+    "type": "identification",
+    "question": "The feeling boosted by group membership alongside confidence.",
+    "answer": "Security"
+  }
+]

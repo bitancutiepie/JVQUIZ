@@ -1769,10 +1769,28 @@
             box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
         }
 
-        .judge-btn:hover {
-            background: var(--correct-color);
-            color: white;
-            border-color: #006400;
+        .preloaded-btn {
+            background: #fffafa;
+            border: 2px solid var(--border-color);
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--border-color);
+            transition: all 0.2s;
+            font-family: 'VT323', monospace;
+            text-transform: uppercase;
+        }
+
+        .preloaded-btn:hover {
+            background: #ffe4e1;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0px var(--border-color);
+        }
+
+        .preloaded-btn.selected {
+            background: var(--p1-color);
+            color: #fff;
+            border-color: var(--border-color);
         }
     </style>
     <!-- PeerJS -->
@@ -1983,6 +2001,11 @@
                 </div>
                 <input type="file" id="file-input" accept=".json,.txt" style="display:none">
 
+                <div id="host-preloaded-container" style="display:none; margin-bottom: 20px;">
+                    <p style="font-size: 1.4rem; margin-bottom: 10px; color: var(--p1-color);">Or pick a preloaded set: ✨</p>
+                    <div id="host-preloaded-list" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;"></div>
+                </div>
+
                 <span class="toggle-paste-btn" onclick="togglePaste('host')">Or paste text instead? ✨</span>
                 <textarea id="host-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
                 <button class="btn btn-secondary" id="btn-confirm-host-paste"
@@ -2023,6 +2046,11 @@
                     <div id="solo-drop-label">Drop Quiz JSON Here<br>or Click</div>
                 </div>
                 <input type="file" id="solo-file-input" accept=".json,.txt" style="display:none">
+
+                <div id="solo-preloaded-container" style="display:none; margin-bottom: 20px;">
+                    <p style="font-size: 1.4rem; margin-bottom: 10px; color: var(--p1-color);">Or pick a preloaded set: ✨</p>
+                    <div id="solo-preloaded-list" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;"></div>
+                </div>
 
                 <span class="toggle-paste-btn" onclick="togglePaste('solo')">Or paste text instead? ✨</span>
                 <textarea id="solo-paste-box" class="paste-area" placeholder="Paste your JSON here..."></textarea>
@@ -3728,9 +3756,68 @@
                 .then(res => res.json())
                 .then(manifest => {
                     if (manifest && manifest.length > 0) {
+                        const hostContainer = document.getElementById('host-preloaded-container');
+                        const hostList = document.getElementById('host-preloaded-list');
+                        const soloContainer = document.getElementById('solo-preloaded-container');
+                        const soloList = document.getElementById('solo-preloaded-list');
+
+                        if (hostContainer) hostContainer.style.display = 'block';
+                        if (soloContainer) soloContainer.style.display = 'block';
+
+                        manifest.forEach(path => {
+                            // Extract filename for display
+                            const parts = path.split('/');
+                            const filename = parts[parts.length - 1].replace('.json', '').replace('.txt', '');
+
+                            // Create button for host lobby
+                            const hBtn = document.createElement('button');
+                            hBtn.className = 'preloaded-btn';
+                            hBtn.textContent = filename;
+                            hBtn.onclick = () => loadPreloadedQuiz(path, 'host', hBtn);
+                            if (hostList) hostList.appendChild(hBtn);
+
+                            // Create button for solo lobby
+                            const sBtn = document.createElement('button');
+                            sBtn.className = 'preloaded-btn';
+                            sBtn.textContent = filename;
+                            sBtn.onclick = () => loadPreloadedQuiz(path, 'solo', sBtn);
+                            if (soloList) soloList.appendChild(sBtn);
+                        });
                     }
-                }).catch(() => { });
+                }).catch((err) => { console.log("Autoscan error:", err); });
         })();
+
+        function loadPreloadedQuiz(path, mode, btn) {
+            // UI feedback
+            const listId = mode === 'host' ? 'host-preloaded-list' : 'solo-preloaded-list';
+            const list = document.getElementById(listId);
+            if (list) {
+                Array.from(list.children).forEach(child => child.classList.remove('selected'));
+            }
+            btn.classList.add('selected');
+
+            const statusEl = mode === 'host' ? hostStatus : soloStatus;
+            statusEl.innerHTML = `Loading ${path}... <span class="loading-dots"></span>`;
+
+            fetch(path)
+                .then(res => res.json())
+                .then(parsed => {
+                    questions = parsed;
+                    if (mode === 'host') {
+                        hostStatus.innerHTML = `${parsed.length} questions loaded from preloaded set! ✨`;
+                        btnStartGame.style.display = 'block';
+                        dropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+                    } else {
+                        soloStatus.innerHTML = `${parsed.length} questions loaded from preloaded set! ✨`;
+                        btnStartSolo.style.display = 'block';
+                        soloDropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+                    }
+                })
+                .catch(err => {
+                    console.error("Failed to load preloaded quiz:", err);
+                    statusEl.innerHTML = `<span style="color:var(--wrong-color)">Error loading ${path} 😿</span>`;
+                });
+        }
 
         // Theme Toggle Logic
         const themeToggle = document.getElementById('theme-toggle');

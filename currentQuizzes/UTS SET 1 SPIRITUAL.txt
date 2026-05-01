@@ -1,0 +1,277 @@
+[
+  {
+    "type": "mcq",
+    "question": "According to Giddens (2006), religion is a cultural system of commonly shared:",
+    "choices": ["Laws and traditions", "Beliefs and rituals", "Power and governance", "Superstitions and magic"],
+    "answer": "Beliefs and rituals"
+  },
+  {
+    "type": "mcq",
+    "question": "The Latin word 'Anima', which is the root of the word Animism, means:",
+    "choices": ["Nature or Earth", "God or Creator", "Breath or Soul", "Ancient or Old"],
+    "answer": "Breath or Soul"
+  },
+  {
+    "type": "mcq",
+    "question": "Which archaeological artifact serves as evidence that early Filipinos believed in life after death?",
+    "choices": ["Bul-ol", "Manunggul Jar", "Larawan", "Likha"],
+    "answer": "Manunggul Jar"
+  },
+  {
+    "type": "mcq",
+    "question": "In the Pre-Colonial Period, ancestors and nature spirits were called:",
+    "choices": ["Anitos", "Bul-ol", "Diwata", "Likha"],
+    "answer": "Anitos"
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the 'Almighty God' in the ancient Filipino pantheon?",
+    "choices": ["Agni", "Bathala", "Mandarangan", "Sidapa"],
+    "answer": "Bathala"
+  },
+  {
+    "type": "mcq",
+    "question": "Which deity is recognized as the God of War?",
+    "choices": ["Sidapa", "Siginarugan", "Mandarangan", "Agni"],
+    "answer": "Mandarangan"
+  },
+  {
+    "type": "mcq",
+    "question": "Lalahon is known as the God of:",
+    "choices": ["Harvest", "Fire", "Hell", "Death"],
+    "answer": "Harvest"
+  },
+  {
+    "type": "mcq",
+    "question": "The belief in only one God with three personas (Father, Son, and Holy Spirit) is known as:",
+    "choices": ["Animism", "Polytheism", "Monotheism", "Logotherapy"],
+    "answer": "Monotheism"
+  },
+  {
+    "type": "mcq",
+    "question": "What are the two essential components of rituals used to maintain balance with the spirit world?",
+    "choices": ["Baptism and Prayer", "Dance and Chants", "Fiestas and Sinakulo", "Sacrifice and Voodoo"],
+    "answer": "Dance and Chants"
+  },
+  {
+    "type": "mcq",
+    "question": "According to Frankle and Stein (2005), a magician differs from a sorcerer because a magician:",
+    "choices": ["Works for the public good", "Works in secret", "Is an evil figure", "Uses carnivorous beetles"],
+    "answer": "Works for the public good"
+  },
+  {
+    "type": "mcq",
+    "question": "A person who is 'seeking unto the dead' is referred to as a:",
+    "choices": ["Wizard", "Necromancer", "Magician", "Albulario"],
+    "answer": "Necromancer"
+  },
+  {
+    "type": "mcq",
+    "question": "In the practice of Mambabarang, the target of the sorcery is called the:",
+    "choices": ["Mangkukulam", "Albulario", "Binarang", "Anito"],
+    "answer": "Binarang"
+  },
+  {
+    "type": "mcq",
+    "question": "Which mythical creature is known for sucking the blood of victims from their shadows?",
+    "choices": ["Aswang", "Manananggal", "Sigbin", "Tikbalang"],
+    "answer": "Sigbin"
+  },
+  {
+    "type": "mcq",
+    "question": "The flesh-eating shapeshifter that hunts pregnant women and is also called 'tiktik' is the:",
+    "choices": ["Sigbin", "Aswang", "Kapre", "Dwende"],
+    "answer": "Aswang"
+  },
+  {
+    "type": "mcq",
+    "question": "Viktor Frankl's psychological theory is called:",
+    "choices": ["Cognitive Therapy", "Behavioral Therapy", "Logotherapy", "Animism"],
+    "answer": "Logotherapy"
+  },
+  {
+    "type": "mcq",
+    "question": "Logotherapy is based on the premise that humans are motivated by a:",
+    "choices": ["Will to power", "Will to pleasure", "Will to meaning", "Will to survive"],
+    "answer": "Will to meaning"
+  },
+  {
+    "type": "mcq",
+    "question": "Which region's people perform the 'Pilaton' ritual before building a house?",
+    "choices": ["Ifugao", "Zambales", "Bisaya", "Tagalog"],
+    "answer": "Zambales"
+  },
+  {
+    "type": "mcq",
+    "question": "The Bisayan term for images or carvings used to remember the dead is:",
+    "choices": ["Larawan", "Likha", "Diwata", "Bul-ol"],
+    "answer": "Diwata"
+  },
+  {
+    "type": "mcq",
+    "question": "An evil figure who works in secret and whose work is often antisocial is a:",
+    "choices": ["Magician", "Sorcerer", "Wizard", "Albulario"],
+    "answer": "Sorcerer"
+  },
+  {
+    "type": "mcq",
+    "question": "Mangkukulam is derived from the Tagalog word 'Kulam', which means:",
+    "choices": ["Medicine", "Voodoo or witchcraft", "Prayer", "Nature spirits"],
+    "answer": "Voodoo or witchcraft"
+  },
+  {
+    "type": "mcq",
+    "question": "A Filipino practitioner of traditional medicine or a 'folk healer' is called a/an:",
+    "choices": ["Mambabarang", "Sorcerer", "Albulario", "Necromancer"],
+    "answer": "Albulario"
+  },
+  {
+    "type": "mcq",
+    "question": "The Ifugao term for images or carvings to remember the dead is:",
+    "choices": ["Likha", "Bul-ol", "Diwata", "Anito"],
+    "answer": "Bul-ol"
+  },
+  {
+    "type": "mcq",
+    "question": "Religion provides ultimate meaning by creating a reality that is sacred, supernatural, and:",
+    "choices": ["All-encompassing", "Scientifically proven", "Politically driven", "Tangible"],
+    "answer": "All-encompassing"
+  },
+  {
+    "type": "mcq",
+    "question": "Which deity is the God of Death?",
+    "choices": ["Siginarugan", "Lalahon", "Sidapa", "Mandarangan"],
+    "answer": "Sidapa"
+  },
+  {
+    "type": "mcq",
+    "question": "The religious passion plays introduced during the Colonization Period are called:",
+    "choices": ["Pilaton", "Fiestas", "Sinakulo", "Baptism"],
+    "answer": "Sinakulo"
+  },
+  {
+    "type": "identification",
+    "question": "The belief that all objects, living and non-living, have spirits.",
+    "answer": "Animism"
+  },
+  {
+    "type": "identification",
+    "question": "The Tagalog term for images or carvings made of gold or stone to remember the dead.",
+    "answer": "Larawan / Likha"
+  },
+  {
+    "type": "identification",
+    "question": "Early Filipino practice of praising the spirit of ancestors and nature.",
+    "answer": "Cult of the Dead"
+  },
+  {
+    "type": "identification",
+    "question": "The ancient Filipino God of Fire.",
+    "answer": "Agni"
+  },
+  {
+    "type": "identification",
+    "question": "The ancient Filipino God of Hell.",
+    "answer": "Siginarugan"
+  },
+  {
+    "type": "identification",
+    "question": "Any belief or practice considered irrational or supernatural by non-practitioners.",
+    "answer": "Superstition"
+  },
+  {
+    "type": "identification",
+    "question": "The power to influence events using mysterious or supernatural forces.",
+    "answer": "Magic"
+  },
+  {
+    "type": "identification",
+    "question": "The Filipino term for a sorcerer who uses malignant sorcery or 'familiar spirits' like carnivorous beetles.",
+    "answer": "Balang"
+  },
+  {
+    "type": "identification",
+    "question": "Someone who knows the secrets of the nonmaterial/unseen world.",
+    "answer": "Wizard"
+  },
+  {
+    "type": "identification",
+    "question": "A Filipino folk healer also known as a 'Mananambal'.",
+    "answer": "Albulario"
+  },
+  {
+    "type": "identification",
+    "question": "This creature comes out at night, walks backwards, and can become invisible.",
+    "answer": "Sigbin"
+  },
+  {
+    "type": "identification",
+    "question": "Another name for an Aswang, based on the sounds it is believed to make.",
+    "answer": "tiktik / wak wak"
+  },
+  {
+    "type": "identification",
+    "question": "Viktor Frankl's premise that humans are motivated by a 'will to ____.'",
+    "answer": "meaning"
+  },
+  {
+    "type": "identification",
+    "question": "An archaeological jar that serves as evidence of early Filipino belief in life after death.",
+    "answer": "Manunggul Jar"
+  },
+  {
+    "type": "identification",
+    "question": "Specific ritual performed in Zambales before building a house.",
+    "answer": "Pilaton"
+  },
+  {
+    "type": "identification",
+    "question": "Ancestral spirits to whom sacrifices and prayers were offered for guidance.",
+    "answer": "Anitos"
+  },
+  {
+    "type": "identification",
+    "question": "A person who practices sorcery or witchcraft; the one who targets the 'Binarang'.",
+    "answer": "Mambabarang"
+  },
+  {
+    "type": "identification",
+    "question": "The belief in only one God, introduced during the colonization period.",
+    "answer": "Monotheism"
+  },
+  {
+    "type": "identification",
+    "question": "Religion is a cultural system of commonly shared beliefs and rituals according to this scholar (2006).",
+    "answer": "Giddens"
+  },
+  {
+    "type": "identification",
+    "question": "One who is 'seeking unto the dead'.",
+    "answer": "Necromancer"
+  },
+  {
+    "type": "identification",
+    "question": "The only Christian country in Southeast Asia as a result of Spanish colonization.",
+    "answer": "Philippines"
+  },
+  {
+    "type": "identification",
+    "question": "The essential components of rituals used to maintain balance between man, nature, and the spirit world.",
+    "answer": "Dance and chants"
+  },
+  {
+    "type": "identification",
+    "question": "The Bisayan word for carvings to remember the dead.",
+    "answer": "Diwata"
+  },
+  {
+    "type": "identification",
+    "question": "The Latin word for 'breath' or 'soul'.",
+    "answer": "Anima"
+  },
+  {
+    "type": "identification",
+    "question": "The psychological theory suggesting humans find meaning even in difficult circumstances.",
+    "answer": "Logotherapy"
+  }
+]
