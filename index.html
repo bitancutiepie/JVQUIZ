@@ -54,6 +54,7 @@
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
+            flex-direction: row; /* Desktop default side-by-side if needed, but app is max-width 800px */
             align-items: center;
             justify-content: center;
             overflow-x: hidden;
@@ -755,6 +756,137 @@
                 font-size: 1.4rem;
                 padding: 15px;
                 margin-bottom: 15px;
+            }
+
+            /* Responsive Body for Mobile */
+            body {
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 10px;
+                background-attachment: scroll;
+            }
+
+            #app {
+                padding: 10px;
+                padding-bottom: 160px; /* More space for fixed elements */
+                max-width: 100%;
+            }
+
+            .pixel-card {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Reform Recap (Mistakes) Panel for Mobile - Floating Badge */
+            .mistakes-panel {
+                position: fixed !important;
+                top: 15px !important;
+                right: 15px !important;
+                bottom: auto !important;
+                left: auto !important;
+                width: auto !important;
+                min-width: 60px !important;
+                max-width: 250px !important;
+                margin: 0 !important;
+                z-index: 4500 !important;
+                border-radius: 12px !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                backdrop-filter: blur(5px) !important;
+                box-shadow: 4px 4px 0px var(--border-color) !important;
+                display: none;
+                flex-direction: column;
+                padding: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mistakes-panel.active {
+                display: flex !important;
+            }
+
+            .mistakes-panel.minimized {
+                width: 60px !important;
+                height: 60px !important;
+                border-radius: 50% !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .mistakes-panel.minimized .mistakes-title span {
+                display: none; /* Hide "Recap" text when minimized */
+            }
+
+            .mistakes-panel.minimized .mistakes-title {
+                border-bottom: none !important;
+                margin-bottom: 0 !important;
+                padding: 0 !important;
+                justify-content: center !important;
+            }
+
+            .mistakes-panel.minimized .toggle-mistakes-btn {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--p1-color) !important;
+                font-size: 2rem !important;
+                box-shadow: none !important;
+            }
+
+            /* Custom badge for count when minimized */
+            .mistakes-panel.minimized::after {
+                content: attr(data-count);
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: var(--wrong-color);
+                color: white;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9rem;
+                font-weight: bold;
+                border: 2px solid white;
+                z-index: 4501;
+            }
+
+            .mistakes-panel:not(.minimized) {
+                width: calc(100% - 30px) !important;
+                max-width: 320px !important;
+                border-radius: 12px !important;
+                padding: 10px !important;
+            }
+
+            .mistakes-title {
+                padding: 5px 10px !important;
+                margin-bottom: 8px !important;
+                font-size: 1.2rem !important;
+            }
+
+            .mistakes-grid {
+                grid-template-columns: repeat(6, 1fr) !important;
+                max-height: 120px !important;
+                padding: 0 5px !important;
+            }
+
+            .mistake-detail-area {
+                margin: 5px !important;
+                font-size: 1rem !important;
+                max-height: 150px !important;
             }
 
             .choices-grid {
@@ -1744,12 +1876,13 @@
 
         @media (max-width: 1000px) {
             .mistakes-panel {
-                position: static;
+                position: relative;
                 width: 100%;
                 max-width: 800px;
                 margin: 20px auto;
                 max-height: none;
                 box-shadow: var(--pixel-shadow-sm);
+                z-index: 100;
             }
 
             .mistakes-panel.minimized {
@@ -1801,10 +1934,10 @@
     <button class="theme-toggle-btn" id="theme-toggle">🌙 Switch to Plain</button>
 
     <!-- Mistakes Panel -->
-    <div id="mistakes-panel" class="mistakes-panel" onclick="handleMistakePanelClick(event)">
+    <div id="mistakes-panel" class="mistakes-panel minimized" onclick="handleMistakePanelClick(event)">
         <h3 class="mistakes-title">
             <span>Recap 🙀<small id="mistakes-count-badge"></small></span>
-            <button class="toggle-mistakes-btn" onclick="toggleMistakesMinimize(event)">_</button>
+            <button class="toggle-mistakes-btn" onclick="toggleMistakesMinimize(event)">+</button>
         </h3>
         <div id="mistakes-grid" class="mistakes-grid"></div>
         <div id="mistake-detail-area" class="mistake-detail-area">
@@ -2409,6 +2542,8 @@
             }
 
             if (countBadge) countBadge.textContent = ` (${myMistakes.length})`;
+            const panel = document.getElementById('mistakes-panel');
+            if (panel) panel.setAttribute('data-count', myMistakes.length);
 
             myMistakes.forEach((m, idx) => {
                 const btn = document.createElement('button');
