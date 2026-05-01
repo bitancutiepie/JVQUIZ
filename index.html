@@ -2712,6 +2712,7 @@
         });
         btnHome.addEventListener('click', () => {
             if (peer) { peer.destroy(); peer = null; }
+            conn = null;
             resetSoloUI();
             showScreen('state-start');
         });
@@ -2843,9 +2844,15 @@
             });
 
             peer.on('connection', (c) => {
-                if (conn) { c.close(); return; }
+                // If we already have an active connection, close the new one
+                if (conn && conn.open) { 
+                    c.on('open', () => c.send({type: 'ERROR', msg: 'Host is already in a match!'}));
+                    setTimeout(() => c.close(), 500);
+                    return; 
+                }
                 conn = c;
                 setupConnection();
+                // If questions are already loaded, this will show the start button
                 checkHostReady();
             });
 
@@ -2860,10 +2867,17 @@
         }
 
         function checkHostReady() {
-            if (conn && conn.open && questions.length > 0) {
-                btnStartGame.style.display = 'inline-flex';
+            if (conn && conn.open) {
+                if (questions.length > 0) {
+                    btnStartGame.style.display = 'inline-flex';
+                    hostStatus.innerHTML = `Ready to start with ${opponentName || 'Player 2'}! ✨`;
+                } else {
+                    btnStartGame.style.display = 'none';
+                    hostStatus.innerHTML = `<span style="color:var(--p1-color)">${opponentName || 'Player 2'} joined! Now load a quiz set below to start. ✨</span>`;
+                }
             } else {
                 btnStartGame.style.display = 'none';
+                if (isHost) hostStatus.innerHTML = `Waiting for player 2<span class="loading-dots"></span>`;
             }
         }
 
@@ -2901,8 +2915,14 @@
             });
 
             conn.on('close', () => {
-                alert("Opponent disconnected! ✨");
-                showScreen('state-start');
+                alert("Connection lost! Returning to menu. ✨");
+                location.reload(); // Hard reset to clear all states
+            });
+
+            conn.on('error', (err) => {
+                console.error("Connection error:", err);
+                const status = isHost ? hostStatus : joinStatus;
+                status.innerHTML = `<span style="color:var(--wrong-color)">Connection error! ✨</span>`;
             });
         }
 
@@ -2924,9 +2944,11 @@
             if (data.type === 'JOIN_INFO') {
                 opponentName = data.name;
                 opponentChar = data.char;
-                let icon = opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛';
-                hostStatus.innerHTML = `${opponentName} joined! ${icon}`;
-                hostStatus.classList.remove('loading-dots');
+                checkHostReady(); // Refresh status with name
+            }
+            else if (data.type === 'ERROR') {
+                joinStatus.innerHTML = `<span style="color:var(--wrong-color)">${data.msg}</span>`;
+                if (peer) peer.destroy();
             }
             else if (data.type === 'START') {
                 questions = data.questions;
