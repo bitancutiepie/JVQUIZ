@@ -1,0 +1,62 @@
+[
+  {
+    "type": "mcq",
+    "question": "Research Problem: Is there a significant difference in the test scores of students taught using traditional lectures vs. those taught using an AI chatbot? IV: Teaching Method, DV: Test scores. What is the appropriate test?",
+    "choices": ["Paired T-test", "Independent T-test", "Chi-square", "Pearson r"],
+    "answer": "Independent T-test"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant relationship between hours spent on social media and final exam anxiety levels? Ho?",
+    "choices": ["There is no relationship", "There is a significant relationship", "Anxiety is higher than social media", "Hours equal anxiety"],
+    "answer": "There is no relationship"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant difference in the weight loss of people using three different types of diets (Keto, Vegan, Paleo)? What is the appropriate test?",
+    "choices": ["ANOVA", "Independent T-test", "Pearson r", "Chi-square"],
+    "answer": "ANOVA"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant difference in blood pressure before and after a yoga session? IV: Yoga session, DV: Blood pressure. What is the appropriate test?",
+    "choices": ["ANOVA", "Paired T-test", "Chi-square", "Pearson r"],
+    "answer": "Paired T-test"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant relationship between monthly household income and number of streaming subscriptions? Ha?",
+    "choices": ["There is no significant relationship", "There is a significant relationship", "Income is equal to subscriptions", "No effect"],
+    "answer": "There is a significant relationship"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant relationship between student year level (1st-4th) and choice of smartphone brand? Appropriate test?",
+    "choices": ["Chi-square Test", "Independent T-test", "Pearson r", "ANOVA"],
+    "answer": "Chi-square Test"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant difference in the IQ levels of students from three different engineering departments? DV?",
+    "choices": ["Engineering department", "IQ levels", "Student age", "University"],
+    "answer": "IQ levels"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant relationship between daily caffeine intake and number of hours of sleep? Appropriate test?",
+    "choices": ["Pearson r", "Paired T-test", "ANOVA", "Chi-square"],
+    "answer": "Pearson r"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant difference in sales performance before and after a salary raise? Ho?",
+    "choices": ["There is a significant difference", "There is no significant difference", "Sales are higher after", "Sales are lower after"],
+    "answer": "There is no significant difference"
+  },
+  {
+    "type": "mcq",
+    "question": "Problem: Is there a significant relationship between gender (M/F) and preference for remote vs. on-site work? IV?",
+    "choices": ["Preference", "Gender", "Work type", "Salary"],
+    "answer": "Gender"
+  }
+]
