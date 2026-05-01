@@ -2126,7 +2126,10 @@
                     Highest Streak: <span id="final-streak">0</span> 🔥
                 </div>
 
-                <button class="btn btn-primary" id="btn-home">Play Again</button>
+                <div style="display:flex; gap:10px; justify-content:center; width:100%; max-width:320px; flex-wrap:wrap;">
+                    <button class="btn btn-primary" id="btn-home" style="margin-bottom:0px;">Play Again</button>
+                    <button class="btn btn-secondary" id="btn-retry-mistakes" style="display:none; margin-bottom:0px; background:#ffd54f; border-color:#fbc02d;">Retry Mistakes ✨</button>
+                </div>
             </div>
         </div>
 
@@ -2305,8 +2308,8 @@
         let myName = '';
         let opponentName = '';
 
-        let myChar = 'marie';
-        let opponentChar = 'tweety';
+        let myChar = 'ladybug';
+        let opponentChar = 'catnoir';
 
         let questions = [];
         let currentQIndex = 0;
@@ -2357,7 +2360,8 @@
                 qNumber: currentQIndex + 1,
                 question: qObj.question,
                 wrong: userAns || '(No timer/No answer)',
-                correct: qObj.answer
+                correct: qObj.answer,
+                fullQ: qObj
             });
             renderMistakes();
         }
@@ -2497,7 +2501,7 @@
             for (let r of rads) {
                 if (r.checked) return r.value;
             }
-            return 'marie';
+            return 'ladybug';
         }
 
         btnCreateRoom.addEventListener('click', () => {
@@ -2741,14 +2745,14 @@
         function applyPlayerUI(statEl, nameEl, avatarEl, pName, pChar) {
             nameEl.textContent = pName;
 
-            if (pChar === 'marie') {
-                avatarEl.textContent = '🎀';
+            if (pChar === 'ladybug') {
+                avatarEl.textContent = '🐞';
                 nameEl.className = 'player-name p1-color-text';
-                statEl.className = 'player-stat theme-marie';
+                statEl.className = 'player-stat theme-ladybug';
             } else {
-                avatarEl.textContent = '🐤';
+                avatarEl.textContent = '🐈‍⬛';
                 nameEl.className = 'player-name p2-color-text';
-                statEl.className = 'player-stat theme-tweety';
+                statEl.className = 'player-stat theme-catnoir';
             }
         }
 
@@ -2756,7 +2760,7 @@
             if (data.type === 'JOIN_INFO') {
                 opponentName = data.name;
                 opponentChar = data.char;
-                let icon = opponentChar === 'marie' ? '🎀' : '🐤';
+                let icon = opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛';
                 hostStatus.innerHTML = `${opponentName} joined! ${icon}`;
                 hostStatus.classList.remove('loading-dots');
             }
@@ -3030,8 +3034,8 @@
                 addMistake(qObj, myAns);
             }
 
-            const p1CharIcon = isHost ? (myChar === 'marie' ? '🎀' : '🐤') : (opponentChar === 'marie' ? '🎀' : '🐤');
-            const p2CharIcon = isHost ? (opponentChar === 'marie' ? '🎀' : '🐤') : (myChar === 'marie' ? '🎀' : '🐤');
+            const p1CharIcon = isHost ? (myChar === 'ladybug' ? '🐞' : '🐈‍⬛') : (opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛');
+            const p2CharIcon = isHost ? (opponentChar === 'ladybug' ? '🐞' : '🐈‍⬛') : (myChar === 'ladybug' ? '🐞' : '🐈‍⬛');
 
             Array.from(choicesGrid.children).forEach(child => {
                 if (qObj.type === 'identification') {
@@ -3259,16 +3263,56 @@
             // Solo Mode QOL: Show streak and hide P2
             const soloExtra = document.getElementById('solo-result-extra');
             const p2Container = document.getElementById('final-score-p2-container');
+            const retryBtn = document.getElementById('btn-retry-mistakes');
             if (isSolo) {
                 if (soloExtra) {
                     soloExtra.style.display = 'block';
                     document.getElementById('final-streak').textContent = highestStreak;
                 }
                 if (p2Container) p2Container.style.display = 'none';
+
+                // Show retry mistakes button if there are any
+                if (retryBtn) {
+                    retryBtn.style.display = myMistakes.length > 0 ? 'inline-flex' : 'none';
+                }
             } else {
                 if (soloExtra) soloExtra.style.display = 'none';
                 if (p2Container) p2Container.style.display = 'block';
+                if (retryBtn) retryBtn.style.display = 'none';
             }
+        }
+
+        const btnRetryMistakes = document.getElementById('btn-retry-mistakes');
+        if (btnRetryMistakes) {
+            btnRetryMistakes.addEventListener('click', () => {
+                if (myMistakes.length === 0) return;
+
+                // Take the questions from mistakes
+                const mistakeQuestions = myMistakes.map(m => m.fullQ);
+                questions = mistakeQuestions;
+                myMistakes = [];
+                renderMistakes();
+
+                // Restart as Solo
+                statP2.style.display = 'none';
+                document.querySelector('.chat-container').style.display = 'none';
+                document.getElementById('solo-streak').style.display = 'inline-flex';
+                document.getElementById('solo-progress-container').style.display = 'block';
+
+                applyPlayerUI(statP1, nameP1, avatarP1, myName, myChar);
+
+                showScreen('state-battle');
+                p1Score = 0; p2Score = 0;
+                currentQIndex = 0;
+                streak = 0;
+                highestStreak = 0;
+                updateStreakUI();
+                updateProgressBar();
+                renderScore();
+
+                p1Answer = null; p2Answer = null; isRevealed = false;
+                renderQuestion(questions[currentQIndex]);
+            });
         }
 
         btnStartSolo.addEventListener('click', () => {
@@ -3521,7 +3565,7 @@
                 mediaRecorder.start();
                 btnRecordVoice.style.background = '#dda0dd'; // switch to lilac on hold
             } catch (err) {
-                appendChat('System', '🎙 Mic permission denied or unavailable.', 'tweety');
+                appendChat('System', '🎙 Mic permission denied or unavailable.', 'catnoir');
             }
         }
 
