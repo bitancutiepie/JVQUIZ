@@ -1,0 +1,302 @@
+[
+  {
+    "type": "mcq",
+    "question": "What is a testable prediction about variables called?",
+    "choices": ["Hypothesis", "Parameter", "Statistic", "Variable"],
+    "answer": "Hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "Which statistics use sample data to make conclusions about a population?",
+    "choices": ["Descriptive", "Inferential", "Nominal", "Parametric"],
+    "answer": "Inferential"
+  },
+  {
+    "type": "mcq",
+    "question": "The factor you change or control in an experiment is the:",
+    "choices": ["Dependent Variable", "Independent Variable", "Null Hypothesis", "Parameter"],
+    "answer": "Independent Variable"
+  },
+  {
+    "type": "mcq",
+    "question": "The factor you measure to observe the effect is the:",
+    "choices": ["Independent Variable", "Dependent Variable", "Critical Value", "Alpha"],
+    "answer": "Dependent Variable"
+  },
+  {
+    "type": "mcq",
+    "question": "Which hypothesis assumes there is no difference, no relationship, or no effect?",
+    "choices": ["Null Hypothesis", "Alternative Hypothesis", "Parametric Hypothesis", "Directional Hypothesis"],
+    "answer": "Null Hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "The claim the researcher wants to prove is the:",
+    "choices": ["Null Hypothesis", "Alternative Hypothesis", "Parameter", "Alpha"],
+    "answer": "Alternative Hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "Using the P-value approach, you reject the null hypothesis if:",
+    "choices": ["p > α", "p ≤ α", "p = 1", "p is not calculated"],
+    "answer": "p ≤ α"
+  },
+  {
+    "type": "mcq",
+    "question": "Using the Critical Value approach, you reject the null hypothesis if:",
+    "choices": ["Computed Statistic < Critical Value", "Computed Statistic ≥ Critical Value", "Computed Statistic = 0", "Critical Value = 0"],
+    "answer": "Computed Statistic ≥ Critical Value"
+  },
+  {
+    "type": "mcq",
+    "question": "What happens if p > α?",
+    "choices": ["Reject the null hypothesis", "Fail to reject the null hypothesis", "Type I Error", "Type II Error"],
+    "answer": "Fail to reject the null hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "What is a Type I Error (α)?",
+    "choices": ["Failing to reject a false null", "Rejecting a true null", "Rejecting a false null", "Failing to reject a true null"],
+    "answer": "Rejecting a true null"
+  },
+  {
+    "type": "mcq",
+    "question": "Which error is known as a 'False Negative'?",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Directional Error"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "Rejecting a FALSE null hypothesis is a:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "False Positive"],
+    "answer": "Correct Decision"
+  },
+  {
+    "type": "mcq",
+    "question": "When a direction is specified (e.g., 'higher than'), which test should be used?",
+    "choices": ["Two-tailed", "One-tailed", "Non-parametric", "Chi-square"],
+    "answer": "One-tailed"
+  },
+  {
+    "type": "mcq",
+    "question": "When checking for any difference without specifying a direction, use a:",
+    "choices": ["One-tailed test", "Two-tailed test", "Directional test", "Parametric test"],
+    "answer": "Two-tailed test"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of these is a characteristic of Parametric tests?",
+    "choices": ["Data is not normal", "Data uses interval/ratio scales", "Not sensitive to outliers", "Uses nominal data"],
+    "answer": "Data uses interval/ratio scales"
+  },
+  {
+    "type": "mcq",
+    "question": "Which test is used to compare the means of two different groups?",
+    "choices": ["ANOVA", "Paired Samples T-Test", "T-Test for Independent Samples", "Pearson r"],
+    "answer": "T-Test for Independent Samples"
+  },
+  {
+    "type": "mcq",
+    "question": "Which test is used to compare the same group twice?",
+    "choices": ["Paired Samples T-Test", "Independent Samples T-Test", "ANOVA", "Regression"],
+    "answer": "Paired Samples T-Test"
+  },
+  {
+    "type": "mcq",
+    "question": "To compare the means of three or more groups, use:",
+    "choices": ["T-test", "ANOVA (F-test)", "Pearson r", "Linear Regression"],
+    "answer": "ANOVA (F-test)"
+  },
+  {
+    "type": "mcq",
+    "question": "A Pearson r of +1.00 indicates a:",
+    "choices": ["Perfect negative relationship", "No relationship", "Perfect positive relationship", "Weak positive relationship"],
+    "answer": "Perfect positive relationship"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the range of a Pearson correlation coefficient?",
+    "choices": ["0 to 1", "-1 to 1", "0 to 100", "-10 to 10"],
+    "answer": "-1 to 1"
+  },
+  {
+    "type": "mcq",
+    "question": "Simple Linear Regression is used to:",
+    "choices": ["Compare means", "Measure correlation strength", "Predict Y based on X", "Check normal distribution"],
+    "answer": "Predict Y based on X"
+  },
+  {
+    "type": "mcq",
+    "question": "The degrees of freedom (df) for a one-sample t-test is:",
+    "choices": ["n - 1", "n - 2", "n1 + n2 - 2", "(r-1)(c-1)"],
+    "answer": "n - 1"
+  },
+  {
+    "type": "mcq",
+    "question": "The degrees of freedom (df) for a two-sample t-test is:",
+    "choices": ["n - 1", "n - 2", "n1 + n2 - 2", "(r-1)(c-1)"],
+    "answer": "n1 + n2 - 2"
+  },
+  {
+    "type": "mcq",
+    "question": "Non-parametric tests work well when:",
+    "choices": ["Sample size is very large", "Data is not normal", "Data is only ratio", "Data is very powerful"],
+    "answer": "Data is not normal"
+  },
+  {
+    "type": "mcq",
+    "question": "A type I error is also called:",
+    "choices": ["False Positive", "False Negative", "Directional Error", "Null Error"],
+    "answer": "False Positive"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of these is sensitive to outliers?",
+    "choices": ["Parametric tests", "Non-parametric tests", "Ordinal data", "Nominal data"],
+    "answer": "Parametric tests"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the typical Alpha (α) level?",
+    "choices": ["0.01", "0.05", "0.10", "0.50"],
+    "answer": "0.05"
+  },
+  {
+    "type": "mcq",
+    "question": "Failing to reject a false null hypothesis is a:",
+    "choices": ["Correct decision", "Type I error", "Type II error", "None of the above"],
+    "answer": "Type II error"
+  },
+  {
+    "type": "mcq",
+    "question": "A Pearson r of -1.00 indicates a:",
+    "choices": ["Perfect negative relationship", "No relationship", "Weak relationship", "Perfect positive relationship"],
+    "answer": "Perfect negative relationship"
+  },
+  {
+    "type": "mcq",
+    "question": "The df for a Chi-square test is:",
+    "choices": ["n-1", "n-2", "(r-1)(c-1)", "n1+n2-2"],
+    "answer": "(r-1)(c-1)"
+  },
+  {
+    "type": "mcq",
+    "question": "Which hypothesis is the starting point?",
+    "choices": ["Null", "Alternative", "Inferential", "Predictive"],
+    "answer": "Null"
+  },
+  {
+    "type": "mcq",
+    "question": "Parametric tests are generally ____ than non-parametric tests.",
+    "choices": ["Less powerful", "More powerful", "Less sensitive", "Smaller"],
+    "answer": "More powerful"
+  },
+  {
+    "type": "mcq",
+    "question": "An example of an Independent Variable is:",
+    "choices": ["Teaching method", "Test scores", "Plant height", "P-value"],
+    "answer": "Teaching method"
+  },
+  {
+    "type": "mcq",
+    "question": "Which test requires larger sample sizes?",
+    "choices": ["Parametric tests", "Non-parametric tests", "Chi-square", "Simple regression"],
+    "answer": "Parametric tests"
+  },
+  {
+    "type": "mcq",
+    "question": "A Pearson r of 0.00 indicates:",
+    "choices": ["No relationship", "Weak positive", "Strong negative", "Perfect relationship"],
+    "answer": "No relationship"
+  },
+  {
+    "type": "mcq",
+    "question": "The decision to reject the null is based on comparing the P-value to:",
+    "choices": ["Beta", "Alpha", "The mean", "The variance"],
+    "answer": "Alpha"
+  },
+  {
+    "type": "mcq",
+    "question": "Which error is failing to reject a FALSE null hypothesis?",
+    "choices": ["Type I", "Type II", "Alpha error", "Critical error"],
+    "answer": "Type II"
+  },
+  {
+    "type": "mcq",
+    "question": "Non-parametric tests are used for:",
+    "choices": ["Nominal data", "Interval data", "Ratio data", "Normal distribution only"],
+    "answer": "Nominal data"
+  },
+  {
+    "type": "mcq",
+    "question": "When direction is specified, keywords include:",
+    "choices": ["Is there a difference", "Changed", "Higher than", "Not equal"],
+    "answer": "Higher than"
+  },
+  {
+    "type": "mcq",
+    "question": "The 'effect' in an experiment is the:",
+    "choices": ["Independent variable", "Dependent variable", "Null hypothesis", "Sample size"],
+    "answer": "Dependent variable"
+  },
+  {
+    "type": "mcq",
+    "question": "Rejection of a TRUE null hypothesis is a:",
+    "choices": ["Type I error", "Type II error", "Correct decision", "P-value error"],
+    "answer": "Type I error"
+  },
+  {
+    "type": "mcq",
+    "question": "The df for Pearson r is:",
+    "choices": ["n-1", "n-2", "n-3", "n-4"],
+    "answer": "n-2"
+  },
+  {
+    "type": "mcq",
+    "question": "Failing to reject a TRUE null hypothesis is a:",
+    "choices": ["Type I error", "Type II error", "Correct decision", "False positive"],
+    "answer": "Correct decision"
+  },
+  {
+    "type": "mcq",
+    "question": "A test of 'Any difference' is:",
+    "choices": ["One-tailed", "Two-tailed", "Parametric", "Non-parametric"],
+    "answer": "Two-tailed"
+  },
+  {
+    "type": "mcq",
+    "question": "Which test compares the means of two independent groups?",
+    "choices": ["ANOVA", "Paired T-test", "Independent T-test", "Correlation"],
+    "answer": "Independent T-test"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the factor being measured?",
+    "choices": ["IV", "DV", "H0", "Alpha"],
+    "answer": "DV"
+  },
+  {
+    "type": "mcq",
+    "question": "If p=0.04 and Alpha=0.05, you:",
+    "choices": ["Reject H0", "Fail to reject H0", "Commit Type II error", "None of the above"],
+    "answer": "Reject H0"
+  },
+  {
+    "type": "mcq",
+    "question": "Nominal data is best suited for:",
+    "choices": ["Parametric tests", "Non-parametric tests", "Linear regression", "ANOVA"],
+    "answer": "Non-parametric tests"
+  },
+  {
+    "type": "mcq",
+    "question": "The 'cause' in an experiment is the:",
+    "choices": ["IV", "DV", "Parameter", "Statistic"],
+    "answer": "IV"
+  },
+  {
+    "type": "mcq",
+    "question": "If you reject a false null hypothesis, you have made a:",
+    "choices": ["Type I error", "Type II error", "Correct decision", "False positive"],
+    "answer": "Correct decision"
+  }
+]

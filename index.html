@@ -1983,6 +1983,7 @@
                         style="background:#e1bee7; border-color:#7b1fa2; color:#4a148c; width:100%; max-width:320px;">
                         ✨ Alone Time ✨
                     </button>
+                    <p style="font-size: 1.2rem; color: var(--p1-color); margin-top: 5px;">✨ Preloaded quizzes available in Lobby! ✨</p>
                 </div>
             </div>
         </div>
@@ -3751,40 +3752,45 @@
             }
         }
 
+        // Hardcoded manifest to ensure it works on all environments (even file://)
+        const PRELOADED_QUIZZES = [
+            "dbms.json",
+            "currentQuizzes/UTS SET 1 SPIRITUAL.txt",
+            "currentQuizzes/UTS SET 2 POLITICS TO MATERIAL.txt",
+            "currentQuizzes/DA SET 1.txt"
+        ];
+
         (function autoScan() {
-            fetch('quizzes.json')
-                .then(res => res.json())
-                .then(manifest => {
-                    if (manifest && manifest.length > 0) {
-                        const hostContainer = document.getElementById('host-preloaded-container');
-                        const hostList = document.getElementById('host-preloaded-list');
-                        const soloContainer = document.getElementById('solo-preloaded-container');
-                        const soloList = document.getElementById('solo-preloaded-list');
+            const manifest = PRELOADED_QUIZZES;
+            if (manifest && manifest.length > 0) {
+                const hostContainer = document.getElementById('host-preloaded-container');
+                const hostList = document.getElementById('host-preloaded-list');
+                const soloContainer = document.getElementById('solo-preloaded-container');
+                const soloList = document.getElementById('solo-preloaded-list');
 
-                        if (hostContainer) hostContainer.style.display = 'block';
-                        if (soloContainer) soloContainer.style.display = 'block';
+                if (hostContainer) hostContainer.style.display = 'block';
+                if (soloContainer) soloContainer.style.display = 'block';
 
-                        manifest.forEach(path => {
-                            // Extract filename for display
-                            const parts = path.split('/');
-                            const filename = parts[parts.length - 1].replace('.json', '').replace('.txt', '');
+                manifest.forEach(path => {
+                    // Extract filename for display
+                    const parts = path.split('/');
+                    const filename = parts[parts.length - 1].replace('.json', '').replace('.txt', '');
 
-                            // Create button for host lobby
-                            const hBtn = document.createElement('button');
-                            hBtn.className = 'preloaded-btn';
-                            hBtn.textContent = filename;
-                            hBtn.onclick = () => loadPreloadedQuiz(path, 'host', hBtn);
-                            if (hostList) hostList.appendChild(hBtn);
+                    // Create button for host lobby
+                    const hBtn = document.createElement('button');
+                    hBtn.className = 'preloaded-btn';
+                    hBtn.textContent = filename;
+                    hBtn.onclick = () => loadPreloadedQuiz(path, 'host', hBtn);
+                    if (hostList) hostList.appendChild(hBtn);
 
-                            // Create button for solo lobby
-                            const sBtn = document.createElement('button');
-                            sBtn.className = 'preloaded-btn';
-                            sBtn.textContent = filename;
-                            sBtn.onclick = () => loadPreloadedQuiz(path, 'solo', sBtn);
-                            if (soloList) soloList.appendChild(sBtn);
-                        });
-                    }
-                }).catch((err) => { console.log("Autoscan error:", err); });
+                    // Create button for solo lobby
+                    const sBtn = document.createElement('button');
+                    sBtn.className = 'preloaded-btn';
+                    sBtn.textContent = filename;
+                    sBtn.onclick = () => loadPreloadedQuiz(path, 'solo', sBtn);
+                    if (soloList) soloList.appendChild(sBtn);
+                });
+            }
         })();
 
         function loadPreloadedQuiz(path, mode, btn) {
