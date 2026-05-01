@@ -3892,11 +3892,26 @@
             "dbms.json",
             "currentQuizzes/UTS SET 1 SPIRITUAL.txt",
             "currentQuizzes/UTS SET 2 POLITICS TO MATERIAL.txt",
-            "currentQuizzes/DA SET 1.txt"
+            "currentQuizzes/DA SET 1.txt",
+            "currentQuizzes/DA TYPE12 TEST.txt"
         ];
 
-        (function autoScan() {
-            const manifest = PRELOADED_QUIZZES;
+        async function autoScan() {
+            let manifest = PRELOADED_QUIZZES;
+            try {
+                const res = await fetch('quizzes.json');
+                if (res.ok) {
+                    const dynamicManifest = await res.json();
+                    if (Array.isArray(dynamicManifest) && dynamicManifest.length > 0) {
+                        manifest = dynamicManifest;
+                        // Always include dbms.json if it exists in hardcoded but missing in dynamic
+                        if (!manifest.includes('dbms.json')) manifest.unshift('dbms.json');
+                    }
+                }
+            } catch (e) {
+                console.warn("Dynamic manifest fetch failed, using fallback list.");
+            }
+
             if (manifest && manifest.length > 0) {
                 const hostContainer = document.getElementById('host-preloaded-container');
                 const hostList = document.getElementById('host-preloaded-list');
@@ -3906,19 +3921,20 @@
                 if (hostContainer) hostContainer.style.display = 'block';
                 if (soloContainer) soloContainer.style.display = 'block';
 
+                // Clear existing buttons to prevent duplicates
+                if (hostList) hostList.innerHTML = '';
+                if (soloList) soloList.innerHTML = '';
+
                 manifest.forEach(path => {
-                    // Extract filename for display
                     const parts = path.split('/');
                     const filename = parts[parts.length - 1].replace('.json', '').replace('.txt', '');
 
-                    // Create button for host lobby
                     const hBtn = document.createElement('button');
                     hBtn.className = 'preloaded-btn';
                     hBtn.textContent = filename;
                     hBtn.onclick = () => loadPreloadedQuiz(path, 'host', hBtn);
                     if (hostList) hostList.appendChild(hBtn);
 
-                    // Create button for solo lobby
                     const sBtn = document.createElement('button');
                     sBtn.className = 'preloaded-btn';
                     sBtn.textContent = filename;
@@ -3926,7 +3942,8 @@
                     if (soloList) soloList.appendChild(sBtn);
                 });
             }
-        })();
+        }
+        autoScan();
 
         function loadPreloadedQuiz(path, mode, btn) {
             // UI feedback

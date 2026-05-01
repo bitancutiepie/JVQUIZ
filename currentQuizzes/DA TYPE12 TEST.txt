@@ -1,0 +1,152 @@
+[
+  {
+    "type": "mcq",
+    "question": "What occurs when you reject a true null hypothesis?",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "False Negative"],
+    "answer": "Type I Error"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following is also known as a 'False Positive'?",
+    "choices": ["Type II Error", "Correct Decision", "Type I Error", "Alpha Error"],
+    "answer": "Type I Error"
+  },
+  {
+    "type": "mcq",
+    "question": "What occurs when you fail to reject a false null hypothesis?",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "False Positive"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following is also known as a 'False Negative'?",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Alpha Error"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "If the null hypothesis is true, what is the correct decision?",
+    "choices": ["Reject H₀", "Fail to reject H₀", "Type I Error", "Type II Error"],
+    "answer": "Fail to reject H₀"
+  },
+  {
+    "type": "mcq",
+    "question": "If the null hypothesis is false, what is the correct decision?",
+    "choices": ["Reject H₀", "Fail to reject H₀", "Type I Error", "Type II Error"],
+    "answer": "Reject H₀"
+  },
+  {
+    "type": "mcq",
+    "question": "If H₀ is true and you reject it, you have committed:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Null Error"],
+    "answer": "Type I Error"
+  },
+  {
+    "type": "mcq",
+    "question": "If H₀ is false and you fail to reject it, you have committed:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Statistical Error"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "When is failing to reject H₀ considered a correct decision?",
+    "choices": ["When H₀ is true", "When H₀ is false", "When H₀ is unknown", "When p-value is high"],
+    "answer": "When H₀ is true"
+  },
+  {
+    "type": "mcq",
+    "question": "When is rejecting H₀ considered a correct decision?",
+    "choices": ["When H₀ is true", "When H₀ is false", "When H₀ is unknown", "When p-value is low"],
+    "answer": "When H₀ is false"
+  },
+  {
+    "type": "mcq",
+    "question": "Type II error is denoted by which Greek letter?",
+    "choices": ["α (Alpha)", "β (Beta)", "γ (Gamma)", "μ (Mu)"],
+    "answer": "β (Beta)"
+  },
+  {
+    "type": "mcq",
+    "question": "Type I error is denoted by which Greek letter?",
+    "choices": ["α (Alpha)", "β (Beta)", "δ (Delta)", "σ (Sigma)"],
+    "answer": "α (Alpha)"
+  },
+  {
+    "type": "mcq",
+    "question": "If your decision is to 'Reject H₀' when H₀ is actually true, you have made a:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "False Negative"],
+    "answer": "Type I Error"
+  },
+  {
+    "type": "mcq",
+    "question": "If your decision is to 'Fail to reject H₀' when H₀ is actually false, you have made a:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "False Positive"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "If you reject H₀ and H₀ is false, you have made a:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Null Decision"],
+    "answer": "Correct Decision"
+  },
+  {
+    "type": "mcq",
+    "question": "If you fail to reject H₀ and H₀ is true, you have made a:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Alternative Decision"],
+    "answer": "Correct Decision"
+  },
+  {
+    "type": "mcq",
+    "question": "A False Positive is another name for:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Standard Error"],
+    "answer": "Type I Error"
+  },
+  {
+    "type": "mcq",
+    "question": "A False Negative is another name for:",
+    "choices": ["Type I Error", "Type II Error", "Correct Decision", "Standard Error"],
+    "answer": "Type II Error"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following describes Type I Error?",
+    "choices": ["Rejecting a true null hypothesis", "Failing to reject a true null hypothesis", "Rejecting a false null hypothesis", "Failing to reject a false null hypothesis"],
+    "answer": "Rejecting a true null hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following describes Type II Error?",
+    "choices": ["Rejecting a true null hypothesis", "Failing to reject a true null hypothesis", "Rejecting a false null hypothesis", "Failing to reject a false null hypothesis"],
+    "answer": "Failing to reject a false null hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "When H₀ is true, the probability of rejecting it is:",
+    "choices": ["Alpha (α)", "Beta (β)", "One", "Zero"],
+    "answer": "Alpha (α)"
+  },
+  {
+    "type": "mcq",
+    "question": "When H₀ is false, the probability of failing to reject it is:",
+    "choices": ["Alpha (α)", "Beta (β)", "One", "Zero"],
+    "answer": "Beta (β)"
+  },
+  {
+    "type": "mcq",
+    "question": "Rejecting H₀ is statistically equivalent to:",
+    "choices": ["Accepting the alternative hypothesis", "Accepting the null hypothesis", "Committing a Type II Error", "Making a neutral decision"],
+    "answer": "Accepting the alternative hypothesis"
+  },
+  {
+    "type": "mcq",
+    "question": "The decision to 'Reject H₀' is based on the premise that:",
+    "choices": ["H₀ is likely false", "H₀ is likely true", "We want to commit Type I error", "The data is invalid"],
+    "answer": "H₀ is likely false"
+  },
+  {
+    "type": "mcq",
+    "question": "A 'Correct Decision' occurs when:",
+    "choices": ["You reject H₀ only when it is false", "You fail to reject H₀ only when it is true", "Either you reject a false H₀ or fail to reject a true H₀", "You always reject H₀"],
+    "answer": "Either you reject a false H₀ or fail to reject a true H₀"
+  }
+]
