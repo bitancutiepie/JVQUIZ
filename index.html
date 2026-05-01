@@ -2674,6 +2674,7 @@
             myName = playerNameInput.value.trim() || defName;
 
             isHost = true;
+            resetGameState();
             showScreen('state-host-lobby');
             initHostPeer();
         });
@@ -2685,6 +2686,7 @@
 
             isHost = false;
             isSolo = false;
+            resetGameState();
             showScreen('state-join-lobby');
         });
 
@@ -2696,26 +2698,61 @@
 
             isHost = false;
             isSolo = true;
+            resetGameState();
             showScreen('state-solo-lobby');
         });
 
         document.getElementById('btn-host-back').addEventListener('click', () => {
             if (peer) { peer.destroy(); peer = null; }
+            resetGameState();
             showScreen('state-start');
         });
         document.getElementById('btn-join-back').addEventListener('click', () => {
             if (peer) { peer.destroy(); peer = null; }
+            resetGameState();
             showScreen('state-start');
         });
         document.getElementById('btn-solo-back').addEventListener('click', () => {
+            resetGameState();
             showScreen('state-start');
         });
         btnHome.addEventListener('click', () => {
             if (peer) { peer.destroy(); peer = null; }
             conn = null;
             resetSoloUI();
+            resetGameState();
             showScreen('state-start');
         });
+
+        function resetGameState() {
+            questions = [];
+            currentQIndex = 0;
+            p1Score = 0;
+            p2Score = 0;
+            p1Answer = null;
+            p2Answer = null;
+            isRevealed = false;
+            streak = 0;
+            highestStreak = 0;
+            myMistakes = [];
+            renderMistakes();
+            
+            document.querySelectorAll('.preloaded-btn').forEach(b => b.classList.remove('selected'));
+            
+            if (dropLabel) dropLabel.innerHTML = 'Drop Quiz JSON Here<br>or Click';
+            if (soloDropLabel) soloDropLabel.innerHTML = 'Drop Quiz JSON Here<br>or Click';
+            
+            if (hostStatus) hostStatus.innerHTML = `Waiting for player 2<span class="loading-dots"></span>`;
+            if (soloStatus) soloStatus.innerHTML = `Ready to study...`;
+            
+            const hostPaste = document.getElementById('host-paste-box');
+            if (hostPaste) hostPaste.value = '';
+            const soloPaste = document.getElementById('solo-paste-box');
+            if (soloPaste) soloPaste.value = '';
+            
+            if (btnStartGame) btnStartGame.style.display = 'none';
+            if (btnStartSolo) btnStartSolo.style.display = 'none';
+        }
 
         function resetSoloUI() {
             if (nextTimer) {
