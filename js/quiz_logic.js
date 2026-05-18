@@ -1,4 +1,6 @@
 function resetGameState() {
+    isHost = false;
+    isSolo = false;
     questions = [];
     currentQIndex = 0;
     p1Score = 0;

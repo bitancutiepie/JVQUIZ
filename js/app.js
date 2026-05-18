@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         myChar = getSelectedChar();
         let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
         myName = playerNameInput.value.trim() || defName;
-        isHost = true;
         resetGameState();
+        isHost = true;
+        isSolo = false;
         showScreen('state-host-lobby');
         initHostPeer();
     });
@@ -21,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
         myChar = getSelectedChar();
         let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
         myName = playerNameInput.value.trim() || defName;
+        resetGameState();
         isHost = false;
         isSolo = false;
-        resetGameState();
         showScreen('state-join-lobby');
     });
 
@@ -31,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         myChar = getSelectedChar();
         let defName = myChar === 'ladybug' ? 'Lady Bug' : 'Cat Noir';
         myName = playerNameInput.value.trim() || defName;
+        resetGameState();
         isHost = false;
         isSolo = true;
-        resetGameState();
         showScreen('state-solo-lobby');
     });
 
