@@ -31,7 +31,9 @@ const PRELOADED_QUIZZES = [
     "currentQuizzes/DA TYPE12 TEST.txt",
     "currentQuizzes/DA IV DV AND TEST.txt",
     "currentQuizzes/IM SET 1.txt",
-    "currentQuizzes/IM SET 2.txt"
+    "currentQuizzes/IM SET 2.txt",
+    "currentQuizzes/IM SET 3 70 ITEMS.txt",
+    "currentQuizzes/IM SET 4 REVIEWER BASED.txt"
 ];
 
 // DOM Elements cache
