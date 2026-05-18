@@ -211,33 +211,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const kylaSticker = document.getElementById('st-kyla');
     const kylaModal = document.getElementById('kyla-modal');
     const btnCloseKyla = document.getElementById('btn-close-kyla');
-    const poemAudio = document.getElementById('poem-audio');
-    const playPoemBtn = document.getElementById('play-poem-audio');
 
     if (kylaSticker) {
         kylaSticker.addEventListener('click', () => {
             kylaModal.classList.add('active');
-            if (poemAudio && poemAudio.paused) {
-                poemAudio.play().catch(e => console.log("Autoplay blocked:", e));
-                if (playPoemBtn) { playPoemBtn.textContent = '⏸️'; playPoemBtn.style.animation = 'none'; }
-            }
         });
     }
 
     if (btnCloseKyla) {
         btnCloseKyla.addEventListener('click', () => {
             kylaModal.classList.remove('active');
-            if (poemAudio) { poemAudio.pause(); poemAudio.currentTime = 0; }
-            if (playPoemBtn) { playPoemBtn.textContent = '🔊'; playPoemBtn.style.animation = 'pulse 2s infinite'; }
         });
-    }
-
-    if (playPoemBtn && poemAudio) {
-        playPoemBtn.addEventListener('click', () => {
-            if (poemAudio.paused) { poemAudio.play(); playPoemBtn.textContent = '⏸️'; playPoemBtn.style.animation = 'none'; }
-            else { poemAudio.pause(); playPoemBtn.textContent = '🔊'; playPoemBtn.style.animation = 'pulse 2s infinite'; }
-        });
-        poemAudio.onended = () => { playPoemBtn.textContent = '🔊'; playPoemBtn.style.animation = 'pulse 2s infinite'; };
     }
 
     const mailSticker = document.getElementById('st-mail');
@@ -261,9 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => flower.remove(), 1000);
             }
             mailModal.classList.add('active');
-            currentMailPage = 2;
+            currentMailPage = 3;
             document.getElementById('mail-page-1').style.display = 'none';
-            document.getElementById('mail-page-2').style.display = 'block';
+            document.getElementById('mail-page-2').style.display = 'none';
+            document.getElementById('mail-page-3').style.display = 'block';
             document.getElementById('btn-toggle-mail').innerHTML = 'Flip Page 📖';
         });
     }
@@ -280,24 +265,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Auto-advance challenge screen
-    setTimeout(() => {
-        if (document.getElementById('state-challenge').classList.contains('active')) showScreen('state-start');
-    }, 7000);
 });
 
 // Mail toggle
-let currentMailPage = 2;
+let currentMailPage = 3;
 function toggleMailPage() {
     const p1 = document.getElementById('mail-page-1');
     const p2 = document.getElementById('mail-page-2');
+    const p3 = document.getElementById('mail-page-3');
     const btn = document.getElementById('btn-toggle-mail');
-    if (currentMailPage === 1) {
-        p1.style.display = 'none'; p2.style.display = 'block';
+    if (currentMailPage === 3) {
+        p3.style.display = 'none'; p2.style.display = 'block'; p1.style.display = 'none';
         currentMailPage = 2; btn.innerHTML = 'Flip Page 📖';
+    } else if (currentMailPage === 2) {
+        p3.style.display = 'none'; p2.style.display = 'none'; p1.style.display = 'block';
+        currentMailPage = 1; btn.innerHTML = 'Flip to Newest 📖';
     } else {
-        p1.style.display = 'block'; p2.style.display = 'none';
-        currentMailPage = 1; btn.innerHTML = 'Go Back 📖';
+        p3.style.display = 'block'; p2.style.display = 'none'; p1.style.display = 'none';
+        currentMailPage = 3; btn.innerHTML = 'Flip Page 📖';
     }
 }
 

@@ -1664,6 +1664,8 @@ input[type="text"]:focus {
 
 .challenge-container {
     max-width: 500px !important;
+    max-height: 90vh;
+    overflow-y: auto;
     animation: bounce 2s infinite ease-in-out;
 }
 
