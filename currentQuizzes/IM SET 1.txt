@@ -1,0 +1,302 @@
+[
+  {
+    "type": "mcq",
+    "question": "Strategy: Using automated systems to reduce waste and speed up production. What is the core business strategy?",
+    "choices": ["Operational Excellence", "Customer Intimacy", "Product Leadership", "Agile Strategy"],
+    "answer": "Operational Excellence"
+  },
+  {
+    "type": "mcq",
+    "question": "Strategy: Using data analytics for personalized recommendations and strong relationships. What is the strategy?",
+    "choices": ["Operational Excellence", "Customer Intimacy", "Product Leadership", "Codification"],
+    "answer": "Customer Intimacy"
+  },
+  {
+    "type": "mcq",
+    "question": "Insight: What is the result of integrating ERP and CRM systems?",
+    "choices": ["Only Operational Excellence", "Only Customer Intimacy", "Operational Excellence AND Customer Intimacy", "Only Product Leadership"],
+    "answer": "Operational Excellence AND Customer Intimacy"
+  },
+  {
+    "type": "mcq",
+    "question": "System: Which system integrates Finance, HR, and Manufacturing into one platform?",
+    "choices": ["CRM", "SCM", "ERP", "KMS"],
+    "answer": "ERP"
+  },
+  {
+    "type": "mcq",
+    "question": "System: Which IT system is best for managing the flow of goods and materials?",
+    "choices": ["SCM", "CRM", "DSS", "KMS"],
+    "answer": "SCM"
+  },
+  {
+    "type": "mcq",
+    "question": "System: Which system stores organizational knowledge like hospital research papers?",
+    "choices": ["ERP", "CRM", "KMS", "DSS"],
+    "answer": "KMS"
+  },
+  {
+    "type": "mcq",
+    "question": "Phase: Which SDLC phase is responsible for gathering requirements from users?",
+    "choices": ["Planning", "Analysis", "Design", "Implementation"],
+    "answer": "Analysis"
+  },
+  {
+    "type": "mcq",
+    "question": "Phase: In which SDLC phase is the system code actually written and built?",
+    "choices": ["Analysis", "Design", "Development", "Testing"],
+    "answer": "Development"
+  },
+  {
+    "type": "mcq",
+    "question": "Phase: Which SDLC phase ensures the system is reliable and secure before going live?",
+    "choices": ["Development", "Testing", "Implementation", "Maintenance"],
+    "answer": "Testing"
+  },
+  {
+    "type": "mcq",
+    "question": "Methodology: Which approach is described as a linear, sequential process where no phase can go back?",
+    "choices": ["Agile", "Waterfall", "Prototyping", "Hybrid"],
+    "answer": "Waterfall"
+  },
+  {
+    "type": "mcq",
+    "question": "Methodology: Which approach uses iterative, flexible, and short cycles known as sprints?",
+    "choices": ["Waterfall", "Agile", "Prototyping", "Hybrid"],
+    "answer": "Agile"
+  },
+  {
+    "type": "mcq",
+    "question": "Methodology: Which approach involves building an early working version to test requirements?",
+    "choices": ["Prototyping", "Waterfall", "Agile", "Hybrid"],
+    "answer": "Prototyping"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision: What kind of decision is characterized as routine with clear rules (e.g., restocking inventory)?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Strategic"],
+    "answer": "Structured"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision: What kind of decision is novel, complex, and requires senior management judgment?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Operational"],
+    "answer": "Unstructured"
+  },
+  {
+    "type": "mcq",
+    "question": "Process: In Simon's decision-making, which stage involves identifying and defining the problem?",
+    "choices": ["Intelligence", "Design", "Choice", "Implementation"],
+    "answer": "Intelligence"
+  },
+  {
+    "type": "mcq",
+    "question": "Process: In Simon's decision-making, which stage involves selecting the best solution from alternatives?",
+    "choices": ["Intelligence", "Design", "Choice", "Implementation"],
+    "answer": "Choice"
+  },
+  {
+    "type": "mcq",
+    "question": "Hierarchy: What is defined as raw, unprocessed facts and figures?",
+    "choices": ["Information", "Knowledge", "Data", "Wisdom"],
+    "answer": "Data"
+  },
+  {
+    "type": "mcq",
+    "question": "Hierarchy: What is defined as processed data that has meaning and context?",
+    "choices": ["Data", "Information", "Knowledge", "Insight"],
+    "answer": "Information"
+  },
+  {
+    "type": "mcq",
+    "question": "Knowledge: Which type of knowledge is based on personal experience and is difficult to write down?",
+    "choices": ["Explicit", "Tacit", "Embedded", "Stored"],
+    "answer": "Tacit"
+  },
+  {
+    "type": "mcq",
+    "question": "Knowledge: Which type of knowledge is stored in digital files, reports, and manuals?",
+    "choices": ["Tacit", "Explicit", "Embedded", "Cultural"],
+    "answer": "Explicit"
+  },
+  {
+    "type": "mcq",
+    "question": "Knowledge: Which type of knowledge is baked into the organization's culture and routines?",
+    "choices": ["Tacit", "Explicit", "Embedded", "Shared"],
+    "answer": "Embedded"
+  },
+  {
+    "type": "mcq",
+    "question": "KM Stage: What is the process of generating new insights from massive data?",
+    "choices": ["Creation", "Storage", "Sharing", "Application"],
+    "answer": "Creation"
+  },
+  {
+    "type": "mcq",
+    "question": "KM Strategy: Which approach focuses on converting knowledge into documents and storing them in databases?",
+    "choices": ["Personalization", "Codification", "Hybrid", "Direct"],
+    "answer": "Codification"
+  },
+  {
+    "type": "mcq",
+    "question": "KM Strategy: Which approach focuses on direct person-to-person knowledge sharing?",
+    "choices": ["Codification", "Personalization", "Hybrid", "Database"],
+    "answer": "Personalization"
+  },
+  {
+    "type": "mcq",
+    "question": "Emerging Tech: Which technology creates secure, decentralized business transactions?",
+    "choices": ["Cloud Computing", "AI", "Blockchain", "Chatbots"],
+    "answer": "Blockchain"
+  },
+  {
+    "type": "mcq",
+    "question": "Emerging Tech: Which technology provides predictive insights by learning from data?",
+    "choices": ["AI & Machine Learning", "Blockchain", "Cloud", "Wiki"],
+    "answer": "AI & Machine Learning"
+  },
+  {
+    "type": "mcq",
+    "question": "Challenge: What is the most common human-related challenge when implementing new systems?",
+    "choices": ["Cost", "Integration", "User Resistance", "Privacy"],
+    "answer": "User Resistance"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision: Analyzing regional sales performance is an example of what type of decision?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Simple"],
+    "answer": "Semi-structured"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: Which phase is responsible for the 'Go-live' and making the system available to users?",
+    "choices": ["Design", "Development", "Testing", "Implementation"],
+    "answer": "Implementation"
+  },
+  {
+    "type": "mcq",
+    "question": "Strategy: If a company focuses on R&D and innovation, what is its strategy?",
+    "choices": ["Operational Excellence", "Customer Intimacy", "Product Leadership", "Standardization"],
+    "answer": "Product Leadership"
+  },
+  {
+    "type": "mcq",
+    "question": "KM Process: Using stored knowledge to improve daily decisions and processes is known as:",
+    "choices": ["KM Application", "KM Sharing", "KM Storage", "KM Creation"],
+    "answer": "KM Application"
+  },
+  {
+    "type": "mcq",
+    "question": "System: Which system would a manager use to specifically analyze data to make better complex decisions?",
+    "choices": ["ERP", "SCM", "DSS", "CRM"],
+    "answer": "DSS"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: The feasibility study is usually conducted during which phase?",
+    "choices": ["Planning", "Design", "Development", "Testing"],
+    "answer": "Planning"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: 'Blueprints of the system' refers to which phase?",
+    "choices": ["Planning", "Analysis", "Design", "Development"],
+    "answer": "Design"
+  },
+  {
+    "type": "mcq",
+    "question": "Risk: What is a major risk of poor knowledge management?",
+    "choices": ["Increased innovation", "Loss of institutional knowledge", "Faster decision making", "Lower costs"],
+    "answer": "Loss of institutional knowledge"
+  },
+  {
+    "type": "mcq",
+    "question": "Emerging Tech: What enables scalable storage and processing over the internet?",
+    "choices": ["Blockchain", "Cloud Computing", "Chatbots", "SCM"],
+    "answer": "Cloud Computing"
+  },
+  {
+    "type": "mcq",
+    "question": "Strategy: Which KM strategy combines personal sharing and database storage?",
+    "choices": ["Codification", "Personalization", "Hybrid", "Linear"],
+    "answer": "Hybrid"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision: 'What should we do?' is the key question of which stage?",
+    "choices": ["Intelligence", "Design", "Choice", "Implementation"],
+    "answer": "Choice"
+  },
+  {
+    "type": "mcq",
+    "question": "System: What tool facilitates direct collaboration and knowledge sharing like Wikipedia?",
+    "choices": ["ERP", "CRM", "Wiki/Collaboration Tool", "Blockchain"],
+    "answer": "Wiki/Collaboration Tool"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: Which phase is often called the 'QA phase'?",
+    "choices": ["Testing", "Design", "Implementation", "Maintenance"],
+    "answer": "Testing"
+  },
+  {
+    "type": "mcq",
+    "question": "Emerging Tech: What are automated conversational agents used for customer service?",
+    "choices": ["AI Chatbots", "DSS", "KMS", "ERP"],
+    "answer": "AI Chatbots"
+  },
+  {
+    "type": "mcq",
+    "question": "Hierarchy: 'Sales dropped by 20% in Q3' is an example of:",
+    "choices": ["Data", "Information", "Knowledge", "Policy"],
+    "answer": "Information"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision: Middle management typically handles which type of decision?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Operational"],
+    "answer": "Semi-structured"
+  },
+  {
+    "type": "mcq",
+    "question": "Challenge: What is the challenge of connecting a new system to older legacy systems called?",
+    "choices": ["User Resistance", "Budgeting", "Integration complexity", "Scalability"],
+    "answer": "Integration complexity"
+  },
+  {
+    "type": "mcq",
+    "question": "KM Process: 'Saving research papers in a hospital KMS' is an example of:",
+    "choices": ["KM Creation", "KM Storage", "KM Sharing", "KM Application"],
+    "answer": "KM Storage"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: The 'QA phase' ensures the system is:",
+    "choices": ["Cheaper", "Faster", "Reliable and Secure", "Popular"],
+    "answer": "Reliable and Secure"
+  },
+  {
+    "type": "mcq",
+    "question": "Decision Process: 'Is the solution working?' is the key question for which stage?",
+    "choices": ["Intelligence", "Design", "Choice", "Implementation"],
+    "answer": "Implementation"
+  },
+  {
+    "type": "mcq",
+    "question": "Strategy: What is the primary focus of Operational Excellence?",
+    "choices": ["R&D", "Innovation", "Efficiency and Cost Reduction", "Personalized Service"],
+    "answer": "Efficiency and Cost Reduction"
+  },
+  {
+    "type": "mcq",
+    "question": "Hierarchy: '500 units, $25' is an example of:",
+    "choices": ["Data", "Information", "Knowledge", "Context"],
+    "answer": "Data"
+  },
+  {
+    "type": "mcq",
+    "question": "SDLC Phase: The phase after implementation is called:",
+    "choices": ["Development", "Testing", "Maintenance", "Analysis"],
+    "answer": "Maintenance"
+  }
+]

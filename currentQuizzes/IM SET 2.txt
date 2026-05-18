@@ -1,0 +1,302 @@
+[
+  {
+    "type": "mcq",
+    "question": "Which business strategy focuses primarily on efficiency and cost reduction?",
+    "choices": ["Operational Excellence", "Customer Intimacy", "Product Leadership", "Hybrid Strategy"],
+    "answer": "Operational Excellence"
+  },
+  {
+    "type": "mcq",
+    "question": "Which IT tool is most associated with supporting Operational Excellence?",
+    "choices": ["CRM", "ERP", "KMS", "Decision Support System"],
+    "answer": "ERP"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the primary focus of 'Product Leadership'?",
+    "choices": ["Cost reduction", "Efficiency", "R&D and innovation", "Data analytics"],
+    "answer": "R&D and innovation"
+  },
+  {
+    "type": "mcq",
+    "question": "Which system would be used to store treatment guidelines in a hospital?",
+    "choices": ["SCM", "KMS", "CRM", "Blockchain"],
+    "answer": "KMS"
+  },
+  {
+    "type": "mcq",
+    "question": "In the SDLC, what is the 'Feasibility study' primarily used for?",
+    "choices": ["Writing code", "Planning", "Testing", "Maintenance"],
+    "answer": "Planning"
+  },
+  {
+    "type": "mcq",
+    "question": "Which SDLC methodology is described as rigid with no going back?",
+    "choices": ["Agile", "Waterfall", "Prototyping", "Hybrid"],
+    "answer": "Waterfall"
+  },
+  {
+    "type": "mcq",
+    "question": "Which level of management typically makes 'Unstructured' decisions?",
+    "choices": ["Operational", "Middle", "Senior", "Front-line"],
+    "answer": "Senior"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the first stage of Simon's Decision-Making process?",
+    "choices": ["Design", "Intelligence", "Choice", "Implementation"],
+    "answer": "Intelligence"
+  },
+  {
+    "type": "mcq",
+    "question": "Which type of knowledge is 'residing in people's heads'?",
+    "choices": ["Explicit", "Embedded", "Tacit", "Documented"],
+    "answer": "Tacit"
+  },
+  {
+    "type": "mcq",
+    "question": "Which KM strategy focuses on mentoring and communities of practice?",
+    "choices": ["Codification", "Personalization", "Hybrid", "Database"],
+    "answer": "Personalization"
+  },
+  {
+    "type": "mcq",
+    "question": "What does an 'Immutable ledger' characterize?",
+    "choices": ["Cloud Computing", "Blockchain", "CRM", "KMS"],
+    "answer": "Blockchain"
+  },
+  {
+    "type": "mcq",
+    "question": "What is a major challenge of keeping up with rapid technological change?",
+    "choices": ["Budgeting", "System building", "Keeping up with change", "User resistance"],
+    "answer": "Keeping up with change"
+  },
+  {
+    "type": "mcq",
+    "question": "Which SDLC phase involves 'Go-live'?",
+    "choices": ["Design", "Development", "Implementation", "Testing"],
+    "answer": "Implementation"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the key insight regarding ERP + CRM?",
+    "choices": ["Only efficiency", "Only intimacy", "Operational Excellence AND Customer Intimacy", "Reduced costs only"],
+    "answer": "Operational Excellence AND Customer Intimacy"
+  },
+  {
+    "type": "mcq",
+    "question": "Which phase is the 'Programming phase'?",
+    "choices": ["Planning", "Design", "Development", "Maintenance"],
+    "answer": "Development"
+  },
+  {
+    "type": "mcq",
+    "question": "Which decision type uses 'some rules, some analysis'?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Automated"],
+    "answer": "Semi-structured"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the key question of the 'Design' stage of decision-making?",
+    "choices": ["What is the problem?", "What can we do?", "What should we do?", "Is it working?"],
+    "answer": "What can we do?"
+  },
+  {
+    "type": "mcq",
+    "question": "Knowledge Management process: What is 'distributing knowledge to those who need it'?",
+    "choices": ["Creation", "Storage", "Sharing", "Application"],
+    "answer": "Sharing"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the primary risk of losing key employees?",
+    "choices": ["Poor KM", "Loss of institutional knowledge", "Security risks", "Budget overrun"],
+    "answer": "Loss of institutional knowledge"
+  },
+  {
+    "type": "mcq",
+    "question": "Predictive Analytics supports which business strategies?",
+    "choices": ["Operational Excellence only", "Customer Intimacy only", "Customer Intimacy and Operational Excellence", "Product Leadership"],
+    "answer": "Customer Intimacy and Operational Excellence"
+  },
+  {
+    "type": "mcq",
+    "question": "Which system integrates Finance and HR?",
+    "choices": ["SCM", "ERP", "KMS", "DSS"],
+    "answer": "ERP"
+  },
+  {
+    "type": "mcq",
+    "question": "What is a 'master craftsman's skill' an example of?",
+    "choices": ["Explicit Knowledge", "Tacit Knowledge", "Embedded Knowledge", "Information"],
+    "answer": "Tacit Knowledge"
+  },
+  {
+    "type": "mcq",
+    "question": "Which SDLC phase is also known as the 'QA phase'?",
+    "choices": ["Analysis", "Design", "Testing", "Maintenance"],
+    "answer": "Testing"
+  },
+  {
+    "type": "mcq",
+    "question": "What type of decision is 'restocking inventory'?",
+    "choices": ["Structured", "Semi-structured", "Unstructured", "Strategic"],
+    "answer": "Structured"
+  },
+  {
+    "type": "mcq",
+    "question": "Which KM strategy focuses on 'converting knowledge into documents'?",
+    "choices": ["Personalization", "Codification", "Hybrid", "Sharing"],
+    "answer": "Codification"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the key question for the 'Choice' stage of decision-making?",
+    "choices": ["What is the problem?", "What can we do?", "What should we do?", "Is it working?"],
+    "answer": "What should we do?"
+  },
+  {
+    "type": "mcq",
+    "question": "Which system is best for 'direct knowledge sharing' like a Wiki?",
+    "choices": ["ERP", "Wiki / Collaboration Tool", "DSS", "SCM"],
+    "answer": "Wiki / Collaboration Tool"
+  },
+  {
+    "type": "mcq",
+    "question": "Which methodology uses 'sprints'?",
+    "choices": ["Waterfall", "Agile", "Prototyping", "Hybrid"],
+    "answer": "Agile"
+  },
+  {
+    "type": "mcq",
+    "question": "What do 'Raw facts' represent?",
+    "choices": ["Information", "Data", "Knowledge", "Context"],
+    "answer": "Data"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the primary human-related challenge in systems implementation?",
+    "choices": ["Cost", "Privacy", "Integration", "User Resistance"],
+    "answer": "User Resistance"
+  },
+  {
+    "type": "mcq",
+    "question": "Which KM stage uses 'Amazon purchase history data'?",
+    "choices": ["Creation", "Storage", "Sharing", "Application"],
+    "answer": "Creation"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the key goal of 'Operational Excellence'?",
+    "choices": ["Innovation", "Efficiency", "Customer Relationships", "Knowledge Sharing"],
+    "answer": "Efficiency"
+  },
+  {
+    "type": "mcq",
+    "question": "Which methodology is 'linear and sequential'?",
+    "choices": ["Waterfall", "Agile", "Prototyping", "Hybrid"],
+    "answer": "Waterfall"
+  },
+  {
+    "type": "mcq",
+    "question": "What type of knowledge is 'embedded in organization's culture'?",
+    "choices": ["Tacit", "Explicit", "Embedded", "Codified"],
+    "answer": "Embedded"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the 'Decision Support System' (DSS) used for?",
+    "choices": ["Manufacturing", "Data analysis for decision-making", "Knowledge storage", "Customer relations"],
+    "answer": "Data analysis for decision-making"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the main purpose of 'Maintenance' in SDLC?",
+    "choices": ["Testing", "Building", "Updating and improving", "Deployment"],
+    "answer": "Updating and improving"
+  },
+  {
+    "type": "mcq",
+    "question": "What characterizes 'Semi-structured' decisions?",
+    "choices": ["Routine", "Novel/Complex", "Partly routine/judgment-based", "Automated"],
+    "answer": "Partly routine/judgment-based"
+  },
+  {
+    "type": "mcq",
+    "question": "What describes 'Explicit knowledge'?",
+    "choices": ["Personal experience", "Easy to document/share", "Embedded in routines", "Raw facts"],
+    "answer": "Easy to document/share"
+  },
+  {
+    "type": "mcq",
+    "question": "What does Cloud Computing enable?",
+    "choices": ["Decentralization", "Scalable storage/processing", "Manual entry", "R&D"],
+    "answer": "Scalable storage/processing"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the key question in the 'Intelligence' stage?",
+    "choices": ["What is the problem?", "What can we do?", "What should we do?", "Is it working?"],
+    "answer": "What is the problem?"
+  },
+  {
+    "type": "mcq",
+    "question": "What is 'System Architecture' creation part of?",
+    "choices": ["Analysis", "Design", "Development", "Planning"],
+    "answer": "Design"
+  },
+  {
+    "type": "mcq",
+    "question": "Which KM stage involves 'organizing in a database'?",
+    "choices": ["Creation", "Storage", "Sharing", "Application"],
+    "answer": "Storage"
+  },
+  {
+    "type": "mcq",
+    "question": "What does AI/Machine Learning provide?",
+    "choices": ["Predictive insights", "Physical labor", "Raw data", "Manual storage"],
+    "answer": "Predictive insights"
+  },
+  {
+    "type": "mcq",
+    "question": "What is 'Integration complexity'?",
+    "choices": ["A cost risk", "Connecting to legacy systems", "Human resistance", "A future trend"],
+    "answer": "Connecting to legacy systems"
+  },
+  {
+    "type": "mcq",
+    "question": "What is 'Prototyping' good for?",
+    "choices": ["Linear processes", "Unclear requirements", "Routine tasks", "Senior decisions"],
+    "answer": "Unclear requirements"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the primary risk of poor KM?",
+    "choices": ["High costs and security risks", "Low innovation", "Too much knowledge", "Fast systems"],
+    "answer": "High costs and security risks"
+  },
+  {
+    "type": "mcq",
+    "question": "Which system is focused on customer relationships?",
+    "choices": ["SCM", "ERP", "CRM", "KMS"],
+    "answer": "CRM"
+  },
+  {
+    "type": "mcq",
+    "question": "Which stage involves executing and checking results?",
+    "choices": ["Intelligence", "Design", "Choice", "Implementation"],
+    "answer": "Implementation"
+  },
+  {
+    "type": "mcq",
+    "question": "What is a characteristic of 'Product Leadership'?",
+    "choices": ["Efficiency focus", "Cost focus", "Innovation focus", "Routine focus"],
+    "answer": "Innovation focus"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the final step in the Knowledge Management process?",
+    "choices": ["Creation", "Storage", "Sharing", "Application"],
+    "answer": "Application"
+  }
+]

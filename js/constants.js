@@ -29,7 +29,9 @@ const PRELOADED_QUIZZES = [
     "currentQuizzes/UTS SET 2 POLITICS TO MATERIAL.txt",
     "currentQuizzes/DA SET 1.txt",
     "currentQuizzes/DA TYPE12 TEST.txt",
-    "currentQuizzes/DA IV DV AND TEST.txt"
+    "currentQuizzes/DA IV DV AND TEST.txt",
+    "currentQuizzes/IM SET 1.txt",
+    "currentQuizzes/IM SET 2.txt"
 ];
 
 // DOM Elements cache
