@@ -24,16 +24,8 @@ let myMistakes = [];
 
 // Hardcoded manifest fallback
 const PRELOADED_QUIZZES = [
-    "dbms.json",
-    "currentQuizzes/UTS SET 1 SPIRITUAL.txt",
-    "currentQuizzes/UTS SET 2 POLITICS TO MATERIAL.txt",
-    "currentQuizzes/DA SET 1.txt",
-    "currentQuizzes/DA TYPE12 TEST.txt",
-    "currentQuizzes/DA IV DV AND TEST.txt",
-    "currentQuizzes/IM SET 1.txt",
-    "currentQuizzes/IM SET 2.txt",
-    "currentQuizzes/IM SET 3 70 ITEMS.txt",
-    "currentQuizzes/IM SET 4 REVIEWER BASED.txt"
+    "currentQuizzes/adbms set 1.txt",
+    "currentQuizzes/adbms set 2.txt"
 ];
 
 // DOM Elements cache

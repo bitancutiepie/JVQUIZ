@@ -1,0 +1,242 @@
+[
+  {
+    "type": "mcq",
+    "question": "A multinational retail company collects sales data from its European, Asian, and American branches. Before storing this data in a centralized repository, it ensures all currencies and date formats are consistent. Which characteristic of a Data Warehouse does this represent?",
+    "choices": ["Subject-Oriented", "Integrated", "Time-Variant", "Non-Volatile"],
+    "answer": "Integrated"
+  },
+  {
+    "type": "mcq",
+    "question": "An e-commerce website processes thousands of customer orders per minute. The system needs to quickly insert, update, and delete current transactions without delay. Which type of system is most appropriate for this?",
+    "choices": ["OLAP", "OLTP", "Data Warehouse", "Data Mart"],
+    "answer": "OLTP"
+  },
+  {
+    "type": "mcq",
+    "question": "During a data migration project, a data engineer writes a script to remove duplicate customer names and standardize addresses before moving them into the data warehouse. Which stage of the ETL process is being performed?",
+    "choices": ["Extract", "Transform", "Load", "Querying"],
+    "answer": "Transform"
+  },
+  {
+    "type": "mcq",
+    "question": "The Human Resources department of a large corporation wants to analyze employee performance and attrition rates. They have a limited budget and only need HR-specific data. What is the most cost-effective solution?",
+    "choices": ["Enterprise Data Warehouse", "Hadoop Ecosystem", "Data Mart", "Operational Database"],
+    "answer": "Data Mart"
+  },
+  {
+    "type": "mcq",
+    "question": "In a retail company's database design, they have a table containing measurable data such as 'Quantity Sold' and 'Total Revenue', surrounded by other tables containing descriptive data like 'Location' and 'Product'. What is the central table called?",
+    "choices": ["Dimension Table", "Fact Table", "Key-Value Store", "Document Table"],
+    "answer": "Fact Table"
+  },
+  {
+    "type": "mcq",
+    "question": "A regional manager is viewing a dashboard that displays total nationwide sales for the year. To investigate a sudden dip, she clicks to view the sales data broken down by individual months. Which OLAP feature did she use?",
+    "choices": ["Roll-Up", "Slice and Dice", "Drill-Down", "Clustering"],
+    "answer": "Drill-Down"
+  },
+  {
+    "type": "mcq",
+    "question": "An executive wants an immediate overview of the organization's 'Customer Satisfaction' and 'Revenue Growth' metrics on a single screen to evaluate real-time performance. What tool should they utilize?",
+    "choices": ["KPI Dashboard", "Batch Processor", "ETL Pipeline", "XML Document"],
+    "answer": "KPI Dashboard"
+  },
+  {
+    "type": "mcq",
+    "question": "A business analyst wants to analyze only the sales performance of the 'Electronics' department located in 'Tokyo' for the year 2023. Which OLAP feature is best suited for isolating these specific portions of data?",
+    "choices": ["Roll-Up", "Drill-Down", "Slice and Dice", "Data Ingestion"],
+    "answer": "Slice and Dice"
+  },
+  {
+    "type": "mcq",
+    "question": "A supermarket analyzes its transaction data and discovers that customers who purchase milk are 70% more likely to also purchase bread. Which data mining technique produced this insight?",
+    "choices": ["Clustering", "Classification", "Association Rule", "Prediction"],
+    "answer": "Association Rule"
+  },
+  {
+    "type": "mcq",
+    "question": "A streaming platform wants to group its users based on similar viewing habits to create targeted marketing campaigns, but they do not have predefined categories. Which data mining technique should they use?",
+    "choices": ["Association Rule", "Classification", "Clustering", "Prediction"],
+    "answer": "Clustering"
+  },
+  {
+    "type": "mcq",
+    "question": "A bank is building a system to automatically group incoming loan applications into 'High Risk', 'Medium Risk', or 'Low Risk' categories based on historical default data. Which data mining technique is being applied?",
+    "choices": ["Classification", "Association Rule", "Clustering", "Drill-Down"],
+    "answer": "Classification"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following best differentiates Data Mining from Data Warehousing?",
+    "choices": ["Data Warehousing discovers hidden patterns; Data Mining stores historical data.", "Data Warehousing stores integrated data; Data Mining analyzes it to discover relationships.", "Data Warehousing is used for OLTP; Data Mining is used for ETL.", "Data Warehousing handles unstructured data; Data Mining handles structured data."],
+    "answer": "Data Warehousing stores integrated data; Data Mining analyzes it to discover relationships."
+  },
+  {
+    "type": "mcq",
+    "question": "A social media platform generates terabytes of user interaction data every single day, far exceeding the capacity of their traditional servers. Which 'V' of Big Data does this best represent?",
+    "choices": ["Velocity", "Variety", "Veracity", "Volume"],
+    "answer": "Volume"
+  },
+  {
+    "type": "mcq",
+    "question": "A financial institution monitors stock market transactions that occur in milliseconds to detect fraudulent trades instantly. Which 'V' of Big Data is the primary focus here?",
+    "choices": ["Volume", "Velocity", "Veracity", "Variety"],
+    "answer": "Velocity"
+  },
+  {
+    "type": "mcq",
+    "question": "A healthcare provider is consolidating patient data that includes traditional SQL database records, MRI image files, text-based doctor notes, and audio recordings of consultations. Which characteristic of Big Data is being addressed?",
+    "choices": ["Volume", "Velocity", "Variety", "Veracity"],
+    "answer": "Variety"
+  },
+  {
+    "type": "mcq",
+    "question": "A company realizes that its large dataset contains millions of duplicate records, missing values, and fake customer profiles, heavily impacting the accuracy of their reports. Which 'V' of Big Data needs immediate improvement?",
+    "choices": ["Volume", "Variety", "Veracity", "Velocity"],
+    "answer": "Veracity"
+  },
+  {
+    "type": "mcq",
+    "question": "A retail chain generates reports by processing all accumulated sales data in large groups at midnight every day, rather than analyzing each sale instantly. What type of processing is this?",
+    "choices": ["Real-time Processing", "Batch Processing", "Drill-Down Processing", "Stateless Processing"],
+    "answer": "Batch Processing"
+  },
+  {
+    "type": "mcq",
+    "question": "A distributed database cluster has five servers. Even if two servers suddenly lose power, the application continues to run without any data loss because data is replicated. What concept does this describe?",
+    "choices": ["Polyglot Persistence", "Fault Tolerance", "Batch Processing", "Slice and Dice"],
+    "answer": "Fault Tolerance"
+  },
+  {
+    "type": "mcq",
+    "question": "To handle a massive increase in website traffic, an IT administrator decides to add ten more servers to their existing distributed system. This is an example of:",
+    "choices": ["Scaling Out", "Scaling Up", "Drill-Down", "Data Transformation"],
+    "answer": "Scaling Out"
+  },
+  {
+    "type": "mcq",
+    "question": "A data engineering team needs a distributed file system capable of storing massive datasets across multiple commodity hardware nodes. Which component of the Hadoop Ecosystem should they utilize?",
+    "choices": ["Hive", "Pig", "Flume", "HDFS"],
+    "answer": "HDFS"
+  },
+  {
+    "type": "mcq",
+    "question": "A team of data analysts is highly proficient in SQL but needs to run analytical queries on massive unstructured datasets stored in Hadoop. Which Hadoop ecosystem tool is best suited for them?",
+    "choices": ["Pig", "HDFS", "Hive", "Flume"],
+    "answer": "Hive"
+  },
+  {
+    "type": "mcq",
+    "question": "A media company needs a robust tool specifically designed to collect, aggregate, and transfer massive amounts of streaming log data from their web servers directly into Hadoop. Which tool should they deploy?",
+    "choices": ["Hive", "Pig", "Flume", "HDFS"],
+    "answer": "Flume"
+  },
+  {
+    "type": "mcq",
+    "question": "A web application requires a database capable of executing extremely fast lookups for user session IDs using simple string identifiers. Which type of NoSQL database is most appropriate?",
+    "choices": ["Graph Database", "Document Database", "Column-Oriented Database", "Key-Value Database"],
+    "answer": "Key-Value Database"
+  },
+  {
+    "type": "mcq",
+    "question": "A developer is building a content management system where each article has varying attributes (e.g., some have embedded videos, some have multiple authors) stored as JSON files. Which database type is best?",
+    "choices": ["Key-Value", "Document", "Relational", "Graph"],
+    "answer": "Document"
+  },
+  {
+    "type": "mcq",
+    "question": "An online dating application wants to build a recommendation engine by analyzing the complex web of connections, mutual friends, and shared interests among its millions of users. Which NoSQL database is optimized for this?",
+    "choices": ["Graph Database", "Column-Oriented Database", "Document Database", "Key-Value Database"],
+    "answer": "Graph Database"
+  },
+  {
+    "type": "mcq",
+    "question": "A global banking platform needs a database system that offers the massive scalability and distributed nature of NoSQL, but strictly requires the ACID compliance of a traditional relational database for financial transactions. What technology should they adopt?",
+    "choices": ["Hadoop", "NewSQL", "Data Mart", "Key-Value Store"],
+    "answer": "NewSQL"
+  },
+  {
+    "type": "mcq",
+    "question": "A technology startup uses a Relational Database for financial billing, a Graph Database for its social networking features, and a Key-Value store for caching user sessions. What is this architectural strategy called?",
+    "choices": ["Fault Tolerance", "Polyglot Persistence", "Batch Processing", "Star Schema"],
+    "answer": "Polyglot Persistence"
+  },
+  {
+    "type": "mcq",
+    "question": "A software company wants to create an application that can connect to multiple different databases (e.g., MySQL, Oracle, SQL Server) using a single standard interface without rewriting the connection logic. Which technology provides this database independence?",
+    "choices": ["JDBC", "ODBC", "XML", "HDFS"],
+    "answer": "ODBC"
+  },
+  {
+    "type": "mcq",
+    "question": "A developer is creating a Java-based enterprise application and needs to communicate with a database using SQL queries natively within the Java environment. Which connectivity technology is specifically designed for this?",
+    "choices": ["ODBC", "JDBC", "Flume", "Pig"],
+    "answer": "JDBC"
+  },
+  {
+    "type": "mcq",
+    "question": "In a web application, users notice that their shopping cart empties every time they click a new link. The development team realizes the server is not remembering previous client requests. What type of system is causing this issue?",
+    "choices": ["Stateful System", "Stateless System", "Fault-Tolerant System", "Centralized System"],
+    "answer": "Stateless System"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the primary role of a Web Application Server in a three-tier architecture?",
+    "choices": ["To strictly store integrated historical data", "To support dynamic web applications and handle database connections", "To provide SQL-like querying for Hadoop", "To exchange structured data natively"],
+    "answer": "To support dynamic web applications and handle database connections"
+  },
+  {
+    "type": "mcq",
+    "question": "An e-commerce business experiences a massive spike in traffic only during the holiday season. They need an infrastructure that can easily increase computing resources during peak times and reduce them afterward to lower costs. Which technology provides this benefit?",
+    "choices": ["Cloud Computing", "On-Premise Data Mart", "Stateless Architecture", "Batch Processing"],
+    "answer": "Cloud Computing"
+  },
+  {
+    "type": "mcq",
+    "question": "Two different organizations need to exchange complex structured data over the internet. One uses a legacy mainframe, while the other uses a modern cloud app. Which platform-independent, human-readable format is best suited for this data exchange?",
+    "choices": ["JDBC", "XML", "Pig", "ODBC"],
+    "answer": "XML"
+  },
+  {
+    "type": "mcq",
+    "question": "A retail store collects daily raw facts such as 'Product XYZ sold 50 units'. When this is organized into a 'Weekly Regional Performance Report', the raw data has been transformed into:",
+    "choices": ["Action", "Knowledge", "Information", "Decision"],
+    "answer": "Information"
+  },
+  {
+    "type": "mcq",
+    "question": "By analyzing reports, a manager discovers a hidden trend: sales of winter coats drastically drop in specific southern regions while remaining steady in the north. According to the decision-making lifecycle, what stage does this insight represent?",
+    "choices": ["Data", "Information", "Knowledge", "Action"],
+    "answer": "Knowledge"
+  },
+  {
+    "type": "mcq",
+    "question": "Using the knowledge that winter coats sell poorly in the south, management decides to halt southern shipments and reallocate inventory to northern branches. This step represents which stage of the data lifecycle?",
+    "choices": ["Decision", "Data Mining", "Data Transformation", "Data Extraction"],
+    "answer": "Decision"
+  },
+  {
+    "type": "mcq",
+    "question": "If an organization neglects to run their ETL processes for several months, what is the most immediate operational consequence?",
+    "choices": ["The database hardware will physically fail", "Reports become outdated and management decisions become inaccurate", "The NoSQL databases will revert to Relational databases", "The cloud infrastructure will automatically scale down to zero"],
+    "answer": "Reports become outdated and management decisions become inaccurate"
+  },
+  {
+    "type": "mcq",
+    "question": "A data warehouse architecture uses a 'Star Schema'. Why is this specific design advantageous over a highly normalized operational database?",
+    "choices": ["It eliminates the need for any storage space", "It provides faster analytical queries and simplified reporting", "It encrypts data automatically", "It prevents managers from viewing detailed data"],
+    "answer": "It provides faster analytical queries and simplified reporting"
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following scenarios best demonstrates the 'Atomicity' property in an ACID-compliant database?",
+    "choices": ["A bank transfer either fully subtracts from Account A and adds to Account B, or fails completely without partial updates.", "Data remains stored permanently even if the server crashes.", "Multiple concurrent transactions are processed without interfering with each other.", "The system can handle thousands of new users seamlessly."],
+    "answer": "A bank transfer either fully subtracts from Account A and adds to Account B, or fails completely without partial updates."
+  },
+  {
+    "type": "mcq",
+    "question": "A business intelligence team utilizes both Data Warehousing and Data Mining. First, they integrate historical data from across the enterprise. Next, they run algorithms to discover hidden trends. Ultimately, what is the primary organizational goal of combining these technologies?",
+    "choices": ["To reduce the need for employee training", "To replace all human managers with automated systems", "To transform raw data into valuable knowledge for improved decision-making and operational success", "To increase the cost of enterprise IT infrastructure"],
+    "answer": "To transform raw data into valuable knowledge for improved decision-making and operational success"
+  }
+]

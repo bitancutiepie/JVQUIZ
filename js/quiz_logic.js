@@ -535,7 +535,6 @@ async function autoScan() {
             const dynamicManifest = await res.json();
             if (Array.isArray(dynamicManifest) && dynamicManifest.length > 0) {
                 manifest = dynamicManifest;
-                if (!manifest.includes('dbms.json')) manifest.unshift('dbms.json');
             }
         }
     } catch (e) { console.warn("Dynamic manifest failed."); }
@@ -575,17 +574,22 @@ function loadPreloadedQuiz(path, mode, btn) {
     statusEl.innerHTML = `Loading ${path}... <span class="loading-dots"></span>`;
 
     fetch(path)
-        .then(res => res.json())
-        .then(parsed => {
+        .then(res => res.text())
+        .then(text => {
+            const parsed = parseContent(text);
             questions = parsed;
-            if (mode === 'host') {
-                hostStatus.innerHTML = `${parsed.length} questions loaded! ✨`;
-                btnStartGame.style.display = 'block';
-                dropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+            if (parsed.length > 0) {
+                if (mode === 'host') {
+                    hostStatus.innerHTML = `${parsed.length} questions loaded! ✨`;
+                    btnStartGame.style.display = 'block';
+                    dropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+                } else {
+                    soloStatus.innerHTML = `${parsed.length} questions loaded! ✨`;
+                    btnStartSolo.style.display = 'block';
+                    soloDropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+                }
             } else {
-                soloStatus.innerHTML = `${parsed.length} questions loaded! ✨`;
-                btnStartSolo.style.display = 'block';
-                soloDropLabel.innerHTML = `Loaded: ${path.split('/').pop()}`;
+                statusEl.innerHTML = `<span style="color:var(--wrong-color)">Error parsing quiz questions! 😿</span>`;
             }
         })
         .catch(() => { statusEl.innerHTML = `<span style="color:var(--wrong-color)">Error loading ${path} 😿</span>`; });
