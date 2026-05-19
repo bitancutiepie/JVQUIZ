@@ -530,7 +530,7 @@ function applyPlayerUI(statEl, nameEl, avatarEl, pName, pChar) {
 async function autoScan() {
     let manifest = PRELOADED_QUIZZES;
     try {
-        const res = await fetch('quizzes.json');
+        const res = await fetch('quizzes.json?t=' + Date.now());
         if (res.ok) {
             const dynamicManifest = await res.json();
             if (Array.isArray(dynamicManifest) && dynamicManifest.length > 0) {
@@ -573,7 +573,7 @@ function loadPreloadedQuiz(path, mode, btn) {
     const statusEl = mode === 'host' ? hostStatus : soloStatus;
     statusEl.innerHTML = `Loading ${path}... <span class="loading-dots"></span>`;
 
-    fetch(path)
+    fetch(path + '?t=' + Date.now())
         .then(res => res.text())
         .then(text => {
             const parsed = parseContent(text);
